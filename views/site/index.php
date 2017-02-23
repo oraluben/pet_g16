@@ -3,8 +3,8 @@
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
+\app\assets\LoginAsset::register($this);
 ?>
-<link rel="stylesheet" href="<?=Yii::getAlias('@web/css/lrtk.css')?>">
 <div id="login">
     <div class="wrapper">
         <div class="login">
@@ -22,31 +22,23 @@ $this->title = 'My Yii Application';
                     <div class="control-group">
                         <div class="controls">
                             <label for="username" class="control-label fa fa-envelope"></label>
-                            <input id="username" type="email" name="email" placeholder="Username" tabindex="1" autofocus="autofocus" class="form-control input-medium">
+                            <input id="username" type="email" name="email" placeholder="Username" tabindex="1"
+                                   autofocus="autofocus" class="form-control input-medium">
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="controls">
                             <label for="password" class="control-label fa fa-asterisk"></label>
-                            <input id="password" type="password" name="password" placeholder="Password" tabindex="2" class="form-control input-medium">
+                            <input id="password" type="password" name="password" placeholder="Password" tabindex="2"
+                                   class="form-control input-medium">
                         </div>
                     </div>
                 </div>
-                <div class="form-actions"><a href="http://www.lanrentuku.com/" tabindex="5" class="btn pull-left btn-link text-muted">Forgot password?</a>
+                <div class="form-actions"><a href="http://www.lanrentuku.com/" tabindex="5"
+                                             class="btn pull-left btn-link text-muted">Forgot password?</a>
                     <button type="submit" tabindex="4" class="btn btn-primary">Login</button>
                 </div>
             </form>
         </div>
     </div>
-    <script src="<?=Yii::getAlias('@web/js/jquery.min.js')?>"></script>
-    <script>
-        $(function() {
-
-            $('#login #password').focus(function() {
-                $('#owl-login').addClass('password');
-            }).blur(function() {
-                $('#owl-login').removeClass('password');
-            });
-        });
-    </script>
 </div>
