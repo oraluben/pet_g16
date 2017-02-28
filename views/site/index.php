@@ -21,21 +21,21 @@ $this->title = 'My Yii Application';
                     <div class="control-group">
                         <div class="controls">
                             <label for="username" class="control-label fa fa-envelope"></label>
-                            <input id="username" type="email" name="email" placeholder="Username" tabindex="1"
+                            <input id="username" type="email" ng-model="username" placeholder="Username" tabindex="1"
                                    autofocus="autofocus" class="form-control input-medium">
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="controls">
                             <label for="password" class="control-label fa fa-asterisk"></label>
-                            <input id="password" type="password" name="password" placeholder="Password" tabindex="2"
+                            <input id="password" type="password" ng-model="password" placeholder="Password" tabindex="2"
                                    class="form-control input-medium">
                         </div>
                     </div>
                 </div>
-                <div class="form-actions"><a href="http://www.lanrentuku.com/" tabindex="5"
+                <div class="form-actions"><a href="/" tabindex="4"
                                              class="btn pull-left btn-link text-muted">Forgot password?</a>
-                    <button type="submit" tabindex="4" class="btn btn-primary">Login</button>
+                    <button type="submit" tabindex="3" class="btn btn-primary" ng-click="login(username,password)">Login</button>
                 </div>
             </form>
         </div>
