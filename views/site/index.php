@@ -33,9 +33,9 @@ $this->title = 'My Yii Application';
                         </div>
                     </div>
                 </div>
-                <div class="form-actions"><a href="/" tabindex="4"
+                <div class="form-actions"><a href="/" tabindex="3"
                                              class="btn pull-left btn-link text-muted">Forgot password?</a>
-                    <button type="submit" tabindex="3" class="btn btn-primary" ng-click="login(username,password)">Login</button>
+                    <button type="submit" tabindex="4" class="btn btn-primary" ng-click="login(username,password)">Login</button>
                 </div>
             </form>
         </div>
