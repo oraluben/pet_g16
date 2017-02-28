@@ -3235,5 +3235,30 @@
             }
         ],
         "description": "BDD code blocks for PHPUnit and Codeception"
+    },
+    {
+        "name": "bower-asset/angular",
+        "version": "v1.6.3-patch5300",
+        "version_normalized": "1.6.3.0-patch5300",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/angular/bower-angular.git",
+            "reference": "e95662c10cae64323086f6ab9a5b25f7b05f2386"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/angular/bower-angular/zipball/e95662c10cae64323086f6ab9a5b25f7b05f2386",
+            "reference": "e95662c10cae64323086f6ab9a5b25f7b05f2386",
+            "shasum": ""
+        },
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "./angular.js",
+            "bower-asset-ignore": []
+        },
+        "installation-source": "dist",
+        "license": [
+            "MIT"
+        ]
     }
 ]
