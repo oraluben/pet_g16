@@ -13,7 +13,8 @@ use yii\web\AssetBundle;
 
 class AngularAsset extends AssetBundle
 {
+    public $sourcePath = '@bower/angular';
     public $js = [
-        '//cdn.bootcss.com/angular.js/1.6.2/angular.js',
+        'angular.js',
     ];
 }
