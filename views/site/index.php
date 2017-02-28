@@ -5,7 +5,7 @@
 $this->title = 'My Yii Application';
 \app\assets\LoginAsset::register($this);
 ?>
-<div id="login">
+<div id="login" ng-controller="LoginCtrl">
     <div class="wrapper">
         <div class="login">
             <form action="/" method="post" class="container offset1 loginform">
@@ -18,7 +18,6 @@ $this->title = 'My Yii Application';
                     </div>
                 </div>
                 <div class="pad">
-                    <input type="hidden" name="_csrf" value="9IAtUxV2CatyxHiK2LxzOsT6wtBE6h8BpzOmk=">
                     <div class="control-group">
                         <div class="controls">
                             <label for="username" class="control-label fa fa-envelope"></label>
