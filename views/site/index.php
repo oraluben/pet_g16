@@ -2,13 +2,13 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Login';
 \app\assets\LoginAsset::register($this);
 ?>
 <div id="login" ng-controller="LoginCtrl">
     <div class="wrapper">
         <div class="login">
-            <form action="/" method="post" class="container offset1 loginform">
+            <form class="container offset1 loginform">
                 <div id="owl-login">
                     <div class="hand"></div>
                     <div class="hand hand-r"></div>
@@ -21,7 +21,7 @@ $this->title = 'My Yii Application';
                     <div class="control-group">
                         <div class="controls">
                             <label for="username" class="control-label fa fa-envelope"></label>
-                            <input id="username" type="email" ng-model="username" placeholder="Username" tabindex="1"
+                            <input id="username" ng-model="username" placeholder="Username" tabindex="1"
                                    autofocus="autofocus" class="form-control input-medium">
                         </div>
                     </div>

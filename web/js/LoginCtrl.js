@@ -237,10 +237,10 @@ petApp.controller('LoginCtrl', function ($scope, $q, $http, $window, $location) 
             return false;
         }
     };
-    search = $location.search();
-    token = search['access_token'];
-    if (token != null) {
-        localStorage.setItem(storage, token);
-        return $window.location.href = "main.html";
-    }
+    // search = $location.search();
+    // token = search['access_token'];
+    // if (token != null) {
+    //     localStorage.setItem(storage, token);
+    //     return $window.location.href = "main.html";
+    // }
 });
