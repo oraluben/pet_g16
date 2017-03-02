@@ -10,7 +10,7 @@ class m170223_004149_base extends Migration
             'id' => $this->primaryKey(),
             'username' => $this->char(20)->notNull(),
             'password' => $this->char(64)->notNull(),
-            'user_type' => $this->integer()->notNull(),
+            'user_type' => $this->integer()->notNull()->defaultValue(0),
         ]);
         $this->createTable('pet_case', [
             'id' => $this->primaryKey(),

@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
@@ -15,6 +16,22 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => AttributeBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'password',
+                    ActiveRecord::EVENT_BEFORE_UPDATE => 'password',
+                ],
+                'value' => function ($event) {
+                    return \Yii::$app->security->generatePasswordHash($this->password);
+                },
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -29,10 +46,11 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'password', 'user_type'], 'required'],
+            [['username', 'password'], 'required'],
             [['user_type'], 'integer'],
             [['username'], 'string', 'max' => 20],
             [['password'], 'string', 'max' => 64],
+            [['username'], 'unique'],
         ];
     }
 
@@ -87,5 +105,21 @@ class User extends ActiveRecord implements IdentityInterface
     public function validateAuthKey($authKey)
     {
         return false;
+    }
+
+    public function validatePassword($pw)
+    {
+        return \Yii::$app->security->validatePassword($pw, $this->password);
+    }
+
+    public function login($duration = 0)
+    {
+        return \Yii::$app->user->login($this, $duration);
+    }
+
+    public function create()
+    {
+        assert($this->isNewRecord);
+        return $this->save();
     }
 }
