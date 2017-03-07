@@ -19,4 +19,24 @@ class InfoController extends Controller
     {
         return $this->render('index');
     }
+
+    public function actionCase()
+    {
+        return $this->render('case');
+    }
+
+    public function actionUser()
+    {
+        return $this->render('user');
+    }
+
+    public function actionPwd()
+    {
+        return $this->render('pwd');
+    }
+
+    public function actionProfile()
+    {
+        return $this->render('profile');
+    }
 }

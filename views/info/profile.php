@@ -1,8 +1,14 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Dilemma丶
+ * Date: 2017/3/2
+ * Time: 10:38
+ */
 
 /* @var $this yii\web\View */
 
-$this->title = 'MainPage';
+$this->title = 'MyProfile';
 \app\assets\MainAsset::register($this);
 ?>
 
@@ -13,12 +19,12 @@ $this->title = 'MainPage';
         </div>
     </form>
     <ul class="nav menu">
-        <li class="active"><a href="index"><span class="glyphicon glyphicon-dashboard"></span> 主页面</a></li>
+        <li><a href="index"><span class="glyphicon glyphicon-dashboard"></span> 主页面</a></li>
         <li><a href="case"><span class="glyphicon glyphicon-list-alt"></span> 管理病例</a></li>
         <li><a href="user"><span class="glyphicon glyphicon-user"></span> 管理用户</a></li>
         <li><a href="pwd"><span class="glyphicon glyphicon-info-sign"></span> 密码重置</a></li>
         <li role="presentation" class="divider"></li>
-        <li><a href="profile"><span class="glyphicon glyphicon-pencil"></span> 个人信息</a></li>
+        <li class="active"><a href="profile"><span class="glyphicon glyphicon-pencil"></span> 个人信息</a></li>
     </ul>
 </div><!--/.sidebar-->
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
