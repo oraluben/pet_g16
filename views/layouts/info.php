@@ -44,21 +44,6 @@ use yii\helpers\Html;
     </div><!-- /.container-fluid -->
 </nav>
 
-<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-    <form role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-    </form>
-    <ul class="nav menu">
-        <li class="active"><a href="index.html"><span class="glyphicon glyphicon-dashboard"></span> 主页面</a></li>
-        <li><a href="widgets.html"><span class="glyphicon glyphicon-list-alt"></span> 管理病例</a></li>
-        <li><a href="charts.html"><span class="glyphicon glyphicon-user"></span> 管理用户</a></li>
-        <li><a href="panels.html"><span class="glyphicon glyphicon-info-sign"></span> 密码重置</a></li>
-        <li role="presentation" class="divider"></li>
-        <li><a href="login.html"><span class="glyphicon glyphicon-pencil"></span> 个人信息</a></li>
-    </ul>
-</div><!--/.sidebar-->
 <?= $content ?>
 <!--<script>-->
 <!--    $('#calendar').datepicker({});-->
