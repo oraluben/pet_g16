@@ -28,7 +28,10 @@ class UserLoginForm extends Model
             ['username', 'exist', 'skipOnError' => true,
                 'targetClass' => User::className(),
                 'targetAttribute' => 'username'],
-            ['password', 'validatePassword', 'skipOnError' => true],
+            ['password', 'validatePassword', 'when' => function ($model) {
+                /** @var self $model */
+                return !is_null($model->getUser());
+            }],
         ];
     }
 
@@ -39,14 +42,15 @@ class UserLoginForm extends Model
     {
         if (is_null($this->_user)) {
             $this->_user = User::findOne(['username' => $this->username]);
-            assert(!is_null($this->_user));
         }
         return $this->_user;
     }
 
-    public function validatePassword()
+    public function validatePassword($attribute, $params, $validator)
     {
-        return $this->getUser()->validatePassword($this->password);
+        if ($this->getUser()->validatePassword($this->password)) {
+            $this->addError('password', 'password is incorrect');
+        }
     }
 
     public function login()
