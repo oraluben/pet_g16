@@ -18,17 +18,16 @@ class LoginAsset extends AssetBundle
 
     public $css = [
         'css/lrtk.css',
-        'css/sweetalert.css'
     ];
     public $js = [
         'js/login.js',
         'js/controllers/LoginCtrl.js',
-        'js/sweetalert.min.js'
     ];
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
         'app\assets\AngularAsset',
+        'app\assets\SweetAlertAsset',
         'rmrevin\yii\fontawesome\AssetBundle',
     ];
 }
