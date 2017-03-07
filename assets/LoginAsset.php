@@ -22,7 +22,7 @@ class LoginAsset extends AssetBundle
     ];
     public $js = [
         'js/login.js',
-        'js/LoginCtrl.js',
+        'js/controllers/LoginCtrl.js',
         'js/sweetalert.min.js'
     ];
     public $depends = [
