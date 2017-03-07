@@ -16,20 +16,18 @@ class MainAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $css = [
-        'css/bootstrap.min.css',
-        'css/datepicker3.css',
-        'css/styles.css'
+        'css/styles.css',
     ];
     public $js = [
-        'js/bootstrap.min.js',
-        'js/chart.min.js',
-        'js/chart-data.js',
+//        'js/chart.min.js',
+//        'js/chart-data.js',
         'js/easypiechart.js',
         'js/easypiechart-data.js',
-        'js/bootstrap-datepicker.js'
     ];
     public $depends = [
         'yii\web\JqueryAsset',
-        'app\assets\AngularAsset'
+        'yii\bootstrap\BootstrapAsset',
+        'app\assets\AngularAsset',
+        'app\assets\BootstrapDatePicker',
     ];
 }

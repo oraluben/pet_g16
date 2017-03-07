@@ -301,7 +301,7 @@ $this->title = 'MainPage';
     </div><!--/.row-->
 </div>    <!--/.main-->
 <script>
-    $('#calendar').datepicker({});
+    $('#calendar').datepicker({}); // todo: fix this
 
     !function ($) {
         $(document).on("click", "ul.nav li.parent > a > span.icon", function () {

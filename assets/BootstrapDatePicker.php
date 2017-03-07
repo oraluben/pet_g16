@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: easonyan
- * Date: 2/23/2017
- * Time: 5:00 PM
+ * Date: 3/7/2017
+ * Time: 1:19 PM
  */
 
 namespace app\assets;
@@ -11,24 +11,19 @@ namespace app\assets;
 
 use yii\web\AssetBundle;
 
-class LoginAsset extends AssetBundle
+class BootstrapDatePicker extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
 
     public $css = [
-        'css/lrtk.css',
-        'css/sweetalert.css'
+        'css/datepicker3.css',
     ];
     public $js = [
-        'js/login.js',
-        'js/LoginCtrl.js',
-        'js/sweetalert.min.js'
+        'js/bootstrap-datepicker.js',
     ];
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
-        'app\assets\AngularAsset',
-        'rmrevin\yii\fontawesome\AssetBundle',
     ];
 }
