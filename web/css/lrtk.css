@@ -8292,7 +8292,7 @@ hr.dots:before {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url("../img/icon-a.mask.png");
+  /*background-image: url("../img/icon-a.mask.png");*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
