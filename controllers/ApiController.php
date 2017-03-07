@@ -8,7 +8,9 @@
 
 namespace app\controllers;
 
+use app\actions\LoginAction;
 use app\models\UserLoginForm;
+use yii\filters\AccessControl;
 use yii\rest\Controller;
 
 class ApiController extends Controller
@@ -19,25 +21,25 @@ class ApiController extends Controller
 
         unset($behaviors['contentNegotiator']['formats']['application/xml']);
 
+        $behaviors['access'] = [
+            'class' => AccessControl::className(),
+            'rules' => [
+                [
+                    'allow' => true,
+                    'actions' => ['login'],
+                    'roles' => ['?'],
+                    'verbs' => ['POST'],
+                ],
+            ],
+        ];
+
         return $behaviors;
     }
 
-    public function actionLogin()
+    public function actions()
     {
-        $post = \Yii::$app->request->post();
-        $form = new UserLoginForm();
-
-        if ($form->load($post, '') && $form->login()) {
-            return [
-                'success' => true,
-                'message' => '登陆成功',
-            ];
-        } else {
-            return [
-                'success' => false,
-                'message' => '登录失败',
-                'errors' => $form->errors,
-            ];
-        }
+        return [
+            'login' => LoginAction::className(),
+        ];
     }
 }
