@@ -19,14 +19,16 @@ class MainAsset extends AssetBundle
         'css/styles.css',
     ];
     public $js = [
-//        'js/chart.min.js',
-//        'js/chart-data.js',
+        'js/chart.min.js',
+        'js/chart-data.js',
         'js/easypiechart.js',
         'js/easypiechart-data.js',
+        'js/info.js',
     ];
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapPluginAsset',
         'app\assets\AngularAsset',
         'app\assets\BootstrapDatePicker',
     ];
