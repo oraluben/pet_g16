@@ -120,7 +120,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public static function getUser($id)
     {
-        if (is_null($user = self::findOne($id)) or is_null($user = self::findOne(['username' => $id]))) {
+        if ((is_int($id) && is_null($user = self::findOne($id))) or is_null($user = self::findOne(['username' => $id]))) {
             throw new NotFoundHttpException('user ' . $id . ' not found');
         }
         return $user;
