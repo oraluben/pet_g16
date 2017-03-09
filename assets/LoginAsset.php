@@ -17,9 +17,11 @@ class LoginAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $css = [
+        'css/jquery.toastmessage.css',
         'css/lrtk.css',
     ];
     public $js = [
+        'js/jquery.toastmessage.js',
         'js/login.js',
         'js/controllers/LoginCtrl.js',
     ];
