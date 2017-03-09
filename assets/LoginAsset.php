@@ -29,7 +29,6 @@ class LoginAsset extends AssetBundle
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
         'app\assets\AngularAsset',
-        'app\assets\SweetAlertAsset',
         'rmrevin\yii\fontawesome\AssetBundle',
     ];
 }
