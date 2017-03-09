@@ -16,14 +16,17 @@ class MainAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $css = [
+        'css/jquery.toastmessage.css',
         'css/styles.css',
     ];
     public $js = [
+        'js/jquery.toastmessage.js',
         'js/chart.min.js',
         'js/chart-data.js',
         'js/easypiechart.js',
         'js/easypiechart-data.js',
         'js/info.js',
+        'js/controllers/UserCtrl.js',
     ];
     public $depends = [
         'yii\web\JqueryAsset',

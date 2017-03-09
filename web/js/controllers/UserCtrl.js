@@ -29,7 +29,25 @@ petApp.controller('UserCtrl', function ($scope, $http, $window) {
                 stayTime: 1500,
                 closeText: ''
             });
-        } else if (pwd != pwd2) {
+        } else if (pwd2 === void 0 || pwd2.length === 0) {
+            $().toastmessage('showToast', {
+                text: 'Please enter your password again',
+                sticky: false,
+                position: 'top-center',
+                type: 'error',
+                stayTime: 1500,
+                closeText: ''
+            });
+        }else if (authority === void 0 || authority.length === 0) {
+            $().toastmessage('showToast', {
+                text: 'Please select an authority',
+                sticky: false,
+                position: 'top-center',
+                type: 'error',
+                stayTime: 1500,
+                closeText: ''
+            });
+        }else if (pwd != pwd2) {
             $().toastmessage('showToast', {
                 text: 'The passwords you entered must be the same.',
                 sticky: false,
@@ -40,16 +58,17 @@ petApp.controller('UserCtrl', function ($scope, $http, $window) {
             });
         }
         else {
+            console.log(authority);
             p = {
                 method: 'post',
-                url: 'api/register',
+                url: '/api/register',
                 data: {
                     'username': name,
                     'password': pwd
                 }
             };
             $http(p).then(function (d) {
-                if (d.data.success === 0) {
+                if (d.data.success === true) {
                     $window.location.reload();
                     return $().toastmessage('showToast', {
                         text: 'Create success!',
@@ -71,7 +90,14 @@ petApp.controller('UserCtrl', function ($scope, $http, $window) {
                     });
                 }
             });
-            return false;
+            return $().toastmessage('showToast', {
+                text: 'Create failed..',
+                sticky: false,
+                position: 'top-center',
+                type: 'error',
+                stayTime: 1500,
+                closeText: ''
+            });
         }
     };
 

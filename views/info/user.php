@@ -13,7 +13,7 @@ $this->title = 'User';
 \app\assets\MainAsset::register($this);
 ?>
 
-<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar" ng-controller="UserCtrl">
+<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <form role="search">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
@@ -28,7 +28,7 @@ $this->title = 'User';
         <li><a href="profile"><span class="glyphicon glyphicon-pencil"></span> 个人信息</a></li>
     </ul>
 </div><!--/.sidebar-->
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" ng-controller="UserCtrl">
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
@@ -80,35 +80,40 @@ $this->title = 'User';
 
                             <!-- pwd input-->
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="email">Password</label>
+                                <label class="col-md-3 control-label" for="pwd">Password</label>
                                 <div class="col-md-9">
-                                    <input id="pwd" name="pwd" ng-model="pwd" type="password" placeholder="Your password"
+                                    <input id="pwd" name="pwd" ng-model="pwd" type="password"
+                                           placeholder="Your password"
                                            class="form-control">
                                 </div>
                             </div>
 
                             <!-- pwd_ input-->
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="email">Password</label>
+                                <label class="col-md-3 control-label" for="pwd2">Password</label>
                                 <div class="col-md-9">
-                                    <input id="pwd2" name="pwd2" ng-model="pwd2" type="password" placeholder="Type your password again"
+                                    <input id="pwd2" name="pwd2" ng-model="pwd2" type="password"
+                                           placeholder="Type your password again"
                                            class="form-control">
                                 </div>
                             </div>
 
                             <!-- Message body -->
                             <div class="form-group">
-                                <label class="col-md-3 control-label" for="message">Authority</label>
+                                <label class="col-md-3 control-label" for="authority">Authority</label>
                                 <div class="col-md-9">
-                                    <input name="authority" ng-model="authority" type="radio" value="" checked/> User <br>
-                                    <input name="authority" ng-model="authority" type="radio" value=""/> Administrator
+                                    <input name="authority" ng-model="authority" type="radio" value="user"/> User <br>
+                                    <input name="authority" ng-model="authority" type="radio" value="admin"/>
+                                    Administrator
                                 </div>
                             </div>
 
                             <!-- Form actions -->
                             <div class="form-group">
                                 <div class="col-md-12 widget-right">
-                                    <button ng-click="createUser(name,pwd,pwd2,authority)" class="btn btn-default btn-md pull-right">Submit</button>
+                                    <button type="submit" ng-click="createUser(name,pwd,pwd2,authority)"
+                                            class="btn btn-default btn-md pull-right">Submit
+                                    </button>
                                 </div>
                             </div>
                         </fieldset>
@@ -116,3 +121,5 @@ $this->title = 'User';
                 </div>
             </div>
         </div><!--/.row-->
+    </div>
+</div>
