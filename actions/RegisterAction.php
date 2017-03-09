@@ -3,33 +3,33 @@
  * Created by PhpStorm.
  * User: easonyan
  * Date: 3/7/2017
- * Time: 2:20 PM
+ * Time: 2:27 PM
  */
 
 namespace app\actions;
 
 
-use app\models\UserLoginForm;
+use app\models\User;
 use yii\base\Action;
 use yii\web\ForbiddenHttpException;
 
-class LoginAction extends Action
+class RegisterAction extends Action
 {
     public function run()
     {
         $post = \Yii::$app->request->post();
-        $form = new UserLoginForm();
+        $user = new User();
 
-        if ($form->load($post, '') && $form->login()) {
+        if ($user->load($post, '') && $user->save()) {
             return [
                 'success' => true,
-                'message' => '登陆成功',
+                'message' => '注册成功',
             ];
         } else {
             throw new ForbiddenHttpException(json_encode([
                 'success' => false,
-                'message' => '登录失败',
-                'errors' => $form->errors,
+                'message' => '注册失败',
+                'errors' => $user->errors,
             ]));
         }
     }

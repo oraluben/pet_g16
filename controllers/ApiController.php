@@ -8,7 +8,9 @@
 
 namespace app\controllers;
 
+use app\actions\ActionChangePassword;
 use app\actions\LoginAction;
+use app\actions\RegisterAction;
 use app\models\UserLoginForm;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
@@ -30,6 +32,12 @@ class ApiController extends Controller
                     'roles' => ['?'],
                     'verbs' => ['POST'],
                 ],
+                [
+                    'allow' => true,
+                    'actions' => ['register', 'change_password'],
+                    'roles' => ['?'],
+                    'verbs' => ['POST'],
+                ],
             ],
         ];
 
@@ -40,6 +48,8 @@ class ApiController extends Controller
     {
         return [
             'login' => LoginAction::className(),
+            'register' => RegisterAction::className(),
+            'change_password' => ActionChangePassword::className(),
         ];
     }
 }

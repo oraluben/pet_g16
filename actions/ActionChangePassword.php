@@ -2,34 +2,34 @@
 /**
  * Created by PhpStorm.
  * User: easonyan
- * Date: 3/7/2017
- * Time: 2:20 PM
+ * Date: 3/9/2017
+ * Time: 8:03 AM
  */
 
 namespace app\actions;
 
 
-use app\models\UserLoginForm;
+use app\models\User;
 use yii\base\Action;
 use yii\web\ForbiddenHttpException;
 
-class LoginAction extends Action
+class ActionChangePassword extends Action
 {
     public function run()
     {
-        $post = \Yii::$app->request->post();
-        $form = new UserLoginForm();
+        $user = User::getUser(\Yii::$app->request->post('user'));
+        $user->password = \Yii::$app->request->post('password');
 
-        if ($form->load($post, '') && $form->login()) {
+        if ($user->save()) {
             return [
                 'success' => true,
-                'message' => '登陆成功',
+                'message' => '操作成功',
             ];
         } else {
             throw new ForbiddenHttpException(json_encode([
                 'success' => false,
-                'message' => '登录失败',
-                'errors' => $form->errors,
+                'message' => '操作失败',
+                'errors' => $user->errors,
             ]));
         }
     }
