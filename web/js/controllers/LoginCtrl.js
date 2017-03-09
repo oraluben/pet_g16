@@ -18,10 +18,7 @@ petApp.controller('LoginCtrl', function ($scope, $http, $window) {
                     position : 'top-center',
                     type     : 'error',
                     stayTime : 1500,
-                    closeText: '',
-                    close    : function () {
-                        console.log("toast is closed ...");
-                    }
+                    closeText: ''
                 });
         } else if (pwd === void 0 || pwd.length === 0) {
             $().toastmessage('showToast', {
@@ -30,10 +27,7 @@ petApp.controller('LoginCtrl', function ($scope, $http, $window) {
                 position : 'top-center',
                 type     : 'error',
                 stayTime : 1500,
-                closeText: '',
-                close    : function () {
-                    console.log("toast is closed ...");
-                }
+                closeText: ''
             });
         } else {
             p = {
@@ -55,10 +49,7 @@ petApp.controller('LoginCtrl', function ($scope, $http, $window) {
                         position : 'top-center',
                         type     : 'error',
                         stayTime : 1500,
-                        closeText: '',
-                        close    : function () {
-                            console.log("toast is closed ...");
-                        }
+                        closeText: ''
                     });
                 }
             });
