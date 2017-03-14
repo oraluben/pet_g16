@@ -39,7 +39,7 @@ petApp.controller('LoginCtrl', function ($scope, $http, $window) {
                 }
             };
             $http(p).then(function (d) {
-                if (d.data.success === 0) {
+                if (d.data.success === true) {
                     return $window.location.href = "info/index";
                 } else {
                     console.log(d.data.success);
