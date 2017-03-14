@@ -16,7 +16,7 @@ $this->title = 'MainPage';
         <li class="active"><a href="index"><span class="glyphicon glyphicon-dashboard"></span> 主页面</a></li>
         <li><a href="case"><span class="glyphicon glyphicon-list-alt"></span> 管理病例</a></li>
         <li><a href="user"><span class="glyphicon glyphicon-user"></span> 管理用户</a></li>
-        <li><a href="pwd"><span class="glyphicon glyphicon-info-sign"></span> 密码重置</a></li>
+        <li><a href="pwd"><span class="glyphicon glyphicon-info-sign"></span> 维护用户</a></li>
         <li role="presentation" class="divider"></li>
         <li><a href="profile"><span class="glyphicon glyphicon-pencil"></span> 个人信息</a></li>
     </ul>
@@ -24,14 +24,14 @@ $this->title = 'MainPage';
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
         <ol class="breadcrumb">
-            <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-            <li class="active">Widgets</li>
+            <li><a href="index"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li class="active">MainPage</li>
         </ol>
     </div><!--/.row-->
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Widgets</h1>
+            <h1 class="page-header">MainPage</h1>
         </div>
     </div><!--/.row-->
 
@@ -40,11 +40,11 @@ $this->title = 'MainPage';
             <div class="panel panel-blue panel-widget ">
                 <div class="row no-padding">
                     <div class="col-sm-3 col-lg-5 widget-left">
-                        <em class="glyphicon glyphicon-shopping-cart glyphicon-l"></em>
+                        <em class="glyphicon glyphicon-book glyphicon-l"></em>
                     </div>
                     <div class="col-sm-9 col-lg-7 widget-right">
                         <div class="large">120</div>
-                        <div class="text-muted">New Orders</div>
+                        <div class="text-muted">Total Cases</div>
                     </div>
                 </div>
             </div>
@@ -84,6 +84,59 @@ $this->title = 'MainPage';
                     <div class="col-sm-9 col-lg-7 widget-right">
                         <div class="large">25.2k</div>
                         <div class="text-muted">Visitors</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/.row-->
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Visitors Overview</div>
+                <div class="panel-body">
+                    <div class="canvas-wrapper">
+                        <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body easypiechart-panel">
+                    <h4>New Orders</h4>
+                    <div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body easypiechart-panel">
+                    <h4>Comments</h4>
+                    <div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body easypiechart-panel">
+                    <h4>New Users</h4>
+                    <div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body easypiechart-panel">
+                    <h4>Visitors</h4>
+                    <div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span>
                     </div>
                 </div>
             </div>
@@ -300,20 +353,3 @@ $this->title = 'MainPage';
         </div><!--/.col-->
     </div><!--/.row-->
 </div>    <!--/.main-->
-<script>
-    $('#calendar').datepicker({}); // todo: fix this
-
-    !function ($) {
-        $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
-            $(this).find('em:first').toggleClass("glyphicon-minus");
-        });
-        $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-    }(window.jQuery);
-
-    $(window).on('resize', function () {
-        if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-    })
-    $(window).on('resize', function () {
-        if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-    })
-</script>
