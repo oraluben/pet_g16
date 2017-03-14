@@ -31,7 +31,7 @@ $this->title = 'User';
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" ng-controller="UserCtrl">
     <div class="row">
         <ol class="breadcrumb">
-            <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li><a href="index"><span class="glyphicon glyphicon-home"></span></a></li>
             <li class="active">Users</li>
         </ol>
     </div><!--/.row-->
@@ -45,7 +45,14 @@ $this->title = 'User';
     <div class="row">
         <div class="col-lg-8">
             <div class="panel panel-default">
-                <div class="panel-heading">Advanced Table</div>
+                <div class="panel-heading">
+                    <span class="pull-left">User Information</span>
+                    <div class="pull-right"><input class="pull-left"
+                                                   style="border: 1px solid #eee;box-shadow: none;height: 36px;margin-top:3.5px;margin-right:8px;border-radius: 4px;transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;"/>
+                        <button class="btn btn-default btn-md pull-right" style="margin-top: 4px;">Go</button>
+                    </div>
+
+                </div>
                 <div class="panel-body">
                     <table data-toggle="table" data-url="tables/data1.json" data-show-refresh="true"
                            data-show-toggle="true" data-show-columns="true" data-search="true"
@@ -63,9 +70,11 @@ $this->title = 'User';
                 </div>
             </div>
         </div>
+
+
         <div class="col-lg-4">
             <div class="panel panel-default">
-                <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span> Contact Form</div>
+                <div class="panel-heading"><span class="glyphicon glyphicon-envelope"></span> Create User</div>
                 <div class="panel-body">
                     <form class="form-horizontal">
                         <fieldset>
