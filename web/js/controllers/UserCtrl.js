@@ -38,7 +38,7 @@ petApp.controller('UserCtrl', function ($scope, $http, $window) {
                 stayTime: 1500,
                 closeText: ''
             });
-        }else if (authority === void 0 || authority.length === 0) {
+        } else if (authority === void 0 || authority.length === 0) {
             $().toastmessage('showToast', {
                 text: 'Please select an authority',
                 sticky: false,
@@ -47,7 +47,7 @@ petApp.controller('UserCtrl', function ($scope, $http, $window) {
                 stayTime: 1500,
                 closeText: ''
             });
-        }else if (pwd != pwd2) {
+        } else if (pwd != pwd2) {
             $().toastmessage('showToast', {
                 text: 'The passwords you entered must be the same.',
                 sticky: false,
@@ -69,17 +69,19 @@ petApp.controller('UserCtrl', function ($scope, $http, $window) {
             };
             $http(p).then(function (d) {
                 if (d.data.success === true) {
-                    $window.location.reload();
-                    return $().toastmessage('showToast', {
+                    $().toastmessage('showToast', {
                         text: 'Create success!',
                         sticky: false,
                         position: 'top-center',
                         type: 'success',
-                        stayTime: 1500,
+                        stayTime: 2500,
                         closeText: ''
                     });
+                    $scope.name = null;
+                    $scope.pwd = null;
+                    $scope.pwd2 = null;
+                    $scope.authority = null;
                 } else {
-                    console.log(d.data.success);
                     return $().toastmessage('showToast', {
                         text: 'Create failed..',
                         sticky: false,
@@ -89,14 +91,16 @@ petApp.controller('UserCtrl', function ($scope, $http, $window) {
                         closeText: ''
                     });
                 }
-            });
-            return $().toastmessage('showToast', {
-                text: 'Create failed..',
-                sticky: false,
-                position: 'top-center',
-                type: 'error',
-                stayTime: 1500,
-                closeText: ''
+            }, function (e) {
+                var d = JSON.parse(e.data.message);
+                return $().toastmessage('showToast', {
+                    text: d.message,
+                    sticky: false,
+                    position: 'top-center',
+                    type: 'error',
+                    stayTime: 1500,
+                    closeText: ''
+                });
             });
         }
     };

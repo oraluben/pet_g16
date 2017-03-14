@@ -29,13 +29,13 @@ class ApiController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['login'],
-                    'roles' => ['?'],
+//                    'roles' => ['?'],
                     'verbs' => ['POST'],
                 ],
                 [
                     'allow' => true,
                     'actions' => ['register', 'change_password'],
-                    'roles' => ['?'],
+//                    'roles' => ['?'],
                     'verbs' => ['POST'],
                 ],
             ],

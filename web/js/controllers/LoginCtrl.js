@@ -52,8 +52,16 @@ petApp.controller('LoginCtrl', function ($scope, $http, $window) {
                         closeText: ''
                     });
                 }
+            },function(e){
+                return $().toastmessage('showToast', {
+                    text     : 'Login failed',
+                    sticky   : false,
+                    position : 'top-center',
+                    type     : 'error',
+                    stayTime : 1500,
+                    closeText: ''
+                });
             });
-            return false;
         }
     };
 
