@@ -10,8 +10,16 @@ namespace app\controllers;
 
 
 use yii\rest\ActiveController;
+use yii\web\ForbiddenHttpException;
 
 class UserController extends ActiveController
 {
     public $modelClass = 'app\models\User';
+
+    public function checkAccess($action, $model = null, $params = [])
+    {
+        if (\Yii::$app->user->isGuest)
+            throw new ForbiddenHttpException();
+    }
+
 }
