@@ -11,7 +11,6 @@ namespace app\controllers;
 use app\actions\ActionChangePassword;
 use app\actions\LoginAction;
 use app\actions\RegisterAction;
-use app\models\UserLoginForm;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
 
@@ -38,6 +37,17 @@ class ApiController extends Controller
 //                    'roles' => ['?'],
                     'verbs' => ['POST'],
                 ],
+                [
+                    'allow' => true,
+                    'actions' => ['current-user'],
+                    'verbs' => ['GET'],
+                ],
+                [
+                    'allow' => true,
+                    'actions' => ['logout'],
+                    'roles' => ['@'],
+                    'verbs' => ['POST'],
+                ],
             ],
         ];
 
@@ -51,5 +61,15 @@ class ApiController extends Controller
             'register' => RegisterAction::className(),
             'change_password' => ActionChangePassword::className(),
         ];
+    }
+
+    public function actionCurrentUser()
+    {
+        return \Yii::$app->user->isGuest ? false : \Yii::$app->user->identity->username;
+    }
+
+    public function actionLogout()
+    {
+        return \Yii::$app->user->logout();
     }
 }

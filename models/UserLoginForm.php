@@ -48,7 +48,7 @@ class UserLoginForm extends Model
 
     public function validatePassword($attribute, $params, $validator)
     {
-        if ($this->getUser()->validatePassword($this->password)) {
+        if (!$this->getUser()->validatePassword($this->password)) {
             $this->addError('password', 'password is incorrect');
         }
     }
