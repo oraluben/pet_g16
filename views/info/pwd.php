@@ -9,7 +9,7 @@
 /* @var $this yii\web\View */
 
 $this->title = 'Password';
-\app\assets\MainAsset::register($this);
+\app\assets\PwdAsset::register($this);
 ?>
 
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
@@ -22,7 +22,7 @@ $this->title = 'Password';
         <li><a href="index"><span class="glyphicon glyphicon-dashboard"></span> 主页面</a></li>
         <li><a href="case"><span class="glyphicon glyphicon-list-alt"></span> 管理病例</a></li>
         <li><a href="user"><span class="glyphicon glyphicon-user"></span> 管理用户</a></li>
-        <li class="active"><a href="pwd"><span class="glyphicon glyphicon-info-sign"></span> 密码重置</a></li>
+        <li class="active"><a href="pwd"><span class="glyphicon glyphicon-info-sign"></span> 维护用户</a></li>
         <li role="presentation" class="divider"></li>
         <li><a href="profile"><span class="glyphicon glyphicon-pencil"></span> 个人信息</a></li>
     </ul>
@@ -31,39 +31,108 @@ $this->title = 'Password';
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="index"><span class="glyphicon glyphicon-home"></span></a></li>
-            <li class="active">Passwords</li>
+            <li class="active">Mods</li>
         </ol>
     </div><!--/.row-->
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Passwords</h1>
+            <h1 class="page-header">Modifications</h1>
         </div>
     </div><!--/.row-->
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-7">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span class="pull-left">User Password</span>
-                    <div class="pull-right"><input placeholder="Search" class="pull-left"
-                                                   style="border: 1px solid #eee;box-shadow: none;height: 36px;padding-left:5px;margin-top:3.5px;margin-right:8px;border-radius: 4px;transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;"/>
-                        <button class="btn btn-default btn-md pull-right" style="margin-top: 4px;">Go</button>
+                <div class="panel panel-default">
+                    <div class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span> User Information</div>
+                    <div class="panel-body">
+                        <table data-toggle="table" data-url="../users" data-show-refresh="true" data-show-toggle="true"
+                               data-show-columns="true" data-search="true" data-select-item-name="toolbar1"
+                               data-pagination="true" data-sort-name="name" data-sort-order="desc">
+                            <thead>
+                            <tr>
+                                <th data-field="state" data-checkbox="true">User ID</th>
+                                <th data-field="id" data-sortable="true">User ID</th>
+                                <th data-field="username" data-sortable="true">User Name</th>
+                                <th data-field="user_type" data-sortable="true">User Type</th>
+                            </tr>
+                            </thead>
+                        </table>
                     </div>
-
-                </div>
-                <div class="panel-body">
-                    <table data-toggle="table" data-url="tables/data2.json">
-                        <thead>
-                        <tr>
-                            <th data-field="id" data-align="right">Item ID</th>
-                            <th data-field="name">Item Name</th>
-                            <th data-field="price">Item Price</th>
-                        </tr>
-                        </thead>
-                    </table>
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-5 pull-right">
+            <div class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-alert"></span> Reset Password to 'pet'</div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <!-- id input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="id">User Id</label>
+                                <div class="col-md-9">
+                                    <input id="id" name="id" ng-model="id" type="text" placeholder="User Id"
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <!-- Form actions -->
+                            <div class="form-group">
+                                <div class="col-md-12 widget-right">
+                                    <button type="submit" ng-click="resetPwd(id)"
+                                            class="btn btn-default btn-md pull-right">Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-5 pull-right">
+            <div class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-bookmark"></span> Change Authority</div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <!-- id input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="id2">User Id</label>
+                                <div class="col-md-9">
+                                    <input id="id2" name="id2" ng-model="id2" type="text" placeholder="User Id"
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <!-- Authority body -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="authority">Authority</label>
+                                <div class="col-md-9">
+                                    <input name="authority" ng-model="authority" ng-value="0" type="radio" value="user"/> User <br>
+                                    <input name="authority" ng-model="authority" ng-value="1"type="radio" value="admin"/>
+                                    Administrator
+                                </div>
+                            </div>
+
+                            <!-- Form actions -->
+                            <div class="form-group">
+                                <div class="col-md-12 widget-right">
+                                    <button type="submit" ng-click="modAuthority(id2,authority)"
+                                            class="btn btn-default btn-md pull-right">Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div><!--/.row-->
+
+
     </div>
 </div>

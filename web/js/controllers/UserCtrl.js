@@ -61,14 +61,15 @@ petApp.controller('UserCtrl', function ($scope, $http, $window) {
             console.log(authority);
             p = {
                 method: 'post',
-                url: '/api/register',
+                url: '/users',
                 data: {
                     'username': name,
-                    'password': pwd
+                    'password': pwd,
+                    'user_type': authority
                 }
             };
             $http(p).then(function (d) {
-                if (d.data.success === true) {
+                if (d.data.id != undefined) {
                     $().toastmessage('showToast', {
                         text: 'Create success!',
                         sticky: false,
@@ -92,9 +93,8 @@ petApp.controller('UserCtrl', function ($scope, $http, $window) {
                     });
                 }
             }, function (e) {
-                var d = JSON.parse(e.data.message);
                 return $().toastmessage('showToast', {
-                    text: d.message,
+                    text: e.data[0].message,
                     sticky: false,
                     position: 'top-center',
                     type: 'error',
@@ -105,6 +105,54 @@ petApp.controller('UserCtrl', function ($scope, $http, $window) {
         }
     };
 
+    $scope.deleteUser = function (id) {
+        var p;
+        if (id === void 0 || id.length === 0) {
+            $().toastmessage('showToast', {
+                text: 'Please enter the id',
+                sticky: false,
+                position: 'top-center',
+                type: 'error',
+                stayTime: 1500,
+                closeText: ''
+            });
+        }
+        else {
+            var str = '/users/' + id;
+            console.log(str);
+            p = {
+                method: 'delete',
+                url: str
+            };
+            $http(p).then(function (d) {
+                $().toastmessage('showToast', {
+                    text: 'Delete success!',
+                    sticky: false,
+                    position: 'top-center',
+                    type: 'success',
+                    stayTime: 2500,
+                    closeText: ''
+                });
+                $scope.id = null;
+
+            }, function (e) {
+                return $().toastmessage('showToast', {
+                    text: e.data.message,
+                    sticky: false,
+                    position: 'top-center',
+                    type: 'error',
+                    stayTime: 1500,
+                    closeText: ''
+                });
+            });
+        }
+    };
+    var users = {
+        method: 'get',
+        url: '/users'
+    };
+    $http(users).then(function (d) {
+    });
     // search = $location.search();
     // token = search['access_token'];
     // if (token != null) {

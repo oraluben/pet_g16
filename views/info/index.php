@@ -16,7 +16,7 @@ $this->title = 'MainPage';
         <li class="active"><a href="index"><span class="glyphicon glyphicon-dashboard"></span> 主页面</a></li>
         <li><a href="case"><span class="glyphicon glyphicon-list-alt"></span> 管理病例</a></li>
         <li><a href="user"><span class="glyphicon glyphicon-user"></span> 管理用户</a></li>
-        <li><a href="pwd"><span class="glyphicon glyphicon-info-sign"></span> 密码重置</a></li>
+        <li><a href="pwd"><span class="glyphicon glyphicon-info-sign"></span> 维护用户</a></li>
         <li role="presentation" class="divider"></li>
         <li><a href="profile"><span class="glyphicon glyphicon-pencil"></span> 个人信息</a></li>
     </ul>

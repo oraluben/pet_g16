@@ -2,15 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: Dilemma丶
- * Date: 2017/3/2
- * Time: 9:40
+ * Date: 2017/3/14
+ * Time: 15:10
  */
 
 namespace app\assets;
 
 use yii\web\AssetBundle;
 
-class MainAsset extends AssetBundle
+class PwdAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
@@ -23,21 +23,16 @@ class MainAsset extends AssetBundle
     ];
     public $js = [
         'js/jquery.toastmessage.js',
-        'js/chart.min.js',
-        'js/chart-data.js',
-        'js/easypiechart.js',
-        'js/easypiechart-data.js',
-        'js/info.js',
-        'js/controllers/UserCtrl.js',
-        'js/bootstrap-table.js',
         'js/bootstrap-datepicker.js',
+        'js/info.js',
+        'js/controllers/PwdCtrl.js',
+        'js/bootstrap-table.js',
 
     ];
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\bootstrap\BootstrapPluginAsset',
-        'app\assets\AngularAsset',
-        'app\assets\BootstrapDatePicker',
+        'app\assets\AngularAsset'
     ];
 }
