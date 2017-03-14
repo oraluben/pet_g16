@@ -17,6 +17,9 @@ use yii\web\NotFoundHttpException;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    const TYPE_USER = 0;
+    const TYPE_ADMIN = 1;
+
     public function behaviors()
     {
         return [
@@ -52,6 +55,20 @@ class User extends ActiveRecord implements IdentityInterface
             [['username'], 'string', 'max' => 20],
             [['password'], 'string', 'max' => 64],
             [['username'], 'unique'],
+        ];
+    }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'username',
+            'user_type' => function () {
+                return [
+                    self::TYPE_USER => 'user',
+                    self::TYPE_ADMIN => 'admin',
+                ][$this->user_type];
+            },
         ];
     }
 
