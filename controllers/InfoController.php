@@ -20,9 +20,9 @@ class InfoController extends Controller
         return $this->render('index');
     }
 
-    public function actionCase()
+    public function actionCreate()
     {
-        return $this->render('case');
+        return $this->render('create');
     }
 
     public function actionUser()
