@@ -11,6 +11,7 @@ use yii\db\ActiveRecord;
  * @property integer $parent
  *
  * @property PetCase $parent_case
+ * @property PetCaseUnitImage $images
  */
 class PetCaseUnit extends ActiveRecord
 {
@@ -50,5 +51,21 @@ class PetCaseUnit extends ActiveRecord
     public function getParentCase()
     {
         return $this->hasOne(PetCase::className(), ['id' => 'parent']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getImages()
+    {
+        return $this->hasMany(PetCaseUnitImage::className(), ['id' => 'pet_case_unit']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVideos()
+    {
+        return $this->hasMany(PetCaseUnitVideo::className(), ['id' => 'pet_case_unit']);
     }
 }
