@@ -76,22 +76,14 @@ $this->title = 'CreateCasePage';
 
                             <div class="form-group">
                                 <label>Disease Classification</label>
-                                <select class="form-control">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                    <option>Option 4</option>
-                                </select>
+                                <select ng-change="changeDisease(classification)" ng-options="a for a in classifications" ng-model="classification" class="form-control">
+                                    <option  value="">请选择</option></select>
                             </div>
 
                             <div class="form-group">
                                 <label>Disease Name</label>
-                                <select class="form-control">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                    <option>Option 4</option>
-                                </select>
+                                <select ng-options="b for b in diseases" ng-model="disease" class="form-control">
+                                    <option  value="">请选择</option></select>
                             </div>
 
                             <div class="form-group">
@@ -103,7 +95,7 @@ $this->title = 'CreateCasePage';
                                 <input onchange="angular.element(this).scope().readFile()" type="file" ng-model="serve_pic"
                                       id="uploadpic" multiple class="pic">
                                 <div class="pure">Insert images here.</div>
-                                <div id="result" class="pic2"></div>
+                                <div id="result" ng-model="serve_attachments" class="pic2"></div>
                             </div>
 
                             <div class="form-group">
@@ -119,7 +111,7 @@ $this->title = 'CreateCasePage';
                             </div>
 
                             <div>
-                                <input onchange="angular.element(this).scope().readFile2()" type="file" ng-model="serve_pic"
+                                <input onchange="angular.element(this).scope().readFile2()" type="file" ng-model="serve_pic2"
                                        id="uploadpic2" multiple class="pic">
                                 <div class="pure">Insert images here.</div>
                                 <div id="result2" class="pic2"></div>
@@ -141,7 +133,7 @@ $this->title = 'CreateCasePage';
                         </div>
 
                         <div>
-                            <input onchange="angular.element(this).scope().readFile3()" type="file" ng-model="serve_pic"
+                            <input onchange="angular.element(this).scope().readFile3()" type="file" ng-model="serve_pic3"
                                    id="uploadpic3" multiple class="pic">
                             <div class="pure">Insert images here.</div>
                             <div id="result3" class="pic2"></div>
@@ -160,7 +152,7 @@ $this->title = 'CreateCasePage';
                         </div>
 
                         <div>
-                            <input onchange="angular.element(this).scope().readFile4()" type="file" ng-model="serve_pic"
+                            <input onchange="angular.element(this).scope().readFile4()" type="file" ng-model="serve_pic4"
                                    id="uploadpic4" multiple class="pic">
                             <div class="pure">Insert images here.</div>
                             <div id="result4" class="pic2"></div>
@@ -172,7 +164,7 @@ $this->title = 'CreateCasePage';
                             <p class="help-block">Insert one or more videos here.</p>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit Button</button>
+                        <button type="submit" class="btn btn-primary" ng-click="upload(serve_pic,serve_attachments)">Submit Button</button>
                         <button type="reset" class="btn btn-default">Reset Button</button>
                     </div>
                     </form>

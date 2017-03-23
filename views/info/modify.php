@@ -63,33 +63,34 @@ $this->title = 'ModifyCasePage';
     <div id="petClass" class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-body tabs">
-
                 <ul class="nav nav-pills">
-                    <li class="active"><a href="#pilltab1" data-toggle="tab">Tab 1</a></li>
-                    <li><a href="#pilltab2" data-toggle="tab">Tab 2</a></li>
-                    <li><a href="#pilltab3" data-toggle="tab">Tab 3</a></li>
+                    <li ng-repeat="c in classifications | filter: myFilter" ng-if="$index==0" class="active"><a
+                            href=#{{c.id}} data-toggle="tab"
+                            ng-click="changeClass($index+1)">{{c.classification_name}}</a>
+                    </li>
+                    <li ng-repeat="c in classifications | filter: myFilter" ng-if="$index!=0"><a href=#{{c.id}}
+                                                                                                 data-toggle="tab"
+                                                                                                 ng-click="changeClass($index+1)">{{c.classification_name}}</a>
+                    </li>
                 </ul>
-
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id={{$index}} ng-click="changeClass($index)">
-                        <div class="col-lg-2 module_" ng-click="goToCase($index)" ng-repeat="a in diseases">
+                    <div ng-if="$index==0" class="tab-pane fade in active" id={{c.id}}
+                         ng-repeat="c in classifications | filter: myFilter">
+                        <div class="col-lg-3 module_" ng-click="goToCase(a.id)" ng-repeat="a in diseases">
                             <div class="row">
                                 <span class="glyphicon glyphicon-book pull-left bookicon_"></span>
-                                <span class="pull-left name_"> {{a.name}}</span>
+                                <span class="pull-left name_"> {{a.classification_name}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pilltab2">
-                        <h4>Tab 2</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum purus. Donec
-                            hendrerit ante ac metus sagittis elementum. Mauris feugiat nisl sit amet neque luctus, a
-                            tincidunt odio auctor. </p>
-                    </div>
-                    <div class="tab-pane fade" id="pilltab3">
-                        <h4>Tab 3</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum purus. Donec
-                            hendrerit ante ac metus sagittis elementum. Mauris feugiat nisl sit amet neque luctus, a
-                            tincidunt odio auctor. </p>
+                    <div ng-if="$index!=0" class="tab-pane fade" id={{c.id}}
+                         ng-repeat="c in classifications | filter: myFilter">
+                        <div class="col-lg-3 module_" ng-click="goToCase(a.id)" ng-repeat="a in diseases">
+                            <div class="row">
+                                <span class="glyphicon glyphicon-book pull-left bookicon_"></span>
+                                <span class="pull-left name_"> {{a.classification_name}}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

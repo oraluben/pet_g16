@@ -5,9 +5,56 @@ var storage, petApp;
 
 petApp = angular.module('petApp', []);
 
-petApp.controller('CreateCtrl', function ($scope) {
-    $scope.serve_pic = 0;
-    console.log('a');
+petApp.controller('CreateCtrl', function ($scope, $http) {
+
+    $scope.classifications = [];
+    $scope.diseases = [];
+
+    var data;
+
+    var p = {
+        method: 'get',
+        url: '/case/classifications'
+    };
+    $http(p).then(function (d) {
+        data = d.data;
+        for (var i in data) {
+            if (data[i].parent === null) {
+                $scope.classifications.push(data[i].classification_name);
+            }
+        }
+    });
+
+    $scope.changeDisease = function (cl) {
+        $scope.diseases = [];
+        if (cl != null) {
+            var tmp_id;
+            for (var i in data) {
+                if (data[i].classification_name == cl) {
+                    tmp_id = data[i].id;
+                    break;
+                }
+            }
+            for (var j in data) {
+                if (data[j].parent == tmp_id) {
+                    $scope.diseases.push(data[j].classification_name);
+                }
+            }
+        }
+    };
+
+    $scope.upload = function (a, b) {
+        var p = {
+            method: 'post',
+            url: '/upload/upload',
+            data: {
+                'file': b[0]
+            }
+        };
+        $http(p).then(function (d) {
+            alert('success');
+        });
+    };
 
     $scope.readFile = function () {
         console.log('b');
@@ -264,4 +311,5 @@ petApp.controller('CreateCtrl', function ($scope) {
         } else {
         }
     };
-});
+})
+;
