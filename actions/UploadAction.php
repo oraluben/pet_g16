@@ -8,12 +8,13 @@
 
 namespace app\actions;
 
-use app\models\ImageUploadForm;
+use app\models\UploadForm;
 use yii\base\Action;
+use Yii;
 
 class UploadAction extends Action {
     public function run() {
-        $model = new ImageUploadForm();
+        $model = new UploadForm();
         if (Yii::$app->request->isPost) {
             $count = count($_FILES['file']['name']);
             for ($i = 0; $i < $count; $i++) {

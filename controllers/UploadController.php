@@ -9,7 +9,6 @@
 namespace app\controllers;
 
 use app\actions\UploadAction;
-use Yii;
 use yii\rest\Controller;
 
 class UploadController extends Controller

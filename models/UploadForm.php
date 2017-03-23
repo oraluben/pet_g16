@@ -22,7 +22,7 @@ class UploadForm extends Model
             [['tmpFilePath', 'desFilePath','type'], 'required'],
             [['tmpFilePath'], 'string'],
             [['desFilePath'], 'string'],
-            [['type'], 'string'],
+            [['type'], 'in','range' => ['image/png', 'image/jpg', 'image/jpeg']],
         ];
     }
 
