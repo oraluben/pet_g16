@@ -58,8 +58,8 @@ class ApiController extends Controller
     {
         return [
             'login' => LoginAction::className(),
-//            'register' => RegisterAction::className(),
-//            'change_password' => ActionChangePassword::className(),
+            'register' => RegisterAction::className(),
+            'change_password' => ActionChangePassword::className(),
         ];
     }
 
