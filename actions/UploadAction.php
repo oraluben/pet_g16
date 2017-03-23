@@ -16,11 +16,11 @@ class UploadAction extends Action {
     public function run() {
         $model = new UploadForm();
         if (Yii::$app->request->isPost) {
-            $count = count($_FILES['file']['name']);
+            $count = $_POST["count"];
             for ($i = 0; $i < $count; $i++) {
-                $model->tmpFilePath = $_FILES["file"]["tmp_name"];
-                $model->desFilePath = $_FILES["file"]["name"];
-                $model->type = $_FILES["file"]["type"];
+                $model->tmpFilePath = $_FILES["file".$i]["tmp_name"];
+                $model->desFilePath = $_FILES["file".$i]["name"];
+                $model->type = $_FILES["file".$i]["type"];
                 if (!$model->upload())
                 {
                     return [
