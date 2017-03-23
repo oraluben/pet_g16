@@ -9,7 +9,9 @@
 namespace app\controllers;
 
 
+use app\actions\ClassificationsAction;
 use app\actions\CreateCaseAction;
+use app\actions\GetCasesByClassificationAction;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
 
@@ -29,6 +31,11 @@ class CaseController extends Controller
                     'actions' => ['create'],
                     'verbs' => ['POST'],
                 ],
+                [
+                    'allow' => true,
+                    'actions' => ['classifications', 'cases-by-cl'],
+                    'verbs' => ['GET'],
+                ],
             ],
         ];
 
@@ -39,6 +46,8 @@ class CaseController extends Controller
     {
         return [
             'create' => CreateCaseAction::className(),
+            'cases-by-cl' => GetCasesByClassificationAction::className(),
+            'classifications' => ClassificationsAction::className(),
         ];
     }
 }

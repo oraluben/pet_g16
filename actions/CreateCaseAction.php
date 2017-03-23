@@ -12,7 +12,6 @@ namespace app\actions;
 use app\models\PetCase;
 use app\models\PetCaseUnit;
 use yii\base\Action;
-use yii\helpers\ArrayHelper;
 
 class CreateCaseAction extends Action
 {
