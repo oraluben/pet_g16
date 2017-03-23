@@ -10,7 +10,7 @@ namespace app\assets;
 
 use yii\web\AssetBundle;
 
-class CreateAsset extends AssetBundle
+class CreateServeAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
@@ -18,9 +18,10 @@ class CreateAsset extends AssetBundle
     public $css = [
         'css/jquery.toastmessage.css',
         'css/styles.css',
+        'css/upload.css',
     ];
     public $js = [
-        'js/controllers/CreateCtrl.js',
+        'js/controllers/CreateServeCtrl.js',
         'js/jquery.toastmessage.js',
 
     ];
