@@ -75,12 +75,12 @@ class ImageUploadAction extends Action
                 } else {
                     $image = new PetCaseUnitImage();
                     $tmpFilePath = $_FILES["file" . $i]["tmp_name"];
-                    $desFilePath = $folder . $fileName;
-                    $image->image_path = $desFilePath;
-                    $image->image_info = $_POST["video_info" . $i];
+                    $image->image_path = $folder . $fileName;
+                    $image->image_info = $_POST["image_info" . $i];
                     $image->pet_case_unit = $_POST["pet_case_unit"];
-                    if (file_exists($desFilePath)) {
-                        unlink($desFilePath);
+                    if (PetCaseUnitImage::findOne(['image_path' => $image->image_path]) || file_exists($image->image_path)) {
+                        PetCaseUnitImage::deleteAll('image_path = :path',[':path' => $image->image_path]);
+                        unlink($image->image_path);
                         $success = false;
                         $msg = "图片" . $fileName . "重复上传";
                     }
@@ -88,11 +88,10 @@ class ImageUploadAction extends Action
                         $success = false;
                         $msg = "图片" . $fileName . "无效";
                     } else {
-                        move_uploaded_file($tmpFilePath, $desFilePath);
+                        move_uploaded_file($tmpFilePath, $image->image_path);
                         if ($success) {
                             $msg = "图片" . $fileName . "上传成功";
                         }
-
                     }
                 }
             }

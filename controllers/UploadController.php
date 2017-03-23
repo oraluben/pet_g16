@@ -18,6 +18,7 @@ class UploadController extends Controller
     {
         return [
             'ImageUpload' => ImageUploadAction::className(),
+//            'VideoUpload' => VideoUploadAction::className(),
         ];
     }
 }
