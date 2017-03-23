@@ -27,7 +27,7 @@ $this->title = 'Login';
                     </div>
                     <div class="control-group">
                         <div class="controls">
-                            <label for="password" class="control-label fa fa-asterisk"></label>
+                            <label for="pas sword" class="control-label fa fa-asterisk"></label>
                             <input id="password" type="password" ng-model="password" placeholder="Password" tabindex="2"
                                    class="form-control input-medium">
                         </div>
