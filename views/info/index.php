@@ -26,12 +26,7 @@ $this->title = 'MainPage';
                 </li>
                 <li>
                     <a class="" href="modify">
-                        <span class="glyphicon glyphicon-pencil"></span> 修改病例
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="delete">
-                        <span class="glyphicon glyphicon-trash"></span> 删除病例
+                        <span class="glyphicon glyphicon-pencil"></span> 管理病例
                     </a>
                 </li>
             </ul>
@@ -129,7 +124,7 @@ $this->title = 'MainPage';
         <div class="col-xs-6 col-md-3">
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
-                    <h4>New Orders</h4>
+                    <h4>New Cases</h4>
                     <div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span>
                     </div>
                 </div>

@@ -32,12 +32,7 @@ $this->title = 'Password';
                 </li>
                 <li>
                     <a class="" href="modify">
-                        <span class="glyphicon glyphicon-pencil"></span> 修改病例
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="delete">
-                        <span class="glyphicon glyphicon-trash"></span> 删除病例
+                        <span class="glyphicon glyphicon-pencil"></span> 管理病例
                     </a>
                 </li>
             </ul>

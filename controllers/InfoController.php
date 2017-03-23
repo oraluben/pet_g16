@@ -25,6 +25,11 @@ class InfoController extends Controller
         return $this->render('create');
     }
 
+    public function actionModify()
+    {
+        return $this->render('modify');
+    }
+
     public function actionUser()
     {
         return $this->render('user');

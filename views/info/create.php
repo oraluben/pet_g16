@@ -34,12 +34,7 @@ $this->title = 'CreateCasePage';
                 </li>
                 <li>
                     <a class="" href="modify">
-                        <span class="glyphicon glyphicon-pencil"></span> 修改病例
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="delete">
-                        <span class="glyphicon glyphicon-trash"></span> 删除病例
+                        <span class="glyphicon glyphicon-pencil"></span> 管理病例
                     </a>
                 </li>
             </ul>
@@ -80,7 +75,17 @@ $this->title = 'CreateCasePage';
                             </div>
 
                             <div class="form-group">
-                                <label>Classification</label>
+                                <label>Disease Classification</label>
+                                <select class="form-control">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                    <option>Option 4</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Disease Name</label>
                                 <select class="form-control">
                                     <option>Option 1</option>
                                     <option>Option 2</option>
