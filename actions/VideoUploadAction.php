@@ -2,17 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: 强
- * Date: 2017/3/14
- * Time: 16:32
+ * Date: 2017/3/23
+ * Time: 15:17
  */
 
 namespace app\actions;
 
-use app\models\PetCaseUnitImage;
+use app\models\PetCaseUnitVideo;
 use yii\base\Action;
 use Yii;
 
-class ImageUploadAction extends Action
+class VideoUploadAction extends Action
 {
     public function run()
     {
@@ -22,8 +22,8 @@ class ImageUploadAction extends Action
                 "message" => "上传失败"];
         }
         $count = $_POST["count"];
-        $folder = 'imageUploads/';
-        $imageType = array("image/png", "image/jpg", "image/jpeg");
+        $folder = 'videoUploads/';
+        $videoType = array("video/x-msvideo", "video/mp4", "video/mpeg");
         $message = [];
         $success = true;
         $msg = "";
@@ -69,30 +69,40 @@ class ImageUploadAction extends Action
                 $msg = "找不到" . $folder . "文件夹且创建失败";
             } else {
                 $type = $_FILES["file" . $i]["type"];
-                if (!in_array($type, $imageType)) {
+                if (!in_array($type, $videoType)) {
                     $success = false;
                     $msg = "文件" . $fileName . "格式错误";
                 } else {
-                    $image = new PetCaseUnitImage();
+                    $video = new PetCaseUnitVideo();
                     $tmpFilePath = $_FILES["file" . $i]["tmp_name"];
                     $desFilePath = $folder . $fileName;
-                    $image->image_path = $desFilePath;
-                    $image->image_info = $_POST["video_info" . $i];
-                    $image->pet_case_unit = $_POST["pet_case_unit"];
-                    if (file_exists($desFilePath)) {
+                    $totalSize = $_POST['totalSize'];
+                    $isLastChunk = $_POST['isLastChunk'];
+                    $uploadOrder = $_POST['uploadOrder'];
+                    $video->video_path = $desFilePath;
+                    $video->video_info = $_POST["video_info" . $i];
+                    $video->pet_case_unit = $_POST["pet_case_unit"];
+                    if ($uploadOrder == 0 && file_exists($desFilePath) && filesize($desFilePath) == $totalSize) {
                         unlink($desFilePath);
                         $success = false;
-                        $msg = "图片" . $fileName . "重复上传";
+                        $msg = "视频" . $fileName . "重复上传";
                     }
-                    if (!$image->save()) {
+                    if ($uploadOrder == 0 &&!$video->save()) {
                         $success = false;
-                        $msg = "图片" . $fileName . "无效";
-                    } else {
-                        move_uploaded_file($tmpFilePath, $desFilePath);
-                        if ($success) {
-                            $msg = "图片" . $fileName . "上传成功";
-                        }
-
+                        $msg = "视频" . $fileName . "无效";
+                    }
+                    if (!file_put_contents($desFilePath, file_get_contents($tmpFilePath), FILE_APPEND)) {
+                        $success = false;
+                        $msg = "视频" . $fileName . "块" . $uploadOrder . "续传失败";
+                    } else if ($isLastChunk) {
+                       if (filesize('./upload/'. $fileName) != $totalSize) {
+                            $success = false;
+                            $msg = "视频" . $fileName . "未完整上传";
+                       } else {
+                            if ($success) {
+                                $msg = "视频" . $fileName . "上传成功";
+                            }
+                       }
                     }
                 }
             }
