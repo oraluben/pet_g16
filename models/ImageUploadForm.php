@@ -17,7 +17,10 @@ class ImageUploadForm extends FilesUploadForm
     public function rules()
     {
         return [
-            [['Files'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg', 'maxFiles' => 10],
+            [['tmpFilePath', 'desFilePath','type'], 'required'],
+            [['tmpFilePath'], 'string'],
+            [['desFilePath'], 'string'],
+            [['type'], 'in','range' => ['image/png', 'image/jpg', 'image/jpeg']],
         ];
     }
 }

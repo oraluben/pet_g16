@@ -9,31 +9,38 @@
 namespace app\models;
 
 use yii\base\Model;
-use yii\web\UploadedFile;
 
-class FilesUploadForm extends Model
+class UploadForm extends Model
 {
-    /**
-     * @var UploadedFile[]
-     */
-    public $Files;
+    public $tmpFilePath;
+    public $desFilePath;
+    public $type;
 
     public function rules()
     {
         return [
-            [['Files'], 'file', 'skipOnEmpty' => false, 'extensions' => '*', 'maxFiles' => 10],
+            [['tmpFilePath', 'desFilePath','type'], 'required'],
+            [['tmpFilePath'], 'string'],
+            [['desFilePath'], 'string'],
+            [['type'], 'string'],
         ];
     }
 
     public function upload()
     {
+        $folder = 'uploads/';
         if ($this->validate()) {
-            foreach ($this->Files as $file) {
-                $file->saveAs('./uploads/' . $file->baseName . '.' . $file->extension);
+            $desFilePath = $folder.$this->desFilePath;
+            if (file_exists($desFilePath))
+            {
+                unlink($desFilePath);
+                return false;
             }
-            return true;
-        } else {
-            return false;
+            else
+            {
+                move_uploaded_file($this->tmpFilePath, $desFilePath);
+                return $desFilePath;
+            }
         }
     }
 }

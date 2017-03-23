@@ -8,30 +8,31 @@
 
 namespace app\actions;
 
-use app\models\FilesUploadForm;
+use app\models\ImageUploadForm;
 use yii\base\Action;
-use yii\web\ForbiddenHttpException;
 
 class UploadAction extends Action {
-    public function run()
-    {
-        $model = new FilesUploadForm();
-
+    public function run() {
+        $model = new ImageUploadForm();
         if (Yii::$app->request->isPost) {
-            $model->Files = UploadedFile::getInstances($model, 'Files');
-            if ($model->upload()) {
-                // 文件上传成功
-                return [
-                    'success' => true,
-                    'message' => '操作成功',
-                    'model' => $model,
-                ];
+            $count = count($_FILES['file']['name']);
+            for ($i = 0; $i < $count; $i++) {
+                $model->tmpFilePath = $_FILES["file"]["tmp_name"];
+                $model->desFilePath = $_FILES["file"]["name"];
+                $model->type = $_FILES["file"]["type"];
+                if (!$model->upload())
+                {
+                    return [
+                        'success' => false,
+                        'message' => '文件'.$model->desFilePath.'上传失败',];
+                }
             }
+            return [
+                'success' => true,
+                'message' => '上传成功',];
         }
-        throw new ForbiddenHttpException(json_encode([
+        return [
             'success' => false,
-            'message' => '操作失败',
-            'errors' => $model->errors,
-        ]));
+            'message' => '上传失败',];
     }
 }
