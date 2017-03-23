@@ -46,6 +46,8 @@ class PetCaseUnit extends ActiveRecord
             [['parent'], 'integer'],
             [['parent'], 'exist', 'skipOnError' => true, 'targetClass' => PetCase::className(), 'targetAttribute' => ['parent' => 'id']],
             ['unit_type', 'unique', 'targetAttribute' => ['parent', 'unit_type']],
+            ['case_text', 'string'],
+            ['unit_type', 'integer'],
         ];
     }
 

@@ -9,6 +9,7 @@ use yii\db\ActiveRecord;
  *
  * @property integer $id
  * @property string $case_name
+ * @property integer $case_classification
  *
  * @property PetCaseUnit[] $petCaseUnits
  */
@@ -29,6 +30,8 @@ class PetCase extends ActiveRecord
     {
         return [
             [['case_name'], 'string'],
+            [['case_name'], 'string'],
+            [['case_classification'], 'integer'],
         ];
     }
 
@@ -40,6 +43,7 @@ class PetCase extends ActiveRecord
         return [
             'id' => 'ID',
             'case_name' => 'Case Name',
+            'case_classification' => 'Case Classification',
         ];
     }
 
