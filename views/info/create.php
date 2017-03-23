@@ -28,7 +28,7 @@ $this->title = 'CreateCasePage';
             </a>
             <ul class="children collapse" id="sub-item-1">
                 <li>
-                    <a class="active" style="color: white !important;" href="create">
+                    <a class="active" style="color: white !important;" href="create1">
                         <span class="glyphicon glyphicon-plus"></span> 新建病例
                     </a>
                 </li>
@@ -71,7 +71,7 @@ $this->title = 'CreateCasePage';
 
                             <div class="form-group">
                                 <label>Case Name</label>
-                                <input class="form-control" placeholder="Name of the case">
+                                <input class="form-control" ng-model="case_name" placeholder="Name of the case">
                             </div>
 
                             <div class="form-group">
@@ -164,7 +164,7 @@ $this->title = 'CreateCasePage';
                             <p class="help-block">Insert one or more videos here.</p>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" ng-click="upload(serve_pic,serve_attachments)">Submit Button</button>
+                        <button type="submit" class="btn btn-primary" ng-click="create_case(case_name,disease)">Submit Button</button>
                         <button type="reset" class="btn btn-default">Reset Button</button>
                     </div>
                     </form>

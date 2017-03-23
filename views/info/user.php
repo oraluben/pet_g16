@@ -27,7 +27,7 @@ $this->title = 'User';
             </a>
             <ul class="children collapse" id="sub-item-1">
                 <li>
-                    <a class="" href="create">
+                    <a class="" href="create1">
                         <span class="glyphicon glyphicon-plus"></span> 新建病例
                     </a>
                 </li>
