@@ -8,21 +8,26 @@ petApp = angular.module('petApp', []);
 storage = window.localStorage;
 
 petApp.controller('LoginCtrl', function ($scope, $http, $window) {
+
     $scope.login = function (username, pwd) {
         var p;
         if (username === void 0 || username.length === 0) {
-            return sweetAlert({
-                title: "用户名不能为空",
-                showConfirmButton: false,
-                timer: 1500,
-                type: 'error'
-            });
+                $().toastmessage('showToast', {
+                    text     : 'Please enter your username',
+                    sticky   : false,
+                    position : 'top-center',
+                    type     : 'error',
+                    stayTime : 1500,
+                    closeText: ''
+                });
         } else if (pwd === void 0 || pwd.length === 0) {
-            return sweetAlert({
-                title: "密码不能为空",
-                showConfirmButton: false,
-                timer: 1500,
-                type: 'error'
+            $().toastmessage('showToast', {
+                text     : 'Please enter your password',
+                sticky   : false,
+                position : 'top-center',
+                type     : 'error',
+                stayTime : 1500,
+                closeText: ''
             });
         } else {
             p = {
@@ -34,21 +39,32 @@ petApp.controller('LoginCtrl', function ($scope, $http, $window) {
                 }
             };
             $http(p).then(function (d) {
-                if (d.data.success === 0) {
+                if (d.data.success === true) {
                     return $window.location.href = "info/index";
                 } else {
                     console.log(d.data.success);
-                    return sweetAlert({
-                        title: "用户名或密码错误",
-                        showConfirmButton: false,
-                        timer: 1500,
-                        type: 'error'
+                    return $().toastmessage('showToast', {
+                        text     : 'Invalid username or password',
+                        sticky   : false,
+                        position : 'top-center',
+                        type     : 'error',
+                        stayTime : 1500,
+                        closeText: ''
                     });
                 }
+            },function(e){
+                return $().toastmessage('showToast', {
+                    text     : 'Login failed',
+                    sticky   : false,
+                    position : 'top-center',
+                    type     : 'error',
+                    stayTime : 1500,
+                    closeText: ''
+                });
             });
-            return false;
         }
     };
+
     // search = $location.search();
     // token = search['access_token'];
     // if (token != null) {
