@@ -27,7 +27,7 @@ $this->title = 'AddServePage';
             </a>
             <ul class="children collapse" id="sub-item-1">
                 <li>
-                    <a class="active" style="color: white !important;" href="create">
+                    <a class="active" style="color: white !important;" href="create1">
                         <span class="glyphicon glyphicon-plus"></span> 新建病例
                     </a>
                 </li>
