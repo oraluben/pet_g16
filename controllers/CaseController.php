@@ -10,6 +10,7 @@ namespace app\controllers;
 
 
 use app\actions\CreateCaseAction;
+use app\actions\GetCasesByClassificationAction;
 use app\models\PetCaseClassification;
 use Codeception\Module\Queue;
 use yii\filters\AccessControl;
@@ -34,7 +35,7 @@ class CaseController extends Controller
                 ],
                 [
                     'allow' => true,
-                    'actions' => ['classifications'],
+                    'actions' => ['classifications', 'cases-by-cl'],
                     'verbs' => ['GET'],
                 ],
             ],
@@ -47,6 +48,7 @@ class CaseController extends Controller
     {
         return [
             'create' => CreateCaseAction::className(),
+            'cases-by-cl' => GetCasesByClassificationAction::className(),
         ];
     }
 
