@@ -10,12 +10,14 @@ class m170321_051102_update_case extends Migration
 
         $this->createTable('pet_case_unit_image', [
             'id' => $this->primaryKey(),
+            'image_path' => $this->char(64),
             'image_info' => $this->text(),
             'pet_case_unit' => $this->integer()->null(),
         ]);
 
         $this->createTable('pet_case_unit_video', [
             'id' => $this->primaryKey(),
+            'image_path' => $this->char(64),
             'video_info' => $this->text(),
             'pet_case_unit' => $this->integer()->null(),
         ]);

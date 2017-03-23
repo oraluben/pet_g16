@@ -8,6 +8,7 @@
 
 namespace app\controllers;
 
+use app\actions\ImageUploadAction;
 use app\actions\UploadAction;
 use yii\rest\Controller;
 
@@ -16,7 +17,7 @@ class UploadController extends Controller
     public function actions()
     {
         return [
-            'upload' => UploadAction::className(),
+            'ImageUpload' => ImageUploadAction::className(),
         ];
     }
 }
