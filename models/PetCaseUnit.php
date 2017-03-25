@@ -21,13 +21,13 @@ class PetCaseUnit extends ActiveRecord
     const TYPE_CHECK = 2;
     const TYPE_CHECK_RESULT = 3;
     const TYPE_TREATMENT_PROGRAMS = 4;
-//    const TYPE_MAP = [
-//        self::TYPE_DISEASE_NAME => "疾病名称",
-//        self::TYPE_ADMISSION => "接诊",
-//        self::TYPE_CHECK => "病例检查",
-//        self::TYPE_CHECK_RESULT => "诊断结果",
-//        self::TYPE_TREATMENT_PROGRAMS => "治疗方案",
-//    ];
+    const TYPE_MAP = [
+        self::TYPE_DISEASE_NAME => "疾病名称",
+        self::TYPE_ADMISSION => "接诊",
+        self::TYPE_CHECK => "病例检查",
+        self::TYPE_CHECK_RESULT => "诊断结果",
+        self::TYPE_TREATMENT_PROGRAMS => "治疗方案",
+    ];
 
     /**
      * @inheritdoc
@@ -66,7 +66,7 @@ class PetCaseUnit extends ActiveRecord
         $fields = parent::fields();
 
         $fields['unit_type'] = function () {
-            return ;//self::TYPE_MAP[$this->unit_type];
+            return self::TYPE_MAP[$this->unit_type];
         };
 
         return $fields;
