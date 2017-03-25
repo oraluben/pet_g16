@@ -8,7 +8,10 @@
 
 namespace app\controllers;
 
-use app\models\UserLoginForm;
+use app\actions\ActionChangePassword;
+use app\actions\LoginAction;
+use app\actions\RegisterAction;
+use yii\filters\AccessControl;
 use yii\rest\Controller;
 
 class ApiController extends Controller
@@ -19,25 +22,54 @@ class ApiController extends Controller
 
         unset($behaviors['contentNegotiator']['formats']['application/xml']);
 
+        $behaviors['access'] = [
+            'class' => AccessControl::className(),
+            'rules' => [
+                [
+                    'allow' => true,
+                    'actions' => ['login'],
+//                    'roles' => ['?'],
+                    'verbs' => ['POST'],
+                ],
+                [
+                    'allow' => true,
+                    'actions' => ['register', 'change_password'],
+//                    'roles' => ['?'],
+                    'verbs' => ['POST'],
+                ],
+                [
+                    'allow' => true,
+                    'actions' => ['current-user'],
+                    'verbs' => ['GET'],
+                ],
+                [
+                    'allow' => true,
+                    'actions' => ['logout'],
+                    'roles' => ['@'],
+                    'verbs' => ['POST'],
+                ],
+            ],
+        ];
+
         return $behaviors;
     }
 
-    public function actionLogin()
+    public function actions()
     {
-        $post = \Yii::$app->request->post();
-        $form = new UserLoginForm();
+        return [
+            'login' => LoginAction::className(),
+            'register' => RegisterAction::className(),
+            'change_password' => ActionChangePassword::className(),
+        ];
+    }
 
-        if ($form->load($post, '') && $form->login()) {
-            return [
-                'success' => true,
-                'message' => '登陆成功',
-            ];
-        } else {
-            return [
-                'success' => false,
-                'message' => '登录失败',
-                'errors' => $form->errors,
-            ];
-        }
+    public function actionCurrentUser()
+    {
+        return \Yii::$app->user->isGuest ? false : \Yii::$app->user->identity->username;
+    }
+
+    public function actionLogout()
+    {
+        return \Yii::$app->user->logout();
     }
 }

@@ -17,13 +17,13 @@ class LoginAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $css = [
+        'css/jquery.toastmessage.css',
         'css/lrtk.css',
-        'css/sweetalert.css'
     ];
     public $js = [
+        'js/jquery.toastmessage.js',
         'js/login.js',
-        'js/LoginCtrl.js',
-        'js/sweetalert.min.js'
+        'js/controllers/LoginCtrl.js',
     ];
     public $depends = [
         'yii\web\JqueryAsset',

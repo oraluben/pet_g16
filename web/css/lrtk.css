@@ -440,7 +440,6 @@ cite {
 .text-center {
   text-align: center;
 }
-
 h1,
 h2,
 h3,
@@ -8292,7 +8291,7 @@ hr.dots:before {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url("../img/icon-a.mask.png");
+  /*background-image: url("../img/icon-a.mask.png");*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -9472,7 +9471,7 @@ hr.dots:before {
 }
 #login .loginform label {
   position: absolute;
-  top: 13px;
+  top: 11px;
   left: 13px;
   font-size: 16px;
   color: rgba(0,0,0,0.3);

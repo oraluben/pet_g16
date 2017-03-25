@@ -5,6 +5,7 @@ namespace app\models;
 use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\web\NotFoundHttpException;
 
 /**
  * This is the model class for table "pet_user".
@@ -16,6 +17,9 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    const TYPE_USER = 0;
+    const TYPE_ADMIN = 1;
+
     public function behaviors()
     {
         return [
@@ -51,6 +55,20 @@ class User extends ActiveRecord implements IdentityInterface
             [['username'], 'string', 'max' => 20],
             [['password'], 'string', 'max' => 64],
             [['username'], 'unique'],
+        ];
+    }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'username',
+            'user_type' => function () {
+                return [
+                    self::TYPE_USER => 'user',
+                    self::TYPE_ADMIN => 'admin',
+                ][$this->user_type];
+            },
         ];
     }
 
@@ -117,9 +135,11 @@ class User extends ActiveRecord implements IdentityInterface
         return \Yii::$app->user->login($this, $duration);
     }
 
-    public function create()
+    public static function getUser($id)
     {
-        assert($this->isNewRecord);
-        return $this->save();
+        if ((is_int($id) && is_null($user = self::findOne($id))) or is_null($user = self::findOne(['username' => $id]))) {
+            throw new NotFoundHttpException('user ' . $id . ' not found');
+        }
+        return $user;
     }
 }
