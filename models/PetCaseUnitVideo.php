@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "pet_case_unit_video".
  *
  * @property integer $id
+ ** @property string $video_path
  * @property string $video_info
  * @property integer $pet_case_unit
  *
@@ -29,6 +30,7 @@ class PetCaseUnitVideo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['video_path'], 'string'],
             [['video_info'], 'string'],
             [['pet_case_unit'], 'integer'],
             [['pet_case_unit'], 'exist', 'skipOnError' => true, 'targetClass' => PetCaseUnit::className(), 'targetAttribute' => ['pet_case_unit' => 'id']],
@@ -42,6 +44,7 @@ class PetCaseUnitVideo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'video_path' => 'Video Path',
             'video_info' => 'Video Info',
             'pet_case_unit' => 'Pet Case Unit',
         ];
