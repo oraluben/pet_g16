@@ -21,6 +21,7 @@ class CreateAsset extends AssetBundle
     ];
     public $js = [
         'js/controllers/CreateCtrl.js',
+        'js/controllers/OuterCtrl.js',
         'js/jquery.toastmessage.js',
 
     ];

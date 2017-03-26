@@ -23,6 +23,7 @@ class ModifyAsset extends AssetBundle
     ];
     public $js = [
         'js/controllers/ModifyCtrl.js',
+        'js/controllers/OuterCtrl.js',
         'js/jquery.toastmessage.js',
 
     ];

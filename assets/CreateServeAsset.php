@@ -22,6 +22,7 @@ class CreateServeAsset extends AssetBundle
     ];
     public $js = [
         'js/controllers/CreateServeCtrl.js',
+        'js/controllers/OuterCtrl.js',
         'js/jquery.toastmessage.js',
 
     ];

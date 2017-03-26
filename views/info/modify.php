@@ -102,7 +102,7 @@ $this->title = 'ModifyCasePage';
         <div class="col-lg-3 module" ng-repeat="a in cases">
             <div class="row">
                 <span class="glyphicon glyphicon-book pull-left bookicon"></span>
-                <span class="pull-left name"> Case {{a.id}}: {{a.name}}</span>
+                <span class="pull-left name"> Case {{a.id}}: {{a.case_name}}</span>
 
             </div>
             <div class="row">
