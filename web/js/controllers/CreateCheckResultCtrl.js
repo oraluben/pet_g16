@@ -1,5 +1,5 @@
 /**
- * Created by Dilemma丶 on 2017/3/27.
+ * Created by Dilemma丶 on 2017/3/28.
  */
 var storage, petApp;
 
@@ -13,7 +13,7 @@ petApp.config(['$locationProvider', function ($locationProvider) {
     });
 }]);
 
-petApp.controller('CreateServeCtrl', function ($scope, $http, $location) {
+petApp.controller('CreateCheckResultCtrl', function ($scope, $http, $location) {
 
     if ($location.search().id) {
         $scope.case_id = $location.search().id;
@@ -26,7 +26,7 @@ petApp.controller('CreateServeCtrl', function ($scope, $http, $location) {
             url: '/case/unit?',
             params: {
                 'parent': $scope.case_id,
-                'unit_type': 0
+                'unit_type': 3
             }
         };
         $http(p).then(function (d) {
@@ -76,7 +76,7 @@ petApp.controller('CreateServeCtrl', function ($scope, $http, $location) {
                             stayTime: 1500,
                             closeText: ''
                         });
-                        window.location.href='create3?id=' + $scope.case_id;
+                        window.location.href='create6?id=' + $scope.case_id;
                     });
                 });
             }
@@ -151,6 +151,4 @@ petApp.controller('CreateServeCtrl', function ($scope, $http, $location) {
         } else {
         }
     };
-
-})
-;
+});

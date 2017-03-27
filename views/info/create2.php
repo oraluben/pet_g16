@@ -7,7 +7,7 @@
  */
 /* @var $this yii\web\View */
 
-$this->title = 'AddServePage';
+$this->title = 'AddCaseNamePage';
 \app\assets\CreateCaseNameAsset::register($this);
 ?>
 
@@ -59,6 +59,17 @@ $this->title = 'AddServePage';
         </div>
     </div><!--/.row-->
 
+    <div class="row" style="margin-bottom: 2em;">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 15%;">
+                        <div class="progress-value">15%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-lg-6">
@@ -74,10 +85,10 @@ $this->title = 'AddServePage';
                             </div>
 
                             <div style="margin-top: 1em;margin-bottom: 1em;">
-                                <input onchange="angular.element(this).scope().readFile()" type="file" ng-model="serve_pic"
+                                <input onchange="angular.element(this).scope().readFile()" type="file" ng-model="pic"
                                        id="uploadpic" multiple class="pic">
                                 <div class="pure">Case Name images.</div>
-                                <div id="result" name="result" ng-model="serve_attachments" class="pic2"></div>
+                                <div id="result" name="result" ng-model="attachments" class="pic2"></div>
                             </div>
 
                             <div class="form-group">
@@ -89,7 +100,7 @@ $this->title = 'AddServePage';
                             <div style="margin-top: 2em;">
                                 <button type="reset" class="btn btn-default pull-right">Reset Button</button>
                                 <button type="submit" class="btn btn-primary pull-right"
-                                        style="margin-right: 1em;" ng-click="create_case_name(text,serve_attachments)"> Next Step
+                                        style="margin-right: 1em;" ng-click="create_unit(text,attachments)"> Next Step
                                 </button>
                             </div>
                     </div>

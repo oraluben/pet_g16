@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Dilemma丶
- * Date: 2017/3/23
- * Time: 18:07
+ * Date: 2017/3/28
+ * Time: 1:34
  */
 
 /* @var $this yii\web\View */
 
-$this->title = 'CreateCasePage';
-\app\assets\CreateAsset::register($this);
+$this->title = 'AddServePage';
+\app\assets\CreateServeAsset::register($this);
 ?>
 
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
@@ -46,7 +46,7 @@ $this->title = 'CreateCasePage';
     </ul>
 </div><!--/.sidebar-->
 
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" ng-controller="CreateCtrl">
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" ng-controller="CreateServeCtrl">
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="index"><span class="glyphicon glyphicon-home"></span></a></li>
@@ -64,8 +64,8 @@ $this->title = 'CreateCasePage';
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="progress">
-                    <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 5%;">
-                        <div class="progress-value">5%</div>
+                    <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 32%;">
+                        <div class="progress-value">32%</div>
                     </div>
                 </div>
             </div>
@@ -75,36 +75,33 @@ $this->title = 'CreateCasePage';
     <div class="row">
         <div class="col-lg-6">
             <div class="panel panel-default">
-                <div class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span>Create a base case</div>
+                <div class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span>Add Serve Information</div>
                 <div class="panel-body">
                     <div class="col-md-12">
                         <form enctype="multipart/form-data">
 
                             <div class="form-group">
-                                <label>Case Name</label>
-                                <input class="form-control" ng-model="case_name" placeholder="Name of the case">
+                                <label>Serve Text</label>
+                                <textarea style="resize: none;" class="form-control" rows="3" ng-model="text"></textarea>
+                            </div>
+
+                            <div style="margin-top: 1em;margin-bottom: 1em;">
+                                <input onchange="angular.element(this).scope().readFile()" type="file" ng-model="pic"
+                                       id="uploadpic" multiple class="pic">
+                                <div class="pure">Insert Serve images.</div>
+                                <div id="result" name="result" ng-model="attachments" class="pic2"></div>
                             </div>
 
                             <div class="form-group">
-                                <label>Disease Classification</label>
-                                <select ng-change="changeDisease(classification)"
-                                        ng-options="a for a in classifications" ng-model="classification"
-                                        class="form-control">
-                                    <option value="">请选择</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Disease Name</label>
-                                <select ng-options="b for b in diseases" ng-model="disease" class="form-control">
-                                    <option value="">请选择</option>
-                                </select>
+                                <label>Serve Videos input</label>
+                                <input type="file">
+                                <p class="help-block">Insert one or more videos here.</p>
                             </div>
 
                             <div style="margin-top: 2em;">
                                 <button type="reset" class="btn btn-default pull-right">Reset Button</button>
                                 <button type="submit" class="btn btn-primary pull-right"
-                                        style="margin-right: 1em;" ng-click="create_case(case_name,disease)"> Next Step
+                                        style="margin-right: 1em;" ng-click="create_unit(text,attachments)"> Next Step
                                 </button>
                             </div>
                     </div>

@@ -2,15 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: Dilemma丶
- * Date: 2017/3/27
- * Time: 23:41
+ * Date: 2017/3/28
+ * Time: 1:48
  */
 
 namespace app\assets;
 
 use yii\web\AssetBundle;
 
-class CreateCaseNameAsset extends AssetBundle
+class CreateCheckResultAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
@@ -22,7 +22,7 @@ class CreateCaseNameAsset extends AssetBundle
         'css/upload.css',
     ];
     public $js = [
-        'js/controllers/CreateCaseNameCtrl.js',
+        'js/controllers/CreateCheckResultCtrl.js',
         'js/controllers/OuterCtrl.js',
         'js/jquery.toastmessage.js',
 
