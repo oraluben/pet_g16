@@ -99,7 +99,7 @@ $this->title = 'AddCaseCheckPage';
                             </div>
 
                             <div style="margin-top: 2em;">
-                                <button type="reset" class="btn btn-default pull-right">Reset Button</button>
+                                <button type="reset" class="btn btn-default pull-right" ng-click="reset()">Reset Button</button>
                                 <button type="submit" class="btn btn-primary pull-right"
                                         style="margin-right: 1em;" ng-click="create_unit(text,attachments)"> Next Step
                                 </button>
