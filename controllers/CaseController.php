@@ -9,6 +9,7 @@
 namespace app\controllers;
 
 
+use app\actions\CaseUnitAction;
 use app\actions\ClassificationsAction;
 use app\actions\CreateCaseAction;
 use app\actions\DeleteCaseAction;
@@ -36,7 +37,7 @@ class CaseController extends Controller
                 ],
                 [
                     'allow' => true,
-                    'actions' => ['classifications', 'cases-by-cl', 'case-by-id'],
+                    'actions' => ['classifications', 'cases-by-cl', 'case-by-id', 'unit'],
                     'verbs' => ['GET'],
                 ],
                 [
@@ -59,6 +60,7 @@ class CaseController extends Controller
             'classifications' => ClassificationsAction::className(),
             'case-by-id' => GetCaseByIDAction::className(),
             'update-unit' => UpdateUnitAction::className(),
+            'unit' => CaseUnitAction::className(),
         ];
     }
 }

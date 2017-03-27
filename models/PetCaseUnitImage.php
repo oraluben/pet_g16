@@ -7,7 +7,7 @@ namespace app\models;
  * This is the model class for table "pet_case_unit_image".
  *
  * @property integer $id
- * @property integer $image_path
+ * @property string $image_path
  * @property string $image_info
  * @property integer $pet_case_unit
  *
