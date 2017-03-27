@@ -46,7 +46,7 @@ petApp.controller('CreateServeCtrl', function ($scope, $http, $location) {
                 url: '/case/unit?',
                 params: {
                     'parent': $scope.case_id,
-                    'unit_type': 0
+                    'unit_type': 1
                 }
             };
             $http(p).then(function (d) {
