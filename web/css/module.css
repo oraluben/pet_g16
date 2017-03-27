@@ -66,6 +66,13 @@
 
 }
 
+.btn-back {
+    display: inline-block;
+    width: 6em;
+    height: 3em;
+    margin-right: 3em;
+}
+
 @media screen and (min-width: 980px) {
     .module {
         width: 30%;

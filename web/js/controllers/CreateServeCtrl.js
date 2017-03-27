@@ -16,23 +16,67 @@ petApp.config(['$locationProvider', function ($locationProvider) {
     });
 }]);
 
-petApp.controller('CreateCtrl', function ($scope, $http,$location) {
+petApp.controller('CreateServeCtrl', function ($scope, $http,$location) {
 
     if ($location.search().id) {
         $scope.case_id = $location.search().id;
     }
 
-    $scope.upload = function (a, b) {
+    $scope.create_serve = function(text,attachments){
+        var unit_id;
         var p = {
-            method: 'post',
-            url: '/upload/upload',
-            data: {
-                'file': b[0]
+            method: 'get',
+            url: '/case/unit?',
+            params: {
+                'parent':$scope.case_id,
+                'unit_type': 0
             }
         };
         $http(p).then(function (d) {
-            alert('success');
+            unit_id = d.data.unit.id;
+            console.log ("unit_id = " + unit_id);
+            var q = {
+                method: 'post',
+                url: '/case/update-unit',
+                params:{
+                    'id':unit_id
+                },
+                data: {
+                    'text': text
+                }
+            };
+            $http(q).then(function (e) {
+                var r = {
+                    method: 'post',
+                    url: '/upload/image',
+                    params:{
+                        'unit_id':unit_id
+                    },
+                    data: {
+                    }
+                };
+                for (var i in attachments){
+                    var tmp = 'imageFiles[' + i.toString() + ']';
+                    r.data.push('tmp');
+                    r.data[tmp].push(attachments[i]);
+                    var tmp_ = 'imageInfo[' + i.toString() + ']';
+                    r.data.push('tmp_');
+                    r.data[tmp_].push(null);
+                }
+                $http(r).then(function (e) {
+                    $().toastmessage('showToast', {
+                        text: 'Serve part uploaded successfully',
+                        sticky: false,
+                        position: 'top-center',
+                        type: 'success',
+                        stayTime: 1500,
+                        closeText: ''
+                    });
+                });
+            });
         });
+
+
     };
 
     $scope.readFile = function () {
@@ -98,196 +142,196 @@ petApp.controller('CreateCtrl', function ($scope, $http,$location) {
         } else {
         }
     };
-
-    $scope.readFile2 = function () {
-        console.log('b');
-        var count, file1, reader, stop, _i, _len, _ref, num = 0;
-        stop = false;
-        count = 0;
-        document.getElementById('result2').innerHTML = '';
-        _ref = document.getElementById('uploadpic2').files;
-        console.log(_ref);
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            file1 = _ref[_i];
-            count++;
-            if (!/image\/\w+/.test(file1.type)) {
-                $().toastmessage('showToast', {
-                    text: 'Not image files, they won\'t be upload.',
-                    sticky: false,
-                    position: 'top-center',
-                    type: 'error',
-                    stayTime: 3000,
-                    closeText: ''
-                });
-                stop = true;
-                break;
-            }
-            if (file1.size > 1024 * 1024) {
-                $().toastmessage('showToast', {
-                    text: 'Larger than 1M, they won\'t be upload.',
-                    sticky: false,
-                    position: 'top-center',
-                    type: 'error',
-                    stayTime: 3000,
-                    closeText: ''
-                });
-                stop = true;
-                break;
-            }
-            if (count > 3) {
-                $().toastmessage('showToast', {
-                    text: 'More than 3 images, they won\'t be upload.',
-                    sticky: false,
-                    position: 'top-center',
-                    type: 'error',
-                    stayTime: 3000,
-                    closeText: ''
-                });
-                stop = true;
-                break;
-            }
-            if (!stop) {
-                reader = new FileReader();
-                reader.readAsDataURL(file1);
-                console.log(file1);
-                console.log(count);
-                reader.onload = function (f) {
-                    document.getElementById('result2').innerHTML += '<img id = "pic2' + num + '" src="" class="show_pic" alt="" />';
-                    document.getElementById('pic2' + num.toString()).setAttribute('src', this.result);
-                    return ++num;
-                };
-            }
-        }
-        if (stop) {
-        } else {
-        }
-    };
-
-    $scope.readFile3 = function () {
-        console.log('b');
-        var count, file1, reader, stop, _i, _len, _ref, num = 0;
-        stop = false;
-        count = 0;
-        document.getElementById('result3').innerHTML = '';
-        _ref = document.getElementById('uploadpic3').files;
-        console.log(_ref);
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            file1 = _ref[_i];
-            count++;
-            if (!/image\/\w+/.test(file1.type)) {
-                $().toastmessage('showToast', {
-                    text: 'Not image files, they won\'t be upload.',
-                    sticky: false,
-                    position: 'top-center',
-                    type: 'error',
-                    stayTime: 3000,
-                    closeText: ''
-                });
-                stop = true;
-                break;
-            }
-            if (file1.size > 1024 * 1024) {
-                $().toastmessage('showToast', {
-                    text: 'Larger than 1M, they won\'t be upload.',
-                    sticky: false,
-                    position: 'top-center',
-                    type: 'error',
-                    stayTime: 3000,
-                    closeText: ''
-                });
-                stop = true;
-                break;
-            }
-            if (count > 3) {
-                $().toastmessage('showToast', {
-                    text: 'More than 3 images, they won\'t be upload.',
-                    sticky: false,
-                    position: 'top-center',
-                    type: 'error',
-                    stayTime: 3000,
-                    closeText: ''
-                });
-                stop = true;
-                break;
-            }
-            if (!stop) {
-                reader = new FileReader();
-                reader.readAsDataURL(file1);
-                console.log(file1);
-                console.log(count);
-                reader.onload = function (f) {
-                    document.getElementById('result3').innerHTML += '<img id = "pic3' + num + '" src="" class="show_pic" alt="" />';
-                    document.getElementById('pic3' + num.toString()).setAttribute('src', this.result);
-                    return ++num;
-                };
-            }
-        }
-        if (stop) {
-        } else {
-        }
-    };
-
-    $scope.readFile4 = function () {
-        console.log('b');
-        var count, file1, reader, stop, _i, _len, _ref, num = 0;
-        stop = false;
-        count = 0;
-        document.getElementById('result4').innerHTML = '';
-        _ref = document.getElementById('uploadpic4').files;
-        console.log(_ref);
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            file1 = _ref[_i];
-            count++;
-            if (!/image\/\w+/.test(file1.type)) {
-                $().toastmessage('showToast', {
-                    text: 'Not image files, they won\'t be upload.',
-                    sticky: false,
-                    position: 'top-center',
-                    type: 'error',
-                    stayTime: 3000,
-                    closeText: ''
-                });
-                stop = true;
-                break;
-            }
-            if (file1.size > 1024 * 1024) {
-                $().toastmessage('showToast', {
-                    text: 'Larger than 1M, they won\'t be upload.',
-                    sticky: false,
-                    position: 'top-center',
-                    type: 'error',
-                    stayTime: 3000,
-                    closeText: ''
-                });
-                stop = true;
-                break;
-            }
-            if (count > 3) {
-                $().toastmessage('showToast', {
-                    text: 'More than 3 images, they won\'t be upload.',
-                    sticky: false,
-                    position: 'top-center',
-                    type: 'error',
-                    stayTime: 3000,
-                    closeText: ''
-                });
-                stop = true;
-                break;
-            }
-            if (!stop) {
-                reader = new FileReader();
-                reader.readAsDataURL(file1);
-                console.log(file1);
-                console.log(count);
-                reader.onload = function (f) {
-                    document.getElementById('result4').innerHTML += '<img id = "pic4' + num + '" src="" class="show_pic" alt="" />';
-                    document.getElementById('pic4' + num.toString()).setAttribute('src', this.result);
-                    return ++num;
-                };
-            }
-        }
-        if (stop) {
-        } else {
-        }
-    };
+    //
+    // $scope.readFile2 = function () {
+    //     console.log('b');
+    //     var count, file1, reader, stop, _i, _len, _ref, num = 0;
+    //     stop = false;
+    //     count = 0;
+    //     document.getElementById('result2').innerHTML = '';
+    //     _ref = document.getElementById('uploadpic2').files;
+    //     console.log(_ref);
+    //     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    //         file1 = _ref[_i];
+    //         count++;
+    //         if (!/image\/\w+/.test(file1.type)) {
+    //             $().toastmessage('showToast', {
+    //                 text: 'Not image files, they won\'t be upload.',
+    //                 sticky: false,
+    //                 position: 'top-center',
+    //                 type: 'error',
+    //                 stayTime: 3000,
+    //                 closeText: ''
+    //             });
+    //             stop = true;
+    //             break;
+    //         }
+    //         if (file1.size > 1024 * 1024) {
+    //             $().toastmessage('showToast', {
+    //                 text: 'Larger than 1M, they won\'t be upload.',
+    //                 sticky: false,
+    //                 position: 'top-center',
+    //                 type: 'error',
+    //                 stayTime: 3000,
+    //                 closeText: ''
+    //             });
+    //             stop = true;
+    //             break;
+    //         }
+    //         if (count > 3) {
+    //             $().toastmessage('showToast', {
+    //                 text: 'More than 3 images, they won\'t be upload.',
+    //                 sticky: false,
+    //                 position: 'top-center',
+    //                 type: 'error',
+    //                 stayTime: 3000,
+    //                 closeText: ''
+    //             });
+    //             stop = true;
+    //             break;
+    //         }
+    //         if (!stop) {
+    //             reader = new FileReader();
+    //             reader.readAsDataURL(file1);
+    //             console.log(file1);
+    //             console.log(count);
+    //             reader.onload = function (f) {
+    //                 document.getElementById('result2').innerHTML += '<img id = "pic2' + num + '" src="" class="show_pic" alt="" />';
+    //                 document.getElementById('pic2' + num.toString()).setAttribute('src', this.result);
+    //                 return ++num;
+    //             };
+    //         }
+    //     }
+    //     if (stop) {
+    //     } else {
+    //     }
+    // };
+    //
+    // $scope.readFile3 = function () {
+    //     console.log('b');
+    //     var count, file1, reader, stop, _i, _len, _ref, num = 0;
+    //     stop = false;
+    //     count = 0;
+    //     document.getElementById('result3').innerHTML = '';
+    //     _ref = document.getElementById('uploadpic3').files;
+    //     console.log(_ref);
+    //     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    //         file1 = _ref[_i];
+    //         count++;
+    //         if (!/image\/\w+/.test(file1.type)) {
+    //             $().toastmessage('showToast', {
+    //                 text: 'Not image files, they won\'t be upload.',
+    //                 sticky: false,
+    //                 position: 'top-center',
+    //                 type: 'error',
+    //                 stayTime: 3000,
+    //                 closeText: ''
+    //             });
+    //             stop = true;
+    //             break;
+    //         }
+    //         if (file1.size > 1024 * 1024) {
+    //             $().toastmessage('showToast', {
+    //                 text: 'Larger than 1M, they won\'t be upload.',
+    //                 sticky: false,
+    //                 position: 'top-center',
+    //                 type: 'error',
+    //                 stayTime: 3000,
+    //                 closeText: ''
+    //             });
+    //             stop = true;
+    //             break;
+    //         }
+    //         if (count > 3) {
+    //             $().toastmessage('showToast', {
+    //                 text: 'More than 3 images, they won\'t be upload.',
+    //                 sticky: false,
+    //                 position: 'top-center',
+    //                 type: 'error',
+    //                 stayTime: 3000,
+    //                 closeText: ''
+    //             });
+    //             stop = true;
+    //             break;
+    //         }
+    //         if (!stop) {
+    //             reader = new FileReader();
+    //             reader.readAsDataURL(file1);
+    //             console.log(file1);
+    //             console.log(count);
+    //             reader.onload = function (f) {
+    //                 document.getElementById('result3').innerHTML += '<img id = "pic3' + num + '" src="" class="show_pic" alt="" />';
+    //                 document.getElementById('pic3' + num.toString()).setAttribute('src', this.result);
+    //                 return ++num;
+    //             };
+    //         }
+    //     }
+    //     if (stop) {
+    //     } else {
+    //     }
+    // };
+    //
+    // $scope.readFile4 = function () {
+    //     console.log('b');
+    //     var count, file1, reader, stop, _i, _len, _ref, num = 0;
+    //     stop = false;
+    //     count = 0;
+    //     document.getElementById('result4').innerHTML = '';
+    //     _ref = document.getElementById('uploadpic4').files;
+    //     console.log(_ref);
+    //     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    //         file1 = _ref[_i];
+    //         count++;
+    //         if (!/image\/\w+/.test(file1.type)) {
+    //             $().toastmessage('showToast', {
+    //                 text: 'Not image files, they won\'t be upload.',
+    //                 sticky: false,
+    //                 position: 'top-center',
+    //                 type: 'error',
+    //                 stayTime: 3000,
+    //                 closeText: ''
+    //             });
+    //             stop = true;
+    //             break;
+    //         }
+    //         if (file1.size > 1024 * 1024) {
+    //             $().toastmessage('showToast', {
+    //                 text: 'Larger than 1M, they won\'t be upload.',
+    //                 sticky: false,
+    //                 position: 'top-center',
+    //                 type: 'error',
+    //                 stayTime: 3000,
+    //                 closeText: ''
+    //             });
+    //             stop = true;
+    //             break;
+    //         }
+    //         if (count > 3) {
+    //             $().toastmessage('showToast', {
+    //                 text: 'More than 3 images, they won\'t be upload.',
+    //                 sticky: false,
+    //                 position: 'top-center',
+    //                 type: 'error',
+    //                 stayTime: 3000,
+    //                 closeText: ''
+    //             });
+    //             stop = true;
+    //             break;
+    //         }
+    //         if (!stop) {
+    //             reader = new FileReader();
+    //             reader.readAsDataURL(file1);
+    //             console.log(file1);
+    //             console.log(count);
+    //             reader.onload = function (f) {
+    //                 document.getElementById('result4').innerHTML += '<img id = "pic4' + num + '" src="" class="show_pic" alt="" />';
+    //                 document.getElementById('pic4' + num.toString()).setAttribute('src', this.result);
+    //                 return ++num;
+    //             };
+    //         }
+    //     }
+    //     if (stop) {
+    //     } else {
+    //     }
+    // };
 });

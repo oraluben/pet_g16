@@ -30,7 +30,7 @@ class UpdateUnitAction extends Action
             throw new BadRequestHttpException('parameter "text" required');
         }
 
-        $unit->load(['case_text' => $text]);
+        $unit->load(['case_text' => $text],"");
         $unit->save();
 
         return $unit;

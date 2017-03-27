@@ -116,7 +116,7 @@ $this->title = 'ModifyCasePage';
                 </div>
             </div>
             <div class="row">
-                <button class="pull-right buttonr btn btn-default"> Delete</button>
+                <button class="pull-right buttonr btn btn-default" ng-click="delete(a.id)"> Delete</button>
             </div>
         </div>
     </div><!-- /.col-->

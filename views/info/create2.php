@@ -8,7 +8,7 @@
 /* @var $this yii\web\View */
 
 $this->title = 'AddServePage';
-\app\assets\CreateServeAsset::register($this);
+\app\assets\CreateCaseNameAsset::register($this);
 ?>
 
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
@@ -45,7 +45,7 @@ $this->title = 'AddServePage';
     </ul>
 </div><!--/.sidebar-->
 
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" ng-controller="CreateCtrl">
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" ng-controller="CreateCaseNameCtrl">
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="index"><span class="glyphicon glyphicon-home"></span></a></li>
@@ -63,25 +63,25 @@ $this->title = 'AddServePage';
     <div class="row">
         <div class="col-lg-6">
             <div class="panel panel-default">
-                <div class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span>Add Serve Information</div>
+                <div class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span>Add Case Name Information</div>
                 <div class="panel-body">
                     <div class="col-md-12">
                         <form enctype="multipart/form-data">
 
                             <div class="form-group">
-                                <label>Serve Text</label>
-                                <textarea style="resize: none;" class="form-control" rows="3"></textarea>
+                                <label>Case Name Text</label>
+                                <textarea style="resize: none;" class="form-control" rows="3" ng-model="text"></textarea>
                             </div>
 
-                            <div>
+                            <div style="margin-top: 1em;margin-bottom: 1em;">
                                 <input onchange="angular.element(this).scope().readFile()" type="file" ng-model="serve_pic"
                                        id="uploadpic" multiple class="pic">
-                                <div class="pure">Insert images here.</div>
-                                <div id="result" ng-model="serve_attachments" class="pic2"></div>
+                                <div class="pure">Case Name images.</div>
+                                <div id="result" name="result" ng-model="serve_attachments" class="pic2"></div>
                             </div>
 
                             <div class="form-group">
-                                <label>Serve Videos input</label>
+                                <label>Case Name Videos input</label>
                                 <input type="file">
                                 <p class="help-block">Insert one or more videos here.</p>
                             </div>
@@ -89,7 +89,7 @@ $this->title = 'AddServePage';
                             <div style="margin-top: 2em;">
                                 <button type="reset" class="btn btn-default pull-right">Reset Button</button>
                                 <button type="submit" class="btn btn-primary pull-right"
-                                        style="margin-right: 1em;" ng-click="create_case(case_name,disease)"> Next Step
+                                        style="margin-right: 1em;" ng-click="create_case_name(text,serve_attachments)"> Next Step
                                 </button>
                             </div>
                     </div>
