@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 
 /**
  * This is the model class for table "pet_case_unit_image".
@@ -56,5 +55,14 @@ class PetCaseUnitImage extends \yii\db\ActiveRecord
     public function getPetCaseUnit()
     {
         return $this->hasOne(PetCaseUnit::className(), ['id' => 'pet_case_unit']);
+    }
+
+    /**
+     * delete images related to given unit id
+     * @param $unit_id
+     */
+    public static function cleanup($unit_id)
+    {
+        PetCaseUnitImage::deleteAll(['pet_case_unit' => $unit_id]);
     }
 }
