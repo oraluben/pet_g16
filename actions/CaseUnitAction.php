@@ -16,11 +16,12 @@ use yii\web\NotFoundHttpException;
 
 class CaseUnitAction extends Action
 {
-    public function run($unit_id)
+    public function run($unit_id = null, $parent = null, $unit_type = null)
     {
-        $unit = PetCaseUnit::findOne($unit_id);
-        if (is_null($unit)) {
-            throw new NotFoundHttpException("Unit ID $unit_id not found.");
+        if (is_null($unit = PetCaseUnit::findOne($unit_id))) {
+            if (is_null($unit = PetCaseUnit::findOne(['parent' => $parent, 'unit_type' => $unit_type])))
+
+                throw new NotFoundHttpException("Unit not found.");
         }
 
         $images = [];
