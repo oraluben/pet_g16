@@ -25,11 +25,6 @@ class GetCaseByIDAction extends Action
             throw new NotFoundHttpException("Case $id not found.");
         }
 
-        $res = [];
-        foreach ($case->petCaseUnits as $unit) {
-            $res[] = $unit;
-        }
-
-        return $res;
+        return ["case" => $case, "units" => $case->petCaseUnits];
     }
 }
