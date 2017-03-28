@@ -116,7 +116,7 @@ $this->title = 'ModifyCasePage';
                 <div class="col-lg-2" style="padding-left: 0 !important;">
                     <span class="classify"> {{a.class}}</span></div>
                 <div>
-                    <button class="pull-right buttonr btn btn-default"> Modify</button>
+                    <button class="pull-right buttonr btn btn-default" ng-click="goToDetail(a.id)"> Modify</button>
                 </div>
             </div>
             <div class="row">

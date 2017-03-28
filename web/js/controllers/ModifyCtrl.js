@@ -50,6 +50,10 @@ petApp.controller('ModifyCtrl', function ($scope, $http) {
         $('#petClass').css('display', 'none');
     };
 
+    $scope.goToDetail = function(id){
+        window.location.href = "detail?id=" + id;
+    };
+
     $scope.changeClass = function (id) {
         console.log(id);
         $scope.diseases = [];
@@ -77,6 +81,5 @@ petApp.controller('ModifyCtrl', function ($scope, $http) {
         $('#petCase').css('display', 'none');
         $('#btn-back').css('display', 'none');
         $('#petClass').css('display', 'block');
-
     }
 });
