@@ -55,8 +55,12 @@ $this->title = 'ModifyCasePage';
     </div><!--/.row-->
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
             <h1 class="page-header">Manage Cases</h1>
+        </div>
+        <div class="col-lg-6">
+            <button id="btn-back" ng-click="goBack()" class="page-header btn btn-primary btn-back pull-right">Back
+            </button>
         </div>
     </div>
 
@@ -102,7 +106,7 @@ $this->title = 'ModifyCasePage';
         <div class="col-lg-3 module" ng-repeat="a in cases">
             <div class="row">
                 <span class="glyphicon glyphicon-book pull-left bookicon"></span>
-                <span class="pull-left name"> Case {{a.id}}: {{a.name}}</span>
+                <span class="pull-left name"> Case {{a.id}}: {{a.case_name}}</span>
 
             </div>
             <div class="row">
@@ -116,7 +120,7 @@ $this->title = 'ModifyCasePage';
                 </div>
             </div>
             <div class="row">
-                <button class="pull-right buttonr btn btn-default"> Delete</button>
+                <button class="pull-right buttonr btn btn-default" ng-click="delete(a.id)"> Delete</button>
             </div>
         </div>
     </div><!-- /.col-->

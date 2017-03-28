@@ -1,5 +1,5 @@
 /**
- * Created by Dilemma丶 on 2017/3/27.
+ * Created by Dilemma丶 on 2017/3/28.
  */
 var storage, petApp;
 
@@ -13,7 +13,7 @@ petApp.config(['$locationProvider', function ($locationProvider) {
     });
 }]);
 
-petApp.controller('CreateServeCtrl', function ($scope, $http, $location) {
+petApp.controller('CreateCaseCheckCtrl', function ($scope, $http, $location) {
 
     if ($location.search().id) {
         $scope.case_id = $location.search().id;
@@ -46,7 +46,7 @@ petApp.controller('CreateServeCtrl', function ($scope, $http, $location) {
                 url: '/case/unit?',
                 params: {
                     'parent': $scope.case_id,
-                    'unit_type': 1
+                    'unit_type': 2
                 }
             };
             $http(p).then(function (d) {
@@ -88,7 +88,7 @@ petApp.controller('CreateServeCtrl', function ($scope, $http, $location) {
                         };
                         console.log(r);
                         $http(r).then(function (e) {
-                            window.location.href = 'create4?id=' + $scope.case_id;
+                            window.location.href = 'create5?id=' + $scope.case_id;
                         }, function (f) {
                             var obj = eval("(" + f.data.message + ")");
                             console.log(obj);
