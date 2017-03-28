@@ -60,6 +60,17 @@ $this->title = 'CreateCasePage';
         </div>
     </div><!--/.row-->
 
+    <div class="row" style="margin-bottom: 2em;">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 5%;">
+                        <div class="progress-value">5%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-lg-6">
@@ -91,7 +102,7 @@ $this->title = 'CreateCasePage';
                             </div>
 
                             <div style="margin-top: 2em;">
-                                <button type="reset" class="btn btn-default pull-right">Reset Button</button>
+                                <button type="reset" class="btn btn-default pull-right" ng-click="reset()">Reset Button</button>
                                 <button type="submit" class="btn btn-primary pull-right"
                                         style="margin-right: 1em;" ng-click="create_case(case_name,disease)"> Next Step
                                 </button>
