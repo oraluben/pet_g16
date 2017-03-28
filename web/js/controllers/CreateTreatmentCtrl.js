@@ -96,7 +96,7 @@ petApp.controller('CreateTreatmentCtrl', function ($scope, $http, $location) {
                                 stayTime: 1500,
                                 closeText: ''
                             });
-                            window.location.href = 'create3?id=' + $scope.case_id;
+                            window.location.href = 'modify';
                         });
                     });
                 }
