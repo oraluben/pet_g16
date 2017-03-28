@@ -92,54 +92,81 @@ petApp.controller('CaseDetailCtrl', function ($scope, $http, $location) {
         };
 
         $scope.update_case = function (case_name, disease, unit_text) {
-            var p = {
-                method: 'get',
-                url: '/case/classifications'
-            };
-            $http(p).then(function (d) {
-                data = d.data;
-                for (var i in data) {
-                    if (data[i].classification_name === disease) {
-                        $scope.classification_id = data[i].id;
-                        console.log('parent:' + $scope.classification_id);
-                        break;
-                    }
-                }
-                var q = {
-                    method: 'post',
-                    url: '/case/update?',
-                    params: {
-                        id: $scope.case_id
-                    },
-                    data: {
-                        case_name: case_name,
-                        case_classification: $scope.classification_id
-                    }
-                };
-                console.log('parent2:' + $scope.classification_id);
-                $http(q).then(function (d) {
-                    for (var i in unit_text) {
-                        var r = {
-                            method: 'post',
-                            url: '/case/update-unit?',
-                            params: {
-                                id: $scope.unit_id[i]
-                            },
-                            data: {
-                                text: $scope.unit_text[i]
-                            }
-                        };
-                        $http(r).then(function (d) {
-                        });
-                    }
-                    window.location.href = 'modify';
+            if (case_name === void 0 || case_name.length === 0) {
+                $().toastmessage('showToast', {
+                    text: 'Please enter the case name',
+                    sticky: false,
+                    position: 'top-center',
+                    type: 'error',
+                    stayTime: 1500,
+                    closeText: ''
                 });
-            });
-
+            } else if (disease === void 0 || disease.length === 0) {
+                $().toastmessage('showToast', {
+                    text: 'Please select a disease',
+                    sticky: false,
+                    position: 'top-center',
+                    type: 'error',
+                    stayTime: 1500,
+                    closeText: ''
+                });
+            } else {
+                var p = {
+                    method: 'get',
+                    url: '/case/classifications'
+                };
+                $http(p).then(function (d) {
+                    data = d.data;
+                    for (var i in data) {
+                        if (data[i].classification_name === disease) {
+                            $scope.classification_id = data[i].id;
+                            console.log('parent:' + $scope.classification_id);
+                            break;
+                        }
+                    }
+                    var q = {
+                        method: 'post',
+                        url: '/case/update?',
+                        params: {
+                            id: $scope.case_id
+                        },
+                        data: {
+                            case_name: case_name,
+                            case_classification: $scope.classification_id
+                        }
+                    };
+                    console.log('parent2:' + $scope.classification_id);
+                    $http(q).then(function (d) {
+                        for (var i in unit_text) {
+                            var r = {
+                                method: 'post',
+                                url: '/case/update-unit?',
+                                params: {
+                                    id: $scope.unit_id[i]
+                                },
+                                data: {
+                                    text: $scope.unit_text[i]
+                                }
+                            };
+                            $http(r).then(function (d) {
+                            });
+                        }
+                        window.location.href = 'modify';
+                    });
+                });
+            }
         };
 
         $scope.reset = function () {
-            $scope.text = void 0;
+            $scope.case_name = void 0;
+            $scope.classification = void 0;
+            $scope.disease = void 0;
+            $scope.unit_text[0] = '';
+            $scope.unit_text[1] = '';
+            $scope.unit_text[2] = '';
+            $scope.unit_text[3] = '';
+            $scope.unit_text[4] = '';
+
             $scope.attachments = [];
             document.getElementById('result').innerHTML = '';
         };

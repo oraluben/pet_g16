@@ -164,7 +164,7 @@ $this->title = 'CaseDetailPage';
 
                         <div class="form-group">
                             <label>Treatment Text</label>
-                            <textarea style="resize: none;" class="form-control" rows="3" ng-model="unit_text[4]">></textarea>
+                            <textarea style="resize: none;" class="form-control" rows="3" ng-model="unit_text[4]"></textarea>
                         </div>
 
                         <div>
