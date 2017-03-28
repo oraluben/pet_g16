@@ -33,7 +33,7 @@ class CaseController extends Controller
             'rules' => [
                 [
                     'allow' => true,
-                    'actions' => ['create', 'update-unit'],
+                    'actions' => ['create', 'update-unit', 'update'],
                     'verbs' => ['POST'],
                 ],
                 [
@@ -57,7 +57,7 @@ class CaseController extends Controller
         return [
             'create' => CreateCaseAction::className(),
             'delete' => DeleteCaseAction::className(),
-            'update'=> UpdateCaseAction::className(),
+            'update' => UpdateCaseAction::className(),
             'cases-by-cl' => GetCasesByClassificationAction::className(),
             'classifications' => ClassificationsAction::className(),
             'case-by-id' => GetCaseByIDAction::className(),
