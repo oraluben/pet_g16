@@ -55,8 +55,12 @@ $this->title = 'ModifyCasePage';
     </div><!--/.row-->
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
             <h1 class="page-header">Manage Cases</h1>
+        </div>
+        <div class="col-lg-6">
+            <button id="btn-back" ng-click="goBack()" class="page-header btn btn-primary btn-back pull-right">Back
+            </button>
         </div>
     </div>
 

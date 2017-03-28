@@ -88,15 +88,18 @@ petApp.controller('CreateServeCtrl', function ($scope, $http, $location) {
                         };
                         console.log(r);
                         $http(r).then(function (e) {
+                            window.location.href = 'create4?id=' + $scope.case_id;
+                        }, function (f) {
+                            var obj = eval("(" + f.data.message + ")");
+                            console.log(obj);
                             $().toastmessage('showToast', {
-                                text: 'Serve part uploaded successfully',
+                                text: obj.imageFiles[0],
                                 sticky: false,
                                 position: 'top-center',
-                                type: 'success',
-                                stayTime: 1500,
+                                type: 'error',
+                                stayTime: 3000,
                                 closeText: ''
                             });
-                            window.location.href = 'create4?id=' + $scope.case_id;
                         });
                     });
                 }

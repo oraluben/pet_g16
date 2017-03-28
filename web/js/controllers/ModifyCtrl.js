@@ -33,7 +33,6 @@ petApp.controller('ModifyCtrl', function ($scope, $http) {
 
 
     $scope.goToCase = function (id) {
-        console.log('hide class');
         $scope.cases = [];
         var q = {
             method: 'get',
