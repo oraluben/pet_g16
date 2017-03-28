@@ -20,10 +20,6 @@ class InfoController extends Controller
         return $this->render('index');
     }
 
-    public function actionCreate()
-    {
-        return $this->render('create');
-    }
     public function actionCreate1()
     {
         return $this->render('create1');
@@ -33,6 +29,27 @@ class InfoController extends Controller
     {
         return $this->render('create2');
     }
+
+    public function actionCreate3()
+    {
+        return $this->render('create3');
+    }
+
+    public function actionCreate4()
+    {
+        return $this->render('create4');
+    }
+
+    public function actionCreate5()
+    {
+        return $this->render('create5');
+    }
+
+    public function actionCreate6()
+    {
+        return $this->render('create6');
+    }
+
     public function actionModify()
     {
         return $this->render('modify');

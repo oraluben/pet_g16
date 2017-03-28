@@ -26,6 +26,7 @@ class PwdAsset extends AssetBundle
         'js/bootstrap-datepicker.js',
         'js/info.js',
         'js/controllers/PwdCtrl.js',
+        'js/controllers/OuterCtrl.js',
         'js/bootstrap-table.js',
 
     ];

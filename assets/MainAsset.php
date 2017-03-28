@@ -28,7 +28,9 @@ class MainAsset extends AssetBundle
         'js/easypiechart.js',
         'js/easypiechart-data.js',
         'js/info.js',
+        'js/profile.js',
         'js/controllers/UserCtrl.js',
+        'js/controllers/OuterCtrl.js',
         'js/bootstrap-table.js',
         'js/bootstrap-datepicker.js',
 

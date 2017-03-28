@@ -17,10 +17,12 @@ class CreateAsset extends AssetBundle
 
     public $css = [
         'css/jquery.toastmessage.css',
+        'css/loading.css',
         'css/styles.css',
     ];
     public $js = [
         'js/controllers/CreateCtrl.js',
+        'js/controllers/OuterCtrl.js',
         'js/jquery.toastmessage.js',
 
     ];
