@@ -15,6 +15,7 @@ use app\actions\CreateCaseAction;
 use app\actions\DeleteCaseAction;
 use app\actions\GetCaseByIDAction;
 use app\actions\GetCasesByClassificationAction;
+use app\actions\UpdateCaseAction;
 use app\actions\UpdateUnitAction;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
@@ -56,6 +57,7 @@ class CaseController extends Controller
         return [
             'create' => CreateCaseAction::className(),
             'delete' => DeleteCaseAction::className(),
+            'update'=> UpdateCaseAction::className(),
             'cases-by-cl' => GetCasesByClassificationAction::className(),
             'classifications' => ClassificationsAction::className(),
             'case-by-id' => GetCaseByIDAction::className(),
