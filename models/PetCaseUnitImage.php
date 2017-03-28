@@ -10,6 +10,7 @@ namespace app\models;
  * @property string $image_path
  * @property string $image_info
  * @property integer $pet_case_unit
+ * @property string $md5
  *
  * @property PetCaseUnit $petCaseUnit
  */
@@ -33,6 +34,8 @@ class PetCaseUnitImage extends \yii\db\ActiveRecord
             [['image_info'], 'string'],
             [['pet_case_unit'], 'integer'],
             [['pet_case_unit'], 'exist', 'skipOnError' => true, 'targetClass' => PetCaseUnit::className(), 'targetAttribute' => ['pet_case_unit' => 'id']],
+//            [['md5'], 'string'],
+//            [['md5'], 'exist', 'skipOnError' => true, 'targetClass' => PetCaseUnitImage::className(), 'targetAttribute' => ['md5' => 'md5']],
         ];
     }
 
@@ -46,6 +49,7 @@ class PetCaseUnitImage extends \yii\db\ActiveRecord
             'image_path' => 'Image Path',
             'image_info' => 'Image Info',
             'pet_case_unit' => 'Pet Case Unit',
+//            'md5' => 'MD5',
         ];
     }
 
