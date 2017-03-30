@@ -50,6 +50,11 @@ class InfoController extends Controller
         return $this->render('create6');
     }
 
+    public function actionClassification()
+    {
+        return $this->render('classification');
+    }
+
     public function actionModify()
     {
         return $this->render('modify');
@@ -63,6 +68,11 @@ class InfoController extends Controller
     public function actionUser()
     {
         return $this->render('user');
+    }
+
+    public function actionDepartment()
+    {
+        return $this->render('department');
     }
 
     public function actionPwd()
