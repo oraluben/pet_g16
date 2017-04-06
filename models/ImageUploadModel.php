@@ -42,6 +42,7 @@ class ImageUploadModel extends Model
                     $image_record->image_path = $f_name;
                     $image_record->pet_case_unit = $unit->id;
                     $image_record->image_info = ArrayHelper::getValue($post, $k);
+//                    $image_record->md5 = md5_file('imageUploads/' . $f_name);
                     $image_record->save();
                 }
             }
