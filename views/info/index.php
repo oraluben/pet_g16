@@ -38,7 +38,7 @@ $this->title = 'MainPage';
         <li><a href="profile"><span class="glyphicon glyphicon-user"></span> Personal Profile</a></li>
     </ul>
 </div><!--/.sidebar-->
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" ng-controller="MainCtrl">
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="index"><span class="glyphicon glyphicon-home"></span></a></li>
@@ -60,8 +60,8 @@ $this->title = 'MainPage';
                         <em class="glyphicon glyphicon-book glyphicon-l"></em>
                     </div>
                     <div class="col-sm-9 col-lg-7 widget-right">
-                        <div class="large">120</div>
-                        <div class="text-muted">Total Cases</div>
+                        <div class="large">{{classification_num}}</div>
+                        <div class="text-muted">Classifications</div>
                     </div>
                 </div>
             </div>
@@ -73,8 +73,8 @@ $this->title = 'MainPage';
                         <em class="glyphicon glyphicon-comment glyphicon-l"></em>
                     </div>
                     <div class="col-sm-9 col-lg-7 widget-right">
-                        <div class="large">52</div>
-                        <div class="text-muted">Comments</div>
+                        <div class="large">{{case_num}}</div>
+                        <div class="text-muted">Cases</div>
                     </div>
                 </div>
             </div>
@@ -86,8 +86,8 @@ $this->title = 'MainPage';
                         <em class="glyphicon glyphicon-user glyphicon-l"></em>
                     </div>
                     <div class="col-sm-9 col-lg-7 widget-right">
-                        <div class="large">24</div>
-                        <div class="text-muted">New Users</div>
+                        <div class="large">{{user_num}}</div>
+                        <div class="text-muted">Users</div>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@ $this->title = 'MainPage';
                         <em class="glyphicon glyphicon-stats glyphicon-l"></em>
                     </div>
                     <div class="col-sm-9 col-lg-7 widget-right">
-                        <div class="large">25.2k</div>
+                        <div class="large">{{visit_num}}</div>
                         <div class="text-muted">Visitors</div>
                     </div>
                 </div>

@@ -92,16 +92,17 @@ $this->title = 'AddCheckResultPage';
                                 <div id="result" name="result" ng-model="attachments" class="pic2"></div>
                             </div>
 
-                            <div class="form-group">
-                                <label>Check Result Videos input</label>
-                                <input type="file">
-                                <p class="help-block">Insert one or more videos here.</p>
+                            <div style="margin-top: 1em;margin-bottom: 1em;">
+                                <input onchange="angular.element(this).scope().readVideo()" type="file" ng-model="video"
+                                       id="uploadvideo" multiple class="pic">
+                                <div class="pure">Check Result videos.</div>
+                                <div id="resultv" name="resultv" ng-model="videos" class="pic2"></div>
                             </div>
 
                             <div style="margin-top: 2em;">
                                 <button type="reset" class="btn btn-default pull-right" ng-click="reset()">Reset Button</button>
                                 <button type="submit" class="btn btn-primary pull-right"
-                                        style="margin-right: 1em;" ng-click="create_unit(text,attachments)"> Next Step
+                                        style="margin-right: 1em;" ng-click="create_unit(text,attachments,videos)"> Next Step
                                 </button>
                             </div>
                     </div>
