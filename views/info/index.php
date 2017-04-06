@@ -13,28 +13,29 @@ $this->title = 'MainPage';
         </div>
     </form>
     <ul class="nav menu">
-        <li class="active"><a href="index"><span class="glyphicon glyphicon-dashboard"></span> 主页面</a></li>
+        <li class="active"><a href="index"><span class="glyphicon glyphicon-dashboard"></span> Main Page</a></li>
+        <li><a href="classification"><span class="glyphicon glyphicon-list"></span> Classes Management</a></li>
         <li class="parent ">
             <a href="#">
-                <span class="glyphicon glyphicon-list"></span> 病例管理 <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+                <span class="glyphicon glyphicon-list-alt"></span> Cases Management <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
             </a>
             <ul class="children collapse" id="sub-item-1">
                 <li>
                     <a class="" href="create1">
-                        <span class="glyphicon glyphicon-plus"></span> 新建病例
+                        <span class="glyphicon glyphicon-plus"></span> Create Case
                     </a>
                 </li>
                 <li>
                     <a class="" href="modify">
-                        <span class="glyphicon glyphicon-pencil"></span> 管理病例
+                        <span class="glyphicon glyphicon-pencil"></span> Modify&Delete Case
                     </a>
                 </li>
             </ul>
         </li>
-        <li><a href="user"><span class="glyphicon glyphicon-user"></span> 管理用户</a></li>
-        <li><a href="pwd"><span class="glyphicon glyphicon-info-sign"></span> 维护用户</a></li>
+        <li><a href="user"><span class="glyphicon glyphicon-th-list"></span> Users Management</a></li>
+        <li><a href="pwd"><span class="glyphicon glyphicon-info-sign"></span> Users Maintenance</a></li>
         <li role="presentation" class="divider"></li>
-        <li><a href="profile"><span class="glyphicon glyphicon-pencil"></span> 个人信息</a></li>
+        <li><a href="profile"><span class="glyphicon glyphicon-user"></span> Personal Profile</a></li>
     </ul>
 </div><!--/.sidebar-->
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
