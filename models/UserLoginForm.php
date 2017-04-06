@@ -56,6 +56,7 @@ class UserLoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
+            LoginRecord::login($this->getUser());
             return $this->getUser()->login();
         } else {
             return false;
