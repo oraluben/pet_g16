@@ -100,10 +100,13 @@ $this->title = 'CaseDetailPage';
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label>Case Name Videos input</label>
-                                <input type="file">
-                                <p class="help-block">Insert one or more videos here.</p>
+                            <div>
+                                <input onchange="angular.element(this).scope().readVideo(0)" type="file"
+                                       id="uploadvideo0" multiple class="pic">
+                                <div class="pure">Case Name Videos.</div>
+                                <div id="resultv0" class="pic2" ng-model="videos[0]">
+                                    <video ng-repeat="v in unit_videos[0]" ng-src="{{v}}" class="show_pic" control="controls" />
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -120,10 +123,13 @@ $this->title = 'CaseDetailPage';
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label>Serve Videos input</label>
-                                <input type="file">
-                                <p class="help-block">Insert one or more videos here.</p>
+                            <div>
+                                <input onchange="angular.element(this).scope().readVideo(1)" type="file"
+                                       id="uploadvideo1" multiple class="pic">
+                                <div class="pure">Serve Videos Here.</div>
+                                <div id="resultv1" class="pic2" ng-model="videos[1]">
+                                    <video ng-repeat="v in unit_videos[1]" ng-src="{{v}}" class="show_pic" control="controls" />
+                                </div>
                             </div>
 
                     </div>
@@ -138,15 +144,18 @@ $this->title = 'CaseDetailPage';
                                    id="uploadpic2" multiple class="pic">
                             <div class="pure">Case Check Images.</div>
                             <div id="result2" class="pic2" ng-model="attachments[2]">
-                                <img ng-repeat="pic in unit_images[2]" ng-src="{{pic}}" class="show_pic" alt="" />
+                                <img ng-repeat="pic in unit_images[2]" ng-src="{{pic }}" class="show_pic" alt="" />
                             </div>
                         </div>
 
 
-                        <div class="form-group">
-                            <label>Case Check Videos input</label>
-                            <input type="file">
-                            <p class="help-block">Insert one or more videos here.</p>
+                        <div>
+                            <input onchange="angular.element(this).scope().readVideo(2)" type="file"
+                                   id="uploadvideo2" multiple class="pic">
+                            <div class="pure">Case Check Videos.</div>
+                            <div id="resultv2" class="pic2" ng-model="videos[2]">
+                                <video ng-repeat="v in unit_videos[2]" ng-src="{{v}}" class="show_pic" control="controls" />
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -163,10 +172,13 @@ $this->title = 'CaseDetailPage';
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label>Check Result Videos input</label>
-                            <input type="file">
-                            <p class="help-block">Insert one or more videos here.</p>
+                        <div>
+                            <input onchange="angular.element(this).scope().readVideo(3)" type="file"
+                                   id="uploadvideo3" multiple class="pic">
+                            <div class="pure">Check Result Videos.</div>
+                            <div id="resultv3" class="pic2" ng-model="videos[3]">
+                                <video ng-repeat="v in unit_videos[3]" ng-src="{{v}}" class="show_pic" control="controls" />
+                            </div>
                         </div>
 
 
@@ -184,10 +196,13 @@ $this->title = 'CaseDetailPage';
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label>Treatment Videos input</label>
-                            <input type="file">
-                            <p class="help-block">Insert one or more videos here.</p>
+                        <div>
+                            <input onchange="angular.element(this).scope().readVideo(4)" type="file"
+                                   id="uploadvideo4" multiple class="pic">
+                            <div class="pure">Treat Videos Here.</div>
+                            <div id="resultv4" class="pic2" ng-model="videos[4]">
+                                <video ng-repeat="v in unit_videos[4]" ng-src="{{v}}" class="show_pic" control="controls" />
+                            </div>
                         </div>
 
                         <button type="submit" class="btn btn-primary" ng-click="update_case(case_name,disease,unit_text)">Submit Button</button>

@@ -23,7 +23,8 @@ class VideoUploadModel extends Model
     public function rules()
     {
         return [
-            [['videoFiles'], 'file', 'skipOnEmpty' => false, 'extensions' => 'avi, mp4', 'maxFiles' => 0, 'checkExtensionByMimeType' => false],
+            [['videoFiles'], 'file', 'skipOnEmpty' => false, 'extensions' => 'avi, mp4', 'maxFiles' => 0
+                , 'maxSize' => null],
         ];
     }
 

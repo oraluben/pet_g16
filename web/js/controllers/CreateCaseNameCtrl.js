@@ -20,7 +20,8 @@ petApp.controller('CreateCaseNameCtrl', function ($scope, $http, $location) {
     }
 
     $scope.create_unit = function (text, attachments, videos) {
-        console.log(text);
+        console.log(attachments);
+        console.log(videos);
         if (text === void 0 || text.length === 0) {
             $().toastmessage('showToast', {
                 text: 'Please enter the text',
@@ -39,16 +40,18 @@ petApp.controller('CreateCaseNameCtrl', function ($scope, $http, $location) {
                 stayTime: 1500,
                 closeText: ''
             });
-        } else if (videos === void 0 || videos.length === 0) {
-            $().toastmessage('showToast', {
-                text: 'Please upload the images',
-                sticky: false,
-                position: 'top-center',
-                type: 'error',
-                stayTime: 1500,
-                closeText: ''
-            });
-        } else {
+        }
+        // else if (videos === void 0 || videos.length === 0) {
+        //     $().toastmessage('showToast', {
+        //         text: 'Please upload the videos',
+        //         sticky: false,
+        //         position: 'top-center',
+        //         type: 'error',
+        //         stayTime: 1500,
+        //         closeText: ''
+        //     });
+        // }
+        else {
             var unit_id;
             var p = {
                 method: 'get',
@@ -95,47 +98,46 @@ petApp.controller('CreateCaseNameCtrl', function ($scope, $http, $location) {
                                 'Content-Type': void 0
                             }
                         };
-                        console.log(r);
                         $http(r).then(function (e) {
-                            var data1 = {};
-                            for (var i in videos) {
-                                var tmp = 'videoFiles[' + i.toString() + ']';
-                                data1[tmp] = videos[i];
-                                var tmp1 = 'videoInfo[' + i.toString() + ']';
-                                data1[tmp1] = null;
-                            }
-                            var form1 = new FormData();
-                            for (var key in data1) {
-                                var v = data1[key];
-                                form.append(key, v);
-                            }
-                            var r = {
-                                method: 'post',
-                                url: '/upload/video',
-                                params: {
-                                    'unit_id': unit_id
-                                },
-                                data: form1,
-                                transformRequest: angular.identity,
-                                headers: {
-                                    'Content-Type': void 0
-                                }
-                            };
-                            console.log(r);
-                            $http(r).then(function (e) {
+                            // var data1 = {};
+                            // console.log('videos=');
+                            // for (var i in videos) {
+                            //     var tmp = 'videoFiles[' + i.toString() + ']';
+                            //     data1[tmp] = videos[i];
+                            //     var tmp1 = 'videoInfos[' + i.toString() + ']';
+                            //     data1[tmp1] = null;
+                            // }
+                            // var form1 = new FormData();
+                            // for (var key in data1) {
+                            //     var v = data1[key];
+                            //     form.append(key, v);
+                            // }
+                            // var s = {
+                            //     method: 'post',
+                            //     url: '/upload/video',
+                            //     params: {
+                            //         'unit_id': unit_id
+                            //     },
+                            //     data: form1,
+                            //     transformRequest: angular.identity,
+                            //     headers: {
+                            //         'Content-Type': void 0
+                            //     }
+                            // };
+                            // $http(s).then(function (t) {
                                 window.location.href = 'create3?id=' + $scope.case_id;
-                            }, function (f) {
-                                var obj = eval("(" + f.data.message + ")");
-                                console.log(obj);
-                                $().toastmessage('showToast', {
-                                    text: obj.videoFiles[0],
-                                    sticky: false,
-                                    position: 'top-center',
-                                    type: 'error',
-                                    stayTime: 3000,
-                                    closeText: ''
-                                });
-                            });
+                            // }, function (f) {
+                            //     var obj = eval("(" + f.data.message + ")");
+                            //     console.log(obj);
+                            //     $().toastmessage('showToast', {
+                            //         text: obj.videoFiles[0],
+                            //         sticky: false,
+                            //         position: 'top-center',
+                            //         type: 'error',
+                            //         stayTime: 3000,
+                            //         closeText: ''
+                            //     });
+                            // });
                         }, function (f) {
                             var obj = eval("(" + f.data.message + ")");
                             console.log(obj);
@@ -244,9 +246,9 @@ petApp.controller('CreateCaseNameCtrl', function ($scope, $http, $location) {
                 stop = true;
                 break;
             }
-            if (file1.size > 1024 * 1024 * 5) {
+            if (file1.size > 1024 * 1024 * 500) {
                 $().toastmessage('showToast', {
-                    text: 'Larger than 5M, they won\'t be upload.',
+                    text: 'Larger than 500M, they won\'t be upload.',
                     sticky: false,
                     position: 'top-center',
                     type: 'error',
