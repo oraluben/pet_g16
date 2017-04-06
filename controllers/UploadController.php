@@ -10,6 +10,7 @@ namespace app\controllers;
 
 use app\actions\ImageUploadAction;
 use app\models\PetCaseUnitImage;
+use app\models\PetCaseUnitVideo;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
 
@@ -29,11 +30,13 @@ class UploadController extends Controller
                     'allow' => true,
                     'actions' => ['image', 'video'],
                     'verbs' => ['POST'],
+                    'roles' => ['@'],
                 ],
                 [
                     'allow' => true,
-                    'actions' => ['delete-image', 'delete-video'],
+                    'actions' => ['delete-image', 'delete-video', 'delete-all'],
                     'verbs' => ['DELETE'],
+                    'roles' => ['@'],
                 ],
             ],
         ];
@@ -50,13 +53,20 @@ class UploadController extends Controller
         ];
     }
 
-    public function actionDeleteImage($id)
+    public function actionDeleteImage($path)
     {
-        $i = PetCaseUnitImage::deleteAll($id);
+        return PetCaseUnitImage::deleteAll(['image_path' => $path]);
     }
 
-    public function actionDeleteVideo($id)
+    public function actionDeleteVideo($path)
     {
-        $i = PetCaseUnitImage::deleteAll($id);
+        return PetCaseUnitVideo::deleteAll(['image_path' => $path]);
+    }
+
+    public function actionDeleteAll($unit_id)
+    {
+        return
+            PetCaseUnitImage::deleteAll(['pet_case_unit' => $unit_id])
+            + PetCaseUnitVideo::deleteAll(['pet_case_unit' => $unit_id]);
     }
 }
