@@ -13,6 +13,7 @@ use yii\db\ActiveRecord;
  *
  * @property PetCase $parent_case
  * @property PetCaseUnitImage $images
+ * @property PetCaseUnitVideo $videos
  */
 class PetCaseUnit extends ActiveRecord
 {

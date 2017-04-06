@@ -11,6 +11,7 @@ namespace app\actions;
 
 use app\models\PetCaseUnit;
 use app\models\PetCaseUnitImage;
+use app\models\PetCaseUnitVideo;
 use yii\base\Action;
 use yii\web\NotFoundHttpException;
 
@@ -27,9 +28,13 @@ class CaseUnitAction extends Action
         $images = [];
         $videos = [];
 
-        foreach (PetCaseUnitImage::findAll(['pet_case_unit' => $unit->id]) as $image) {
+        foreach ($unit->images as $image) {
             /** @var PetCaseUnitImage $image */
             $images[] = \Yii::$app->urlManager->getBaseUrl() . '/imageUploads/' . $image->image_path;
+        }
+        foreach ($unit->videos as $video) {
+            /** @var PetCaseUnitVideo $video */
+            $videos[] = \Yii::$app->urlManager->getBaseUrl() . '/videoUploads/' . $video->video_path;
         }
         return [
             'unit' => $unit,
