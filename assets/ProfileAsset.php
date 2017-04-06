@@ -2,15 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: Dilemma丶
- * Date: 2017/3/2
- * Time: 9:40
+ * Date: 2017/4/6
+ * Time: 9:03
  */
 
 namespace app\assets;
 
 use yii\web\AssetBundle;
 
-class MainAsset extends AssetBundle
+class ProfileAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
@@ -29,7 +29,7 @@ class MainAsset extends AssetBundle
         'js/easypiechart-data.js',
         'js/info.js',
         'js/profile.js',
-        'js/controllers/MainCtrl.js',
+        'js/controllers/UserCtrl.js',
         'js/controllers/OuterCtrl.js',
         'js/bootstrap-table.js',
         'js/bootstrap-datepicker.js',

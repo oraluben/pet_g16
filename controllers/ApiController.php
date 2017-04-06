@@ -11,6 +11,11 @@ namespace app\controllers;
 use app\actions\ActionChangePassword;
 use app\actions\LoginAction;
 use app\actions\RegisterAction;
+use app\models\PetCase;
+use app\models\PetCaseClassification;
+use app\models\User;
+use app\models\UserLoginForm;
+use yii\db\Query;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
 
@@ -39,7 +44,7 @@ class ApiController extends Controller
                 ],
                 [
                     'allow' => true,
-                    'actions' => ['current-user'],
+                    'actions' => ['current-user', 'stat'],
                     'verbs' => ['GET'],
                 ],
                 [
@@ -71,5 +76,15 @@ class ApiController extends Controller
     public function actionLogout()
     {
         return \Yii::$app->user->logout();
+    }
+
+    public function actionStat()
+    {
+        return [
+            'case' => PetCase::find()->count(),
+            'classification' => PetCaseClassification::find()->count(),
+            'user' => User::find()->count(),
+            'visit' => 0, // todo
+        ];
     }
 }
