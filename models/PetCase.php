@@ -48,6 +48,24 @@ class PetCase extends ActiveRecord
     }
 
     /**
+     * @inheritdoc
+     */
+    public function fields()
+    {
+        $fields = parent::fields();
+
+        $fields['units'] = function () {
+            $units = [];
+            foreach ($this->petCaseUnits as $unit) {
+                $units[] = $unit->toArray();
+            }
+            return $units;
+        };
+
+        return $fields;
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getPetCaseUnits()
