@@ -9,6 +9,8 @@
 namespace app\controllers;
 
 use app\actions\ImageUploadAction;
+use app\actions\VideoUploadAction;
+use app\models\VideoUploadModel;
 use yii\rest\Controller;
 
 class UploadController extends Controller
@@ -17,7 +19,7 @@ class UploadController extends Controller
     {
         return [
             'image' => ImageUploadAction::className(),
-//            'VideoUpload' => VideoUploadAction::className(),
+            'video' => VideoUploadAction::className()
         ];
     }
 }
