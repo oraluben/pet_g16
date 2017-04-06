@@ -92,10 +92,12 @@ $this->title = 'CaseDetailPage';
                             </div>
 
                             <div>
-                                <input onchange="angular.element(this).scope().readFile()" type="file" ng-model="serve_pic"
-                                       id="uploadpic" multiple class="pic">
+                                <input onchange="angular.element(this).scope().readFile(0)" type="file"
+                                       id="uploadpic0" multiple class="pic">
                                 <div class="pure">Case Name Images.</div>
-                                <div id="result" ng-model="serve_attachments" class="pic2"></div>
+                                <div id="result0" class="pic2" ng-model="attachments[0]">
+                                    <img ng-repeat="pic in unit_images[0]" ng-src="{{pic}}" class="show_pic" alt="" />
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -110,10 +112,12 @@ $this->title = 'CaseDetailPage';
                             </div>
 
                             <div>
-                                <input onchange="angular.element(this).scope().readFile()" type="file" ng-model="serve_pic"
-                                       id="uploadpic" multiple class="pic">
+                                <input onchange="angular.element(this).scope().readFile(1)" type="file"
+                                       id="uploadpic1" multiple class="pic">
                                 <div class="pure">Serve Images Here.</div>
-                                <div id="result" ng-model="serve_attachments" class="pic2"></div>
+                                <div id="result1" class="pic2" ng-model="attachments[1]">
+                                    <img ng-repeat="pic in unit_images[1]" ng-src="{{pic}}" class="show_pic" alt="" />
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -130,10 +134,12 @@ $this->title = 'CaseDetailPage';
                         </div>
 
                         <div>
-                            <input onchange="angular.element(this).scope().readFile2()" type="file" ng-model="serve_pic2"
+                            <input onchange="angular.element(this).scope().readFile(2)" type="file" ng-model="serve_pic2"
                                    id="uploadpic2" multiple class="pic">
                             <div class="pure">Case Check Images.</div>
-                            <div id="result2" class="pic2"></div>
+                            <div id="result2" class="pic2" ng-model="attachments[2]">
+                                <img ng-repeat="pic in unit_images[2]" ng-src="{{pic}}" class="show_pic" alt="" />
+                            </div>
                         </div>
 
 
@@ -149,10 +155,12 @@ $this->title = 'CaseDetailPage';
                         </div>
 
                         <div>
-                            <input onchange="angular.element(this).scope().readFile3()" type="file" ng-model="serve_pic3"
+                            <input onchange="angular.element(this).scope().readFile(3)" type="file" ng-model="serve_pic3"
                                    id="uploadpic3" multiple class="pic">
                             <div class="pure">Check Result Images.</div>
-                            <div id="result3" class="pic2"></div>
+                            <div id="result3" class="pic2" ng-model="attachments[3]">
+                                <img ng-repeat="pic in unit_images[3]" ng-src="{{pic}}" class="show_pic" alt="" />
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -168,10 +176,12 @@ $this->title = 'CaseDetailPage';
                         </div>
 
                         <div>
-                            <input onchange="angular.element(this).scope().readFile4()" type="file" ng-model="serve_pic4"
+                            <input onchange="angular.element(this).scope().readFile(4)" type="file" ng-model="serve_pic4"
                                    id="uploadpic4" multiple class="pic">
                             <div class="pure">Treat Images Here.</div>
-                            <div id="result4" class="pic2"></div>
+                            <div id="result4" class="pic2" ng-model="attachments[4]">
+                                <img ng-repeat="pic in unit_images[4]" ng-src="{{pic}}" class="show_pic" alt="" />
+                            </div>
                         </div>
 
                         <div class="form-group">

@@ -9,6 +9,7 @@
 namespace app\controllers;
 
 use app\actions\ImageUploadAction;
+use app\actions\VideoUploadAction;
 use app\models\PetCaseUnitImage;
 use app\models\PetCaseUnitVideo;
 use yii\filters\AccessControl;
@@ -48,7 +49,7 @@ class UploadController extends Controller
     {
         return [
             'image' => ImageUploadAction::className(),
-//            'VideoUpload' => VideoUploadAction::className(),
+            'video' => VideoUploadAction::className(),
 
         ];
     }

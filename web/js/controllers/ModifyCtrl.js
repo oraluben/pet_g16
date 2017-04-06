@@ -1,7 +1,4 @@
 /**
- * Created by Dilemma丶 on 2017/3/21.
- */
-/**
  * Created by Dilemma丶 on 2017/3/14.
  */
 var storage, petApp;
