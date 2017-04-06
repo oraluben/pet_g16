@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "pet_login_record".
@@ -25,6 +26,7 @@ class LoginRecord extends \yii\db\ActiveRecord
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => ['time'],
                 ],
+                'value' => new Expression('NOW()'),
             ],
         ];
     }

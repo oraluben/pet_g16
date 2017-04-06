@@ -88,7 +88,7 @@ class PetCaseUnit extends ActiveRecord
      */
     public function getImages()
     {
-        return $this->hasMany(PetCaseUnitImage::className(), ['id' => 'pet_case_unit']);
+        return $this->hasMany(PetCaseUnitImage::className(), ['pet_case_unit' => 'id']);
     }
 
     /**
@@ -96,6 +96,6 @@ class PetCaseUnit extends ActiveRecord
      */
     public function getVideos()
     {
-        return $this->hasMany(PetCaseUnitVideo::className(), ['id' => 'pet_case_unit']);
+        return $this->hasMany(PetCaseUnitVideo::className(), ['pet_case_unit' => 'id']);
     }
 }
