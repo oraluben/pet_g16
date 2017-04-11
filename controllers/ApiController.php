@@ -9,13 +9,12 @@
 namespace app\controllers;
 
 use app\actions\ActionChangePassword;
+use app\actions\ActionDepartments;
 use app\actions\LoginAction;
 use app\actions\RegisterAction;
 use app\models\PetCase;
 use app\models\PetCaseClassification;
 use app\models\User;
-use app\models\UserLoginForm;
-use yii\db\Query;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
 

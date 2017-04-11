@@ -13,13 +13,7 @@ use app\models\User;
 use yii\rest\ActiveController;
 use yii\web\ForbiddenHttpException;
 
-class ClController extends ActiveController
+class ClController extends AdminRestControllerInterface
 {
     public $modelClass = 'app\models\PetCaseClassification';
-
-    public function checkAccess($action, $model = null, $params = [])
-    {
-        if (\Yii::$app->user->isGuest || \Yii::$app->user->identity->user_type != User::TYPE_ADMIN)
-            throw new ForbiddenHttpException();
-    }
 }
