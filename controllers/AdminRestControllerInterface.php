@@ -9,6 +9,7 @@
 namespace app\controllers;
 
 
+use app\models\User;
 use yii\rest\ActiveController;
 use yii\web\ForbiddenHttpException;
 

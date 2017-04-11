@@ -7,7 +7,7 @@ petApp = angular.module('petApp', []);
 
 storage = window.localStorage;
 
-petApp.controller('DepartmentCtrl', function ($scope, $http) {
+petApp.controller('ActionCtrl', function ($scope, $http) {
 
     $scope.createDepartment = function (name, desc) {
         var p;
@@ -74,7 +74,7 @@ petApp.controller('DepartmentCtrl', function ($scope, $http) {
         }
     };
 
-    $scope.deleteDepartment = function (id) {
+    $scope.deleteAction = function (id) {
         var p;
         if (id === void 0 || id.length === 0) {
             $().toastmessage('showToast', {
@@ -117,76 +117,11 @@ petApp.controller('DepartmentCtrl', function ($scope, $http) {
         }
     };
 
-    $scope.modifyDepartment = function (id, name, desc) {
-        var p;
-        if (id === void 0 || id.length === 0) {
-            $().toastmessage('showToast', {
-                text: 'Please enter the id',
-                sticky: false,
-                position: 'top-center',
-                type: 'error',
-                stayTime: 1500,
-                closeText: ''
-            });
-        } else if (name === void 0 || name.length === 0) {
-            $().toastmessage('showToast', {
-                text: 'Please enter the new name',
-                sticky: false,
-                position: 'top-center',
-                type: 'error',
-                stayTime: 1500,
-                closeText: ''
-            });
-        } else if (desc === void 0 || desc.length === 0) {
-            $().toastmessage('showToast', {
-                text: 'Please enter the new description',
-                sticky: false,
-                position: 'top-center',
-                type: 'error',
-                stayTime: 1500,
-                closeText: ''
-            });
-        } else {
-            var str = '/dep/update?id=' + id;
-            console.log(str);
-            p = {
-                method: 'put',
-                url: str,
-                data: {
-                    'department_name': name,
-                    'department_desc':desc
-                }
-            };
-            $http(p).then(function (d) {
-                $().toastmessage('showToast', {
-                    text: 'Modify success!',
-                    sticky: false,
-                    position: 'top-center',
-                    type: 'success',
-                    stayTime: 2500,
-                    closeText: ''
-                });
-                $scope.id1 = null;
-                $scope.name1 = null;
-                $scope.desc1 = null;
 
-            }, function (e) {
-                return $().toastmessage('showToast', {
-                    text: e.data.message,
-                    sticky: false,
-                    position: 'top-center',
-                    type: 'error',
-                    stayTime: 1500,
-                    closeText: ''
-                });
-            });
-        }
-    };
-
-    var depart = {
+    var action = {
         method: 'get',
-        url: '/deps'
+        url: '/departments/actions'
     };
-    $http(depart).then(function (d) {
+    $http(action).then(function (d) {
     });
 });

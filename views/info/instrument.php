@@ -68,7 +68,7 @@ $this->title = 'Instrument';
                             Information
                         </div>
                         <div class="panel-body">
-                            <table data-toggle="table" data-url="../instrument" data-show-refresh="true"
+                            <table data-toggle="table" data-url="../instruments" data-show-refresh="true"
                                    data-show-toggle="true" data-show-columns="true" data-search="true"
                                    data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name"
                                    data-sort-order="desc">
@@ -76,8 +76,8 @@ $this->title = 'Instrument';
                                 <tr>
                                     <th data-field="state" data-checkbox="true">Instrument ID</th>
                                     <th data-field="id" data-sortable="true">Instrument ID</th>
-                                    <th data-field="username" data-sortable="true">Instrument Name</th>
-                                    <th data-field="user_type" data-sortable="true">Instrument Desc</th>
+                                    <th data-field="instrument_name" data-sortable="true">Instrument Name</th>
+                                    <th data-field="instrument_desc" data-sortable="true">Instrument Desc</th>
                                 </tr>
                                 </thead>
                             </table>

@@ -66,7 +66,7 @@ $this->title = 'Action';
                     <div class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span> Action Information
                     </div>
                     <div class="panel-body">
-                        <table data-toggle="table" data-url="../actions" data-show-refresh="true"
+                        <table data-toggle="table" data-url="../departments/actions" data-show-refresh="true"
                                data-show-toggle="true"
                                data-show-columns="true" data-search="true" data-select-item-name="toolbar1"
                                data-pagination="true" data-sort-name="name" data-sort-order="desc">
@@ -74,12 +74,12 @@ $this->title = 'Action';
                             <tr>
                                 <th data-field="state" data-checkbox="true">Action ID</th>
                                 <th data-field="id" data-sortable="true">Action ID</th>
-                                <th data-field="classification_name" data-sortable="true">Action Name</th>
-                                <th data-field="classification_name" data-sortable="true">Action Desc</th>
-                                <th data-field="parent" data-sortable="true">Action User</th>
-                                <th data-field="parent" data-sortable="true">Action Medicine</th>
-                                <th data-field="parent" data-sortable="true">Action Instrument</th>
-                                <th data-field="parent" data-sortable="true">Action Department</th>
+                                <th data-field="action_name" data-sortable="true">Action Name</th>
+                                <th data-field="action_desc" data-sortable="true">Action Desc</th>
+                                <th data-field="action_user_type" data-sortable="true">Action User</th>
+                                <th data-field="drugs" data-sortable="true">Action Medicine</th>
+                                <th data-field="instruments" data-sortable="true">Action Instrument</th>
+                                <th data-field="department_id" data-sortable="true">Action Department</th>
                             </tr>
                             </thead>
                         </table>
@@ -87,41 +87,9 @@ $this->title = 'Action';
                 </div>
             </div>
 
-            <div class="pull-right" style="width: 100%">
-                    <div class="panel panel-default">
-                        <div class="panel-heading"><span class="glyphicon glyphicon-trash"></span> Create Action
-                        </div>
-                        <div class="panel-body">
-                            <form class="form-horizontal">
-                                <fieldset>
-                                    <!-- id input-->
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="did">Action Id</label>
-                                        <div class="col-md-9">
-                                            <input id="did" name="did" ng-model="did" type="text"
-                                                   placeholder="Classification Id"
-                                                   class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <!-- Form actions -->
-                                    <div class="form-group">
-                                        <div class="col-md-12 widget-right">
-                                            <button type="submit" ng-click="deleteAction(did)"
-                                                    class="btn btn-default btn-md pull-right">Submit
-                                            </button>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div>
-                </div><!--/.row-->
-        </div>
-
-        <div class="col-lg-4">
+            <div class="pull-left" style="width: 100%">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><span class="glyphicon glyphicon-trash"></span> Delete Action
+                    <div class="panel-heading"><span class="glyphicon glyphicon-trash"></span> Create Action
                     </div>
                     <div class="panel-body">
                         <form class="form-horizontal">
@@ -148,6 +116,39 @@ $this->title = 'Action';
                         </form>
                     </div>
                 </div>
-            </div><!--/.row-->
-    </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-4 pull-right">
+            <div class="panel panel-default" style="width: 100%">
+                <div class="panel-heading"><span class="glyphicon glyphicon-trash"></span> Delete Action
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <!-- id input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="did">Action Id</label>
+                                <div class="col-md-9">
+                                    <input id="did" name="did" ng-model="did" type="text"
+                                           placeholder="Classification Id"
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <!-- Form actions -->
+                            <div class="form-group">
+                                <div class="col-md-12 widget-right">
+                                    <button type="submit" ng-click="deleteAction(did)"
+                                            class="btn btn-default btn-md pull-right">Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div><!--/.row-->
+    </div><!--/.row-->
 </div>

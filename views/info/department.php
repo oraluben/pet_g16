@@ -69,7 +69,7 @@ $this->title = 'Department';
                             Information
                         </div>
                         <div class="panel-body">
-                            <table data-toggle="table" data-url="../departments" data-show-refresh="true"
+                            <table data-toggle="table" data-url="../deps" data-show-refresh="true"
                                    data-show-toggle="true" data-show-columns="true" data-search="true"
                                    data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name"
                                    data-sort-order="desc">
@@ -77,8 +77,8 @@ $this->title = 'Department';
                                 <tr>
                                     <th data-field="state" data-checkbox="true">Department ID</th>
                                     <th data-field="id" data-sortable="true">Department ID</th>
-                                    <th data-field="username" data-sortable="true">Department Name</th>
-                                    <th data-field="user_type" data-sortable="true">Department Desc</th>
+                                    <th data-field="department_name" data-sortable="true">Department Name</th>
+                                    <th data-field="department_desc" data-sortable="true">Department Desc</th>
                                 </tr>
                                 </thead>
                             </table>

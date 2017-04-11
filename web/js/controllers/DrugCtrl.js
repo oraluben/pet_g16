@@ -33,11 +33,10 @@ petApp.controller('DrugCtrl', function ($scope, $http) {
         else {
             p = {
                 method: 'post',
-                url: '/users',
+                url: '/drugs',
                 data: {
-                    'username': name,
-                    'password': pwd,
-                    'user_type': authority
+                    'drug_name': name,
+                    'drug_desc': desc
                 }
             };
             $http(p).then(function (d) {
@@ -88,7 +87,7 @@ petApp.controller('DrugCtrl', function ($scope, $http) {
             });
         }
         else {
-            var str = '/users/' + id;
+            var str = '/drugs/' + id;
             console.log(str);
             p = {
                 method: 'delete',
@@ -148,13 +147,14 @@ petApp.controller('DrugCtrl', function ($scope, $http) {
                 closeText: ''
             });
         } else {
-            var str = '/user/update?id=' + id;
+            var str = '/drug/update?id=' + id;
             console.log(str);
             p = {
                 method: 'put',
                 url: str,
                 data: {
-                    user_type: authority
+                    'drug_name': name,
+                    'drug_desc': desc
                 }
             };
             $http(p).then(function (d) {

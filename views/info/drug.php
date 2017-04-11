@@ -76,8 +76,8 @@ $this->title = 'Drug';
                                 <tr>
                                     <th data-field="state" data-checkbox="true">Drug ID</th>
                                     <th data-field="id" data-sortable="true">Drug ID</th>
-                                    <th data-field="username" data-sortable="true">Drug Name</th>
-                                    <th data-field="user_type" data-sortable="true">Drug Desc</th>
+                                    <th data-field="drug_name" data-sortable="true">Drug Name</th>
+                                    <th data-field="drug_desc" data-sortable="true">Drug Desc</th>
                                 </tr>
                                 </thead>
                             </table>
