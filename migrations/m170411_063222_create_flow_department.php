@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m170411_055131_create_flow_department extends Migration
+class m170411_063222_create_flow_department extends Migration
 {
     public function up()
     {
@@ -30,7 +30,22 @@ class m170411_055131_create_flow_department extends Migration
             'department_name' => $this->text(),
             'department_text' => $this->text(),
         ]);
+        $this->createTable('functions', [
+            'id' => $this->primaryKey(),
+            'function_name' => $this->text(),
+            'function_text' => $this->text(),
+        ]);
 
+
+        $this->addForeignKey(
+            'fk-function-functions_id',
+            'flow',
+            'function',
+            'functions',
+            'id',
+            'CASCADE',
+            'CASCADE'
+        );
         $this->addForeignKey(
             'fk-department-department_id',
             'flow',
@@ -63,7 +78,7 @@ class m170411_055131_create_flow_department extends Migration
 
     public function down()
     {
-        echo "m170411_055131_create_flow_department cannot be reverted.\n";
+        echo "m170411_063222_create_flow_department cannot be reverted.\n";
 
         return false;
     }
