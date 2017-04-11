@@ -93,7 +93,7 @@ $this->title = 'AddCaseNamePage';
 
                             <div style="margin-top: 1em;margin-bottom: 1em;">
                                 <input onchange="angular.element(this).scope().readVideo()" type="file" ng-model="video"
-                                       id="uploadvideo" multiple class="pic">
+                                       id="uploadvideo" class="pic">
                                 <div class="pure">Case Name videos.</div>
                                 <div id="resultv" name="resultv" ng-model="videos" class="pic2"></div>
                             </div>
