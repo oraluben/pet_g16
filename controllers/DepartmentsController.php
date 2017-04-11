@@ -10,6 +10,7 @@ namespace app\controllers;
 
 
 use app\actions\ActionDepartments;
+use app\actions\ActionInstruments;
 use app\actions\ActionPetActions;
 use yii\filters\AccessControl;
 use yii\rest\Controller;
@@ -28,7 +29,7 @@ class DepartmentsController extends Controller
             'rules' => [
                 [
                     'allow' => true,
-                    'actions' => ['departments','actions'],
+                    'actions' => ['departments', 'actions', 'instruments'],
                     'verbs' => ['GET'],
                 ],
             ],
@@ -42,6 +43,7 @@ class DepartmentsController extends Controller
         return [
             'departments' => ActionDepartments::className(),
             'actions' => ActionPetActions::className(),
+            'instruments' => ActionInstruments::className(),
         ];
     }
 }
