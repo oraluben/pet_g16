@@ -9,9 +9,12 @@
 namespace app\controllers;
 
 use app\actions\ActionChangePassword;
+use app\actions\ActionCreateAction;
+use app\actions\ActionDeleteAction;
 use app\actions\ActionDepartments;
 use app\actions\LoginAction;
 use app\actions\RegisterAction;
+use app\models\LoginRecord;
 use app\models\PetCase;
 use app\models\PetCaseClassification;
 use app\models\User;
@@ -37,7 +40,7 @@ class ApiController extends Controller
                 ],
                 [
                     'allow' => true,
-                    'actions' => ['register', 'change_password'],
+                    'actions' => ['register', 'change_password', 'create_action'],
 //                    'roles' => ['?'],
                     'verbs' => ['POST'],
                 ],
@@ -52,6 +55,12 @@ class ApiController extends Controller
                     'roles' => ['@'],
                     'verbs' => ['POST'],
                 ],
+                [
+                    'allow' => true,
+                    'actions' => ['delete_action'],
+//                    'roles' => ['@'],
+                    'verbs' => ['delete'],
+                ],
             ],
         ];
 
@@ -64,6 +73,8 @@ class ApiController extends Controller
             'login' => LoginAction::className(),
             'register' => RegisterAction::className(),
             'change_password' => ActionChangePassword::className(),
+            'create_action' => ActionCreateAction::className(),
+            'delete_action' => ActionDeleteAction::className(),
         ];
     }
 
@@ -83,7 +94,7 @@ class ApiController extends Controller
             'case' => PetCase::find()->count(),
             'classification' => PetCaseClassification::find()->count(),
             'user' => User::find()->count(),
-            'visit' => 0, // todo
+            'visit' => LoginRecord::find()->count(),
         ];
     }
 }
