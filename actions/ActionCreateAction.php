@@ -27,7 +27,7 @@ class ActionCreateAction extends Action
         ], '');
         $action->save();
 
-        foreach (\Yii::$app->request->post('drugs') as $d) {
+        foreach (\Yii::$app->request->post('drugs', []) as $d) {
             $m = new PetDrugMap();
             $m->load([
                 'drug_id' => $d,
@@ -36,7 +36,7 @@ class ActionCreateAction extends Action
             $m->save();
         }
 
-            foreach (\Yii::$app->request->post('instruments') as $i) {
+        foreach (\Yii::$app->request->post('instruments', []) as $i) {
             $m = new PetInstrumentMap();
             $m->load([
                 'instrument_id' => $i,
