@@ -92,14 +92,14 @@ $this->title = 'Action';
                     <div class="panel-heading"><span class="glyphicon glyphicon-trash"></span> Create Action
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" id="form1">
                             <fieldset>
                                 <!-- id input-->
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="name">Action Name</label>
                                     <div class="col-md-9">
                                         <input id="name" name="name" ng-model="name" type="text"
-                                               placeholder="Classification Id"
+                                               placeholder="Action Name"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -125,12 +125,14 @@ $this->title = 'Action';
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="user">Action Drug</label>
                                     <div class="col-md-9">
-                                        <label ng-repeat="drug in drugs">
+                                        <label ng-repeat="drug in drugs" style="margin-right: 1em;">
                                             <input
+                                                name="drugc"
                                                 type="checkbox"
                                                 value="{{drug.id}}"
-                                                ng-toggle="addDrug(drug.id)"
+                                                ng-click="addDrug(drug.id)"
                                                 ng-model="drug.selected"
+                                                style="margin-right: 0.2em;"
                                             > {{drug.drug_name}}
                                         </label>
                                     </div>
@@ -139,12 +141,14 @@ $this->title = 'Action';
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="user">Action Instrument</label>
                                     <div class="col-md-9">
-                                        <label ng-repeat="instrument in instruments">
+                                        <label ng-repeat="instrument in instruments" style="margin-right: 1em;">
                                             <input
+                                                name="insc"
                                                 type="checkbox"
                                                 value="{{instrument.id}}"
-                                                ng-toggle="addIns(instrument.id)"
+                                                ng-click="addIns(instrument.id)"
                                                 ng-model="instrument.selected"
+                                                style="margin-right: 0.2em;"
                                             > {{instrument.instrument_name}}
                                         </label>
                                     </div>
