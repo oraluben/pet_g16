@@ -107,8 +107,8 @@ $this->title = 'CreateCasePage';
                                         style="margin-right: 1em;" ng-click="create_case(case_name,disease)"> Next Step
                                 </button>
                             </div>
+                        </form>
                     </div>
-                    </form>
                 </div>
             </div>
         </div><!-- /.col-->

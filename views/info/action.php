@@ -77,7 +77,7 @@ $this->title = 'Action';
                                 <th data-field="action_name" data-sortable="true">Action Name</th>
                                 <th data-field="action_desc" data-sortable="true">Action Desc</th>
                                 <th data-field="action_user_type" data-sortable="true">Action User</th>
-                                <th data-field="drugs" data-sortable="true">Action Medicine</th>
+                                <th data-field="drugs" data-sortable="true">Action Drug</th>
                                 <th data-field="instruments" data-sortable="true">Action Instrument</th>
                                 <th data-field="department_id" data-sortable="true">Action Department</th>
                             </tr>
@@ -96,21 +96,76 @@ $this->title = 'Action';
                             <fieldset>
                                 <!-- id input-->
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="did">Action Id</label>
+                                    <label class="col-md-3 control-label" for="name">Action Name</label>
                                     <div class="col-md-9">
-                                        <input id="did" name="did" ng-model="did" type="text"
+                                        <input id="name" name="name" ng-model="name" type="text"
                                                placeholder="Classification Id"
                                                class="form-control">
                                     </div>
                                 </div>
 
-                                <!-- Form actions -->
+
                                 <div class="form-group">
-                                    <div class="col-md-12 widget-right">
-                                        <button type="submit" ng-click="deleteAction(did)"
-                                                class="btn btn-default btn-md pull-right">Submit
-                                        </button>
+                                    <label class="col-md-3 control-label" for="desc">Action Desc</label>
+                                    <div class="col-md-9">
+                                        <textarea id="desc" name="desc" style="resize: none;" class="form-control" rows="3" ng-model="desc"></textarea>
                                     </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="user">Action User</label>
+                                    <div class="col-md-9">
+                                        <select id="user" name="user" ng-options="a.name for a in users" ng-model="user"
+                                                class="form-control">
+                                            <option value="">请选择</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="user">Action Drug</label>
+                                    <div class="col-md-9">
+                                        <label ng-repeat="drug in drugs">
+                                            <input
+                                                type="checkbox"
+                                                value="{{drug.id}}"
+                                                ng-toggle="addDrug(drug.id)"
+                                                ng-model="drug.selected"
+                                            > {{drug.drug_name}}
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="user">Action Instrument</label>
+                                    <div class="col-md-9">
+                                        <label ng-repeat="instrument in instruments">
+                                            <input
+                                                type="checkbox"
+                                                value="{{instrument.id}}"
+                                                ng-toggle="addIns(instrument.id)"
+                                                ng-model="instrument.selected"
+                                            > {{instrument.instrument_name}}
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="department">Action Department</label>
+                                    <div class="col-md-9">
+                                        <select id="department" name="department" ng-options="a.department_name for a in departments" ng-model="department"
+                                                class="form-control">
+                                            <option value="">请选择</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Form actions -->
+                                <div style="margin-top: 2em;">
+                                    <button type="reset" class="btn btn-default pull-right" ng-click="reset()"> Reset</button>
+                                    <button type="submit" class="btn btn-primary pull-right"
+                                            style="margin-right: 1em;" ng-click="createAction(name,desc,user,drugSelection,instrumentSelection,department)"> Create
+                                    </button>
                                 </div>
                             </fieldset>
                         </form>
