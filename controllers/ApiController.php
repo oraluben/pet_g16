@@ -12,6 +12,7 @@ use app\actions\ActionChangePassword;
 use app\actions\ActionDepartments;
 use app\actions\LoginAction;
 use app\actions\RegisterAction;
+use app\models\LoginRecord;
 use app\models\PetCase;
 use app\models\PetCaseClassification;
 use app\models\User;
@@ -83,7 +84,7 @@ class ApiController extends Controller
             'case' => PetCase::find()->count(),
             'classification' => PetCaseClassification::find()->count(),
             'user' => User::find()->count(),
-            'visit' => 0, // todo
+            'visit' => LoginRecord::find()->count(),
         ];
     }
 }
