@@ -15,6 +15,7 @@ use yii\helpers\ArrayHelper;
  *
  * @property PetDrug[] $petDrugs
  * @property PetInstrument[] $petInstruments
+ * @property PetDepartment $petDepartment
  */
 class PetAction extends \yii\db\ActiveRecord
 {
@@ -44,6 +45,7 @@ class PetAction extends \yii\db\ActiveRecord
             [['action_user_type'], 'integer'],
             [['action_desc'], 'string'],
             [['action_name'], 'string', 'max' => 20],
+            [['department_id'], 'exist', 'skipOnError' => true, 'targetClass' => PetDepartment::className(), 'targetAttribute' => ['department_id' => 'id']],
         ];
     }
 
@@ -69,6 +71,7 @@ class PetAction extends \yii\db\ActiveRecord
         $f = parent::fields();
         $f['drugs'] = 'petDrugs';
         $f['instruments'] = 'petInstruments';
+        $f['department'] = 'petDepartment';
 
         $f['action_user_type'] = function () {
             return ArrayHelper::getValue(self::USER_TYPES, $this->action_user_type, '');
@@ -92,5 +95,13 @@ class PetAction extends \yii\db\ActiveRecord
     {
         return $this->hasMany(PetInstrument::className(), ['id' => 'action_id'])
             ->viaTable('pet_instrument_map', ['action_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPetDepartment()
+    {
+        return $this->hasOne(PetDepartment::className(), ['id' => 'department_id']);
     }
 }

@@ -9,6 +9,7 @@
 namespace app\controllers;
 
 use app\actions\ActionChangePassword;
+use app\actions\ActionCreateAction;
 use app\actions\ActionDepartments;
 use app\actions\LoginAction;
 use app\actions\RegisterAction;
@@ -38,7 +39,7 @@ class ApiController extends Controller
                 ],
                 [
                     'allow' => true,
-                    'actions' => ['register', 'change_password'],
+                    'actions' => ['register', 'change_password', 'create_action'],
 //                    'roles' => ['?'],
                     'verbs' => ['POST'],
                 ],
@@ -65,6 +66,7 @@ class ApiController extends Controller
             'login' => LoginAction::className(),
             'register' => RegisterAction::className(),
             'change_password' => ActionChangePassword::className(),
+            'create_action' => ActionCreateAction::className(),
         ];
     }
 
