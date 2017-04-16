@@ -93,7 +93,7 @@ class PetAction extends \yii\db\ActiveRecord
      */
     public function getPetInstruments()
     {
-        return $this->hasMany(PetInstrument::className(), ['id' => 'action_id'])
+        return $this->hasMany(PetInstrument::className(), ['id' => 'instrument_id'])
             ->viaTable('pet_instrument_map', ['action_id' => 'id']);
     }
 
