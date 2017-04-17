@@ -35,7 +35,12 @@ class UploadController extends Controller
                 ],
                 [
                     'allow' => true,
-                    'actions' => ['delete-image', 'delete-video', 'delete-all'],
+                    'actions' => [
+                        'delete-image',
+                        'delete-video',
+                        'delete-all-image',
+                        'delete-all-video',
+                        'delete-all'],
                     'verbs' => ['DELETE'],
                     'roles' => ['@'],
                 ],
@@ -61,13 +66,23 @@ class UploadController extends Controller
 
     public function actionDeleteVideo($path)
     {
-        return PetCaseUnitVideo::deleteAll(['image_path' => $path]);
+        return PetCaseUnitVideo::deleteAll(['video_path' => $path]);
+    }
+
+    public function actionDeleteAllImage($unit_id)
+    {
+        return PetCaseUnitImage::cleanup($unit_id);
+    }
+
+    public function actionDeleteAllVideo($unit_id)
+    {
+        return PetCaseUnitVideo::cleanup($unit_id);
     }
 
     public function actionDeleteAll($unit_id)
     {
         return
-            PetCaseUnitImage::deleteAll(['pet_case_unit' => $unit_id])
-            + PetCaseUnitVideo::deleteAll(['pet_case_unit' => $unit_id]);
+            PetCaseUnitImage::cleanup($unit_id) +
+            PetCaseUnitVideo::cleanup($unit_id);
     }
 }
