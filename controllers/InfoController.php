@@ -75,6 +75,21 @@ class InfoController extends Controller
         return $this->render('department');
     }
 
+    public function actionDrug()
+    {
+        return $this->render('drug');
+    }
+
+    public function actionInstrument()
+    {
+        return $this->render('instrument');
+    }
+
+    public function actionAction()
+    {
+        return $this->render('action');
+    }
+
     public function actionPwd()
     {
         return $this->render('pwd');

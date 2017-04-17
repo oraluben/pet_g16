@@ -19,30 +19,61 @@ $this->title = 'CreateCasePage';
         </div>
     </form>
     <ul class="nav menu">
-        <li><a href="index"><span class="glyphicon glyphicon-dashboard"></span> 主页面</a></li>
+        <li><a href="index"><span class="glyphicon glyphicon-dashboard"></span> Main Page</a></li>
         <li class="parent ">
             <a href="#">
-                <span class="glyphicon glyphicon-list"></span> 病例管理 <span data-toggle="collapse" href="#sub-item-1"
-                                                                          class="icon pull-right"><em
-                        class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+                <span class="glyphicon glyphicon-list-alt"></span> Front Management
+                <span data-toggle="collapse" href="#sub-item-11" class="icon pull-right">
+                    <em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
             </a>
-            <ul class="children collapse" id="sub-item-1">
+            <ul class="children collapse" id="sub-item-11">
                 <li>
-                    <a class="active" style="color: white !important;" href="create1">
-                        <span class="glyphicon glyphicon-plus"></span> 新建病例
+                    <a class="" href="department">
+                        <span class="glyphicon glyphicon-pencil"></span> Department Management
                     </a>
                 </li>
                 <li>
-                    <a class="" href="modify">
-                        <span class="glyphicon glyphicon-pencil"></span> 管理病例
+                    <a class="" href="drug">
+                        <span class="glyphicon glyphicon-pencil"></span> Drug Management
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="instrument">
+                        <span class="glyphicon glyphicon-pencil"></span> Instrument Management
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="action">
+                        <span class="glyphicon glyphicon-pencil"></span> Action Management
                     </a>
                 </li>
             </ul>
         </li>
-        <li><a href="user"><span class="glyphicon glyphicon-user"></span> 管理用户</a></li>
-        <li><a href="pwd"><span class="glyphicon glyphicon-info-sign"></span> 维护用户</a></li>
+        <li class=""><a href="classification"><span class="glyphicon glyphicon-list"></span> Classes Management</a></li>
+        <li class="parent ">
+            <a href="#">
+                <span class="glyphicon glyphicon-list-alt"></span> Cases Management <span data-toggle="collapse"
+                                                                                          href="#sub-item-1"
+                                                                                          class="icon pull-right"><em
+                        class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+            </a>
+            <ul class="children collapse" id="sub-item-1">
+                <li>
+                    <a class="active" style="color: white !important;"  href="create1">
+                        <span class="glyphicon glyphicon-plus"></span> Create Case
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="modify">
+                        <span class="glyphicon glyphicon-pencil"></span> Modify&Delete Case
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li><a href="user"><span class="glyphicon glyphicon-th-list"></span> Users Management</a></li>
+        <li><a href="pwd"><span class="glyphicon glyphicon-info-sign"></span> Users Maintenance</a></li>
         <li role="presentation" class="divider"></li>
-        <li><a href="profile"><span class="glyphicon glyphicon-pencil"></span> 个人信息</a></li>
+        <li><a href="profile"><span class="glyphicon glyphicon-user"></span> Personal Profile</a></li>
     </ul>
 </div><!--/.sidebar-->
 
@@ -107,8 +138,8 @@ $this->title = 'CreateCasePage';
                                         style="margin-right: 1em;" ng-click="create_case(case_name,disease)"> Next Step
                                 </button>
                             </div>
+                        </form>
                     </div>
-                    </form>
                 </div>
             </div>
         </div><!-- /.col-->
