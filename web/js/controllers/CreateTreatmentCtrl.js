@@ -19,7 +19,7 @@ petApp.controller('CreateTreatmentCtrl', function ($scope, $http, $location) {
         $scope.case_id = $location.search().id;
     }
 
-    $scope.create_unit = function (text, attachments) {
+    $scope.create_unit = function (text, attachments, videos) {
         console.log(text);
         if (text === void 0 || text.length === 0) {
             $().toastmessage('showToast', {
@@ -62,6 +62,7 @@ petApp.controller('CreateTreatmentCtrl', function ($scope, $http, $location) {
                         }
                     };
                     $http(q).then(function (e) {
+
                         var data = {};
                         for (var i in attachments) {
                             var tmp = 'imageFiles[' + i.toString() + ']';
@@ -86,9 +87,47 @@ petApp.controller('CreateTreatmentCtrl', function ($scope, $http, $location) {
                                 'Content-Type': void 0
                             }
                         };
-                        console.log(r);
                         $http(r).then(function (e) {
-                            window.location.href = 'modify';
+                            var data1 = {};
+                            console.log('videos=');
+                            for (var i in videos) {
+                                var tmp = 'videoFiles[' + i.toString() + ']';
+                                data1[tmp] = videos[i];
+                                var tmp1 = 'videoInfos[' + i.toString() + ']';
+                                data1[tmp1] = null;
+                            }
+                            var form1 = new FormData();
+                            for (var key in data1) {
+                                var v = data1[key];
+                                form1.append(key, v);
+                            }
+                            var s = {
+                                    method: 'post',
+                                    url: '/upload/video',
+                                    params: {
+                                        'unit_id': unit_id
+                                    },
+                                    data: form1,
+                                    transformRequest: angular.identity,
+                                    headers: {
+                                        'Content-Type': void 0
+                                    }
+                                }
+                                ;
+                            $http(s).then(function (t) {
+                                window.location.href = 'modify';
+                            }, function (f) {
+                                var obj = eval("(" + f.data.message + ")");
+                                console.log(obj);
+                                $().toastmessage('showToast', {
+                                    text: obj.videoFiles[0],
+                                    sticky: false,
+                                    position: 'top-center',
+                                    type: 'error',
+                                    stayTime: 3000,
+                                    closeText: ''
+                                });
+                            });
                         }, function (f) {
                             var obj = eval("(" + f.data.message + ")");
                             console.log(obj);
@@ -172,6 +211,72 @@ petApp.controller('CreateTreatmentCtrl', function ($scope, $http, $location) {
             $scope.attachments = []
         } else {
         }
+    };
+
+
+    $scope.readVideo = function () {
+        $scope.videos = [];
+        var count, file1, reader, stop, _i, _len, _ref, num = 0;
+        stop = false;
+        count = 0;
+        document.getElementById('resultv').innerHTML = '';
+        _ref = document.getElementById('uploadvideo').files;
+        console.log(_ref);
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            file1 = _ref[_i];
+            count++;
+            if (!/video\/\w+/.test(file1.type)) {
+                $().toastmessage('showToast', {
+                    text: 'Not video files, they won\'t be upload.',
+                    sticky: false,
+                    position: 'top-center',
+                    type: 'error',
+                    stayTime: 3000,
+                    closeText: ''
+                });
+                stop = true;
+                break;
+            }
+            if (file1.size > 1024 * 1024 * 500) {
+                $().toastmessage('showToast', {
+                    text: 'Larger than 500M, they won\'t be upload.',
+                    sticky: false,
+                    position: 'top-center',
+                    type: 'error',
+                    stayTime: 3000,
+                    closeText: ''
+                });
+                stop = true;
+                break;
+            }
+            if (count > 3) {
+                $().toastmessage('showToast', {
+                    text: 'More than 3 videos, they won\'t be upload.',
+                    sticky: false,
+                    position: 'top-center',
+                    type: 'error',
+                    stayTime: 3000,
+                    closeText: ''
+                });
+                stop = true;
+                break;
+            }
+            if (!stop) {
+                reader = new FileReader();
+                reader.readAsDataURL(file1);
+                $scope.videos.push(file1);
+                reader.onload = function (f) {
+                    document.getElementById('resultv').innerHTML += '<video id = "video' + num + '" src="" class="show_pic"/>';
+                    document.getElementById('video' + num.toString()).setAttribute('src', this.result);
+                    return ++num;
+                };
+            }
+        }
+        if (stop) {
+            $scope.videos = []
+        } else {
+        }
+        console.log($scope.videos);
     };
 
     $scope.reset = function () {

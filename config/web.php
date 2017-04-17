@@ -48,6 +48,9 @@ $config = [
             'rules' => [
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'cl'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'dep'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'drug'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'instrument'],
             ],
         ],
     ],

@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Dilemma丶
- * Date: 2017/3/30
- * Time: 8:26
+ * Date: 2017/4/11
+ * Time: 15:00
  */
 
 /* @var $this yii\web\View */
 
-$this->title = 'Classification';
-\app\assets\ClassificationAsset::register($this);
+$this->title = 'Drug';
+\app\assets\DrugAsset::register($this);
 ?>
 
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
@@ -33,7 +33,7 @@ $this->title = 'Classification';
                     </a>
                 </li>
                 <li>
-                    <a class="" href="drug">
+                    <a class="active" style="color: white !important;" href="drug">
                         <span class="glyphicon glyphicon-pencil"></span> Drug Management
                     </a>
                 </li>
@@ -49,7 +49,7 @@ $this->title = 'Classification';
                 </li>
             </ul>
         </li>
-        <li class="active"><a href="classification"><span class="glyphicon glyphicon-list"></span> Classes Management</a></li>
+        <li><a href="classification"><span class="glyphicon glyphicon-list"></span> Classes Management</a></li>
         <li class="parent ">
             <a href="#">
                 <span class="glyphicon glyphicon-list-alt"></span> Cases Management <span data-toggle="collapse"
@@ -76,68 +76,72 @@ $this->title = 'Classification';
         <li><a href="profile"><span class="glyphicon glyphicon-user"></span> Personal Profile</a></li>
     </ul>
 </div><!--/.sidebar-->
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" ng-controller="ClassificationCtrl">
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" ng-controller="DrugCtrl">
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="index"><span class="glyphicon glyphicon-home"></span></a></li>
-            <li class="active">Classifications</li>
+            <li class="active">Drugs</li>
         </ol>
     </div><!--/.row-->
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Classifications</h1>
+            <h1 class="page-header">Drugs</h1>
         </div>
     </div><!--/.row-->
 
     <div class="row">
-        <div class="col-lg-7">
-            <div class="panel panel-default">
+        <div class="col-lg-8">
+            <div style="width: 100%">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span> User Information</div>
-                    <div class="panel-body">
-                        <table data-toggle="table" data-url="../cls" data-show-refresh="true" data-show-toggle="true"
-                               data-show-columns="true" data-search="true" data-select-item-name="toolbar1"
-                               data-pagination="true" data-sort-name="name" data-sort-order="desc">
-                            <thead>
-                            <tr>
-                                <th data-field="state" data-checkbox="true">User ID</th>
-                                <th data-field="id" data-sortable="true">User ID</th>
-                                <th data-field="classification_name" data-sortable="true">User Name</th>
-                                <th data-field="parent" data-sortable="true">Parent Classification ID</th>
-                            </tr>
-                            </thead>
-                        </table>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span> Drug
+                            Information
+                        </div>
+                        <div class="panel-body">
+                            <table data-toggle="table" data-url="../drugs" data-show-refresh="true"
+                                   data-show-toggle="true" data-show-columns="true" data-search="true"
+                                   data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name"
+                                   data-sort-order="desc">
+                                <thead>
+                                <tr>
+                                    <th data-field="state" data-checkbox="true">Drug ID</th>
+                                    <th data-field="id" data-sortable="true">Drug ID</th>
+                                    <th data-field="drug_name" data-sortable="true">Drug Name</th>
+                                    <th data-field="drug_desc" data-sortable="true">Drug Desc</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-5">
+        <div class="col-lg-4 pull-right">
 
-            <div style="width: 100%">
+            <div class="pull-right" style="width: 100%">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><span class="glyphicon glyphicon-pencil"></span> Create Classification
-                    </div>
+                    <div class="panel-heading"><span class="glyphicon glyphicon-pencil"></span> Create Drug</div>
                     <div class="panel-body">
                         <form class="form-horizontal">
                             <fieldset>
                                 <!-- Name input-->
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="name">Class Name</label>
+                                    <label class="col-md-3 control-label" for="name">Name</label>
                                     <div class="col-md-9">
                                         <input id="name" name="name" ng-model="name" type="text"
-                                               placeholder="Classification Name"
+                                               placeholder="Drug Name"
                                                class="form-control">
                                     </div>
                                 </div>
 
-                                <!-- pid input-->
+                                <!-- desc input-->
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="pid">Parent Class ID</label>
+                                    <label class="col-md-3 control-label" for="desc">Description</label>
                                     <div class="col-md-9">
-                                        <input id="pid" name="pid" ng-model="pid" type="text"
-                                               placeholder="Parent Classification ID (0 for root!)"
+                                        <input id="desc" name="desc" ng-model="desc" type="text"
+                                               placeholder="Drug Description"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -145,7 +149,36 @@ $this->title = 'Classification';
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 widget-right">
-                                        <button type="submit" ng-click="createCl(name,pid)"
+                                        <button type="submit" ng-click="createDrug(name,desc)"
+                                                class="btn btn-default btn-md pull-right">Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div><!--/.row-->
+
+            <div class="pull-right" style="width: 100%">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><span class="glyphicon glyphicon-trash"></span> Delete Drug</div>
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <!-- id input-->
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="id">Id</label>
+                                    <div class="col-md-9">
+                                        <input id="id" name="id" ng-model="id" type="text" placeholder="Drug Id"
+                                               class="form-control">
+                                    </div>
+                                </div>
+
+                                <!-- Form actions -->
+                                <div class="form-group">
+                                    <div class="col-md-12 widget-right">
+                                        <button type="submit" ng-click="deleteDrug(id)"
                                                 class="btn btn-default btn-md pull-right">Submit
                                         </button>
                                     </div>
@@ -159,76 +192,45 @@ $this->title = 'Classification';
 
             <div class="pull-right" style="width: 100%">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><span class="glyphicon glyphicon-trash"></span> Delete Classification
-                    </div>
+                    <div class="panel-heading"><span class="glyphicon glyphicon-trash"></span> Modify Drug</div>
                     <div class="panel-body">
                         <form class="form-horizontal">
                             <fieldset>
                                 <!-- id input-->
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="did">Class Id</label>
+                                    <label class="col-md-3 control-label" for="id1">Id</label>
                                     <div class="col-md-9">
-                                        <input id="did" name="did" ng-model="did" type="text"
-                                               placeholder="Classification Id"
-                                               class="form-control">
-                                    </div>
-                                </div>
-
-                                <!-- Form actions -->
-                                <div class="form-group">
-                                    <div class="col-md-12 widget-right">
-                                        <button type="submit" ng-click="deleteCl(did)"
-                                                class="btn btn-default btn-md pull-right">Submit
-                                        </button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div><!--/.row-->
-
-            <div class="pull-right" style="width: 100%">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><span class="glyphicon glyphicon-bookmark"></span> Modify Classification
-                    </div>
-                    <div class="panel-body">
-                        <form class="form-horizontal">
-                            <fieldset>
-                                <!-- id input-->
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="mid">Classification Id</label>
-                                    <div class="col-md-9">
-                                        <input id="mid" name="mid" ng-model="mid" type="text"
-                                               placeholder="Classification Id"
+                                        <input id="id1" name="id1" ng-model="id1" type="text"
+                                               placeholder="Drug Id"
                                                class="form-control">
                                     </div>
                                 </div>
 
                                 <!-- Name input-->
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="cname">Classification Name</label>
+                                    <label class="col-md-3 control-label" for="name1">Name</label>
                                     <div class="col-md-9">
-                                        <input id="cname" name="cname" ng-model="cname" type="text"
-                                               placeholder="Classification Name"
+                                        <input id="name1" name="name1" ng-model="name1" type="text"
+                                               placeholder="Drug Name"
                                                class="form-control">
                                     </div>
                                 </div>
 
-                                <!-- pid input-->
+                                <!-- desc input-->
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="mpid">Parent Class ID</label>
+                                    <label class="col-md-3 control-label" for="desc1">Description</label>
                                     <div class="col-md-9">
-                                        <input id="mpid" name="mpid" ng-model="mpid" type="text"
-                                               placeholder="Parent Classification ID (0 for root!)"
+                                        <input id="desc1" name="desc1" ng-model="desc1" type="text"
+                                               placeholder="Drug Description"
                                                class="form-control">
                                     </div>
                                 </div>
+
 
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 widget-right">
-                                        <button type="submit" ng-click="modCl(mid,cname,mpid)"
+                                        <button type="submit" ng-click="modifyDrug(id1,name1,desc1)"
                                                 class="btn btn-default btn-md pull-right">Submit
                                         </button>
                                     </div>
