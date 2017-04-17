@@ -35,7 +35,12 @@ class UploadController extends Controller
                 ],
                 [
                     'allow' => true,
-                    'actions' => ['delete-image', 'delete-video', 'delete-all'],
+                    'actions' => [
+                        'delete-image',
+                        'delete-video',
+                        'delete-all-image',
+                        'delete-all-video',
+                        'delete-all'],
                     'verbs' => ['DELETE'],
                     'roles' => ['@'],
                 ],
