@@ -110,20 +110,21 @@ petApp.controller('CreateCaseNameCtrl', function ($scope, $http, $location) {
                             var form1 = new FormData();
                             for (var key in data1) {
                                 var v = data1[key];
-                                form.append(key, v);
+                                form1.append(key, v);
                             }
                             var s = {
-                                method: 'post',
-                                url: '/upload/video',
-                                params: {
-                                    'unit_id': unit_id
-                                },
-                                data: form1,
-                                transformRequest: angular.identity,
-                                headers: {
-                                    'Content-Type': void 0
+                                    method: 'post',
+                                    url: '/upload/video',
+                                    params: {
+                                        'unit_id': unit_id
+                                    },
+                                    data: form1,
+                                    transformRequest: angular.identity,
+                                    headers: {
+                                        'Content-Type': void 0
+                                    }
                                 }
-                            };
+                                ;
                             $http(s).then(function (t) {
                                 window.location.href = 'create3?id=' + $scope.case_id;
                             }, function (f) {

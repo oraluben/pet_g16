@@ -191,7 +191,7 @@ $this->title = 'CaseDetailPage';
 
                         <div class="form-group">
                             <label>Check Result Text</label>
-                            <textarea style="resize: none;" class="form-control" rows="3" ng-model="unit_text[3]">></textarea>
+                            <textarea style="resize: none;" class="form-control" rows="3" ng-model="unit_text[3]"></textarea>
                         </div>
 
                         <div>
