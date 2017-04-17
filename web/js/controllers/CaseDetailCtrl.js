@@ -19,6 +19,7 @@ petApp.controller('CaseDetailCtrl', function ($scope, $http, $location) {
         $scope.unit_images = new Array();
         $scope.unit_videos = new Array();
         $scope.attachments = new Array();
+        $scope.videos = new Array();
 
         if ($location.search().id) {
             $scope.case_id = $location.search().id;
@@ -248,96 +249,97 @@ petApp.controller('CaseDetailCtrl', function ($scope, $http, $location) {
                     }
                 };
                 $http(a).then(function (e) {
-                });
-                var data = {};
-                for (var i in attachments) {
-                    var tmp = 'imageFiles[' + i.toString() + ']';
-                    data[tmp] = attachments[i];
-                    var tmp1 = 'imageInfo[' + i.toString() + ']';
-                    data[tmp1] = null;
-                }
-                var form = new FormData();
-                for (var key in data) {
-                    var v = data[key];
-                    form.append(key, v);
-                }
-                var r = {
-                    method: 'post',
-                    url: '/upload/image',
-                    params: {
-                        'unit_id': unit_id
-                    },
-                    data: form,
-                    transformRequest: angular.identity,
-                    headers: {
-                        'Content-Type': void 0
+                    var data = {};
+                    for (var i in attachments) {
+                        var tmp = 'imageFiles[' + i.toString() + ']';
+                        data[tmp] = attachments[i];
+                        var tmp1 = 'imageInfo[' + i.toString() + ']';
+                        data[tmp1] = null;
                     }
-                };
-                $http(r).then(function (e) {
-                }, function (f) {
-                    var obj = eval("(" + f.data.message + ")");
-                    $().toastmessage('showToast', {
-                        text: obj.imageFiles[0],
-                        sticky: false,
-                        position: 'top-center',
-                        type: 'error',
-                        stayTime: 3000,
-                        closeText: ''
+                    var form = new FormData();
+                    for (var key in data) {
+                        var v = data[key];
+                        form.append(key, v);
+                    }
+                    var r = {
+                        method: 'post',
+                        url: '/upload/image',
+                        params: {
+                            'unit_id': unit_id
+                        },
+                        data: form,
+                        transformRequest: angular.identity,
+                        headers: {
+                            'Content-Type': void 0
+                        }
+                    };
+                    $http(r).then(function (d) {
+                    }, function (f) {
+                        var obj = eval("(" + f.data.message + ")");
+                        $().toastmessage('showToast', {
+                            text: obj.imageFiles[0],
+                            sticky: false,
+                            position: 'top-center',
+                            type: 'error',
+                            stayTime: 3000,
+                            closeText: ''
+                        });
                     });
                 });
             }
         };
 
 
-    $scope.modifyVideo = function (videos, unit_id) {
-        if (videos != [] && videos != undefined) {
-            var a = {
-                method: 'delete',
-                url: '/upload/delete-all-video',
-                params: {
-                    'unit_id': unit_id
-                }
-            };
-            $http(a).then(function (e) {
-            });
-            var data = {};
-            for (var i in videos) {
-                var tmp = 'videoFiles[' + i.toString() + ']';
-                data[tmp] = videos[i];
-                var tmp1 = 'videoInfo[' + i.toString() + ']';
-                data[tmp1] = null;
-            }
-            var form = new FormData();
-            for (var key in data) {
-                var v = data[key];
-                form.append(key, v);
-            }
-            var r = {
-                method: 'post',
-                url: '/upload/video',
-                params: {
-                    'unit_id': unit_id
-                },
-                data: form,
-                transformRequest: angular.identity,
-                headers: {
-                    'Content-Type': void 0
-                }
-            };
-            $http(r).then(function (e) {
-            }, function (f) {
-                var obj = eval("(" + f.data.message + ")");
-                $().toastmessage('showToast', {
-                    text: obj.videoFiles[0],
-                    sticky: false,
-                    position: 'top-center',
-                    type: 'error',
-                    stayTime: 3000,
-                    closeText: ''
+        $scope.modifyVideo = function (videos, unit_id) {
+            if (videos != [] && videos != undefined) {
+                var a = {
+                    method: 'delete',
+                    url: '/upload/delete-all-video',
+                    params: {
+                        'unit_id': unit_id
+                    }
+                };
+                $http(a).then(function (e) {
+                    var data = {};
+                    for (var i in videos) {
+                        var tmp = 'videoFiles[' + i.toString() + ']';
+                        data[tmp] = videos[i];
+                        var tmp1 = 'videoInfo[' + i.toString() + ']';
+                        data[tmp1] = null;
+                    }
+                    var form = new FormData();
+                    for (var key in data) {
+                        var v = data[key];
+                        form.append(key, v);
+                    }
+                    var r = {
+                        method: 'post',
+                        url: '/upload/video',
+                        params: {
+                            'unit_id': unit_id
+                        },
+                        data: form,
+                        transformRequest: angular.identity,
+                        headers: {
+                            'Content-Type': void 0
+                        }
+                    };
+                    $http(r).then(function (d) {
+                    }, function (f) {
+                        var obj = eval("(" + f.data.message + ")");
+                        $().toastmessage('showToast', {
+                            text: obj.videoFiles[0],
+                            sticky: false,
+                            position: 'top-center',
+                            type: 'error',
+                            stayTime: 3000,
+                            closeText: ''
+                        });
+                    });
                 });
-            });
-        }
-    };
+
+            }
+        };
 
         $scope.readFile = function (index) {
             $scope.attachments[index] = [];
