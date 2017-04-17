@@ -64,6 +64,6 @@ class PetCaseUnitVideo extends \yii\db\ActiveRecord
 
     public static function cleanup($unit_id)
     {
-        PetCaseUnitImage::deleteAll(['pet_case_unit' => $unit_id]);
+        PetCaseUnitVideo::deleteAll(['pet_case_unit' => $unit_id]);
     }
 }
