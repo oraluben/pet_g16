@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Dilemma丶
- * Date: 2017/3/2
- * Time: 9:40
+ * Date: 2017/4/18
+ * Time: 15:09
  */
 
 namespace app\assets;
@@ -29,7 +29,7 @@ class MainAsset extends AssetBundle
         'js/easypiechart-data.js',
         'js/info.js',
         'js/profile.js',
-        'js/controllers/MainCtrl.js',
+        'js/controllers/UserCtrl.js',
         'js/controllers/OuterCtrl.js',
         'js/bootstrap-table.js',
         'js/bootstrap-datepicker.js',

@@ -10,7 +10,7 @@
 /* @var $this yii\web\View */
 
 $this->title = 'User';
-\app\assets\MainAsset::register($this);
+\app\assets\UserAsset::register($this);
 ?>
 
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
