@@ -30,7 +30,7 @@ $this->title = 'Department';
             <ul class="children collapse" id="sub-item-11">
                 <li>
                     <a class="active" style="color: white !important;" href="department">
-                        <span class="glyphicon glyphicon-pencil"></span> Department Management
+                        <span class="glyphicon glyphicon-pencil"></span> Room Management
                     </a>
                 </li>
                 <li>
