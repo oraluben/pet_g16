@@ -72,19 +72,15 @@ class PetAction extends \yii\db\ActiveRecord
         $f['drugs'] = 'petDrugs';
         $f['instruments'] = 'petInstruments';
         $f['department'] = 'petDepartment';
+
         $f['instruments_string'] = function () {
-            $_s = '';
-            foreach ($this->petInstruments as $petInstrument) {
-                $_s .= ', ' . $petInstrument->instrument_name;
-            }
-            return $_s;
+            return implode(',', ArrayHelper::getColumn($this->petInstruments, 'instrument_name'));
         };
         $f['drugs_string'] = function () {
-            $_s = '';
-            foreach ($this->petDrugs as $petDrug) {
-                $_s .= ', ' . $petDrug->drug_name;
-            }
-            return $_s;
+            return implode(',', ArrayHelper::getColumn($this->petDrugs, 'drug_name'));
+        };
+        $f['department_string'] = function () {
+            return $this->petDepartment->department_name;
         };
 
         $f['action_user_type'] = function () {
