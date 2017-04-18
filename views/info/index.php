@@ -14,10 +14,43 @@ $this->title = 'MainPage';
     </form>
     <ul class="nav menu">
         <li class="active"><a href="index"><span class="glyphicon glyphicon-dashboard"></span> Main Page</a></li>
+        <li class="parent ">
+            <a href="#">
+                <span class="glyphicon glyphicon-list-alt"></span> Front Management <span data-toggle="collapse"
+                                                                                          href="#sub-item-11"
+                                                                                          class="icon pull-right"><em
+                        class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+            </a>
+            <ul class="children collapse" id="sub-item-11">
+                <li>
+                    <a class="" href="department">
+                        <span class="glyphicon glyphicon-pencil"></span> Department Management
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="drug">
+                        <span class="glyphicon glyphicon-pencil"></span> Drug Management
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="instrument">
+                        <span class="glyphicon glyphicon-pencil"></span> Instrument Management
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="action">
+                        <span class="glyphicon glyphicon-pencil"></span> Action Management
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li><a href="classification"><span class="glyphicon glyphicon-list"></span> Classes Management</a></li>
         <li class="parent ">
             <a href="#">
-                <span class="glyphicon glyphicon-list-alt"></span> Cases Management <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="glyphicon glyphicon-s glyphicon-plus"></em></span>
+                <span class="glyphicon glyphicon-list-alt"></span> Cases Management <span data-toggle="collapse"
+                                                                                          href="#sub-item-1"
+                                                                                          class="icon pull-right"><em
+                        class="glyphicon glyphicon-s glyphicon-plus"></em></span>
             </a>
             <ul class="children collapse" id="sub-item-1">
                 <li>
@@ -126,7 +159,7 @@ $this->title = 'MainPage';
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
                     <h4>New Cases</h4>
-                    <div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span>
+                    <div class="easypiechart" id="easypiechart-blue" data-percent="92"><span class="percent">92%</span>
                     </div>
                 </div>
             </div>
@@ -135,7 +168,8 @@ $this->title = 'MainPage';
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
                     <h4>Comments</h4>
-                    <div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span>
+                    <div class="easypiechart" id="easypiechart-orange" data-percent="65"><span
+                            class="percent">65%</span>
                     </div>
                 </div>
             </div>
@@ -144,7 +178,7 @@ $this->title = 'MainPage';
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
                     <h4>New Users</h4>
-                    <div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span>
+                    <div class="easypiechart" id="easypiechart-teal" data-percent="56"><span class="percent">56%</span>
                     </div>
                 </div>
             </div>
@@ -153,7 +187,7 @@ $this->title = 'MainPage';
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
                     <h4>Visitors</h4>
-                    <div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span>
+                    <div class="easypiechart" id="easypiechart-red" data-percent="27"><span class="percent">27%</span>
                     </div>
                 </div>
             </div>
