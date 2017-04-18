@@ -80,7 +80,7 @@ class PetAction extends \yii\db\ActiveRecord
             return implode(',', ArrayHelper::getColumn($this->petDrugs, 'drug_name'));
         };
         $f['department_string'] = function () {
-            return $this->petDepartment->department_name;
+            return is_null($this->petDepartment) ? '' : $this->petDepartment->department_name;
         };
 
         $f['action_user_type'] = function () {

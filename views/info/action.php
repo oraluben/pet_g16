@@ -108,9 +108,9 @@ $this->title = 'Action';
                                 <th data-field="action_name" data-sortable="true">Action Name</th>
                                 <th data-field="action_desc" data-sortable="true">Action Desc</th>
                                 <th data-field="action_user_type" data-sortable="true">Action User</th>
-                                <th data-field="drugs" data-sortable="true">Action Drug</th>
-                                <th data-field="instruments" data-sortable="true">Action Instrument</th>
-                                <th data-field="department_id" data-sortable="true">Action Department</th>
+                                <th data-field="drugs_string" data-sortable="true">Action Drug</th>
+                                <th data-field="instruments_string" data-sortable="true">Action Instrument</th>
+                                <th data-field="department_string" data-sortable="true">Action Department</th>
                             </tr>
                             </thead>
                         </table>

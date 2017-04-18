@@ -468,7 +468,7 @@ petApp.controller('CaseDetailCtrl', function ($scope, $http, $location) {
                     reader.onload = function (f) {
                         var str_ = 'video' + index;
                         var str_num = str_ + num.toString();
-                        document.getElementById(tmp_).innerHTML += '<video id = "' + str_num + '" src="" class="show_pic" />';
+                        document.getElementById(tmp_).innerHTML += '<video id = "' + str_num + '" src="" class="show_pic" controls="controls"/>';
                         document.getElementById(str_num).setAttribute('src', this.result);
                         return ++num;
                     };

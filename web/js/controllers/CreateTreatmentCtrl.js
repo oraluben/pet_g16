@@ -266,7 +266,7 @@ petApp.controller('CreateTreatmentCtrl', function ($scope, $http, $location) {
                 reader.readAsDataURL(file1);
                 $scope.videos.push(file1);
                 reader.onload = function (f) {
-                    document.getElementById('resultv').innerHTML += '<video id = "video' + num + '" src="" class="show_pic"/>';
+                    document.getElementById('resultv').innerHTML += '<video id = "video' + num + '" src="" class="show_pic" controls="controls"/>';
                     document.getElementById('video' + num.toString()).setAttribute('src', this.result);
                     return ++num;
                 };
