@@ -10,7 +10,7 @@ namespace app\assets;
 
 use yii\web\AssetBundle;
 
-class MainAsset extends AssetBundle
+class UserAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
