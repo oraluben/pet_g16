@@ -136,7 +136,7 @@ $this->title = 'CaseDetailPage';
                                        id="uploadvideo0" multiple class="pic">
                                 <div class="pure">Case Name Videos.</div>
                                 <div id="resultv0" class="pic2" ng-model="videos[0]">
-                                    <video ng-repeat="v in unit_videos[0]" ng-src="{{v}}" class="show_pic" control="controls" />
+                                    <video controls="controls" ng-repeat="v in unit_videos[0]" ng-src="{{v}}" class="show_pic" control="controls" />
                                 </div>
                             </div>
 
@@ -159,7 +159,7 @@ $this->title = 'CaseDetailPage';
                                        id="uploadvideo1" multiple class="pic">
                                 <div class="pure">Serve Videos Here.</div>
                                 <div id="resultv1" class="pic2" ng-model="videos[1]">
-                                    <video ng-repeat="v in unit_videos[1]" ng-src="{{v}}" class="show_pic" control="controls" />
+                                    <video controls="controls" ng-repeat="v in unit_videos[1]" ng-src="{{v}}" class="show_pic" control="controls" />
                                 </div>
                             </div>
 
@@ -185,7 +185,7 @@ $this->title = 'CaseDetailPage';
                                    id="uploadvideo2" multiple class="pic">
                             <div class="pure">Case Check Videos.</div>
                             <div id="resultv2" class="pic2" ng-model="videos[2]">
-                                <video ng-repeat="v in unit_videos[2]" ng-src="{{v}}" class="show_pic" control="controls" />
+                                <video controls="controls" ng-repeat="v in unit_videos[2]" ng-src="{{v}}" class="show_pic" control="controls" />
                             </div>
                         </div>
 
@@ -208,7 +208,7 @@ $this->title = 'CaseDetailPage';
                                    id="uploadvideo3" multiple class="pic">
                             <div class="pure">Check Result Videos.</div>
                             <div id="resultv3" class="pic2" ng-model="videos[3]">
-                                <video ng-repeat="v in unit_videos[3]" ng-src="{{v}}" class="show_pic" control="controls" />
+                                <video controls="controls" ng-repeat="v in unit_videos[3]" ng-src="{{v}}" class="show_pic" control="controls" />
                             </div>
                         </div>
 
@@ -232,7 +232,7 @@ $this->title = 'CaseDetailPage';
                                    id="uploadvideo4" multiple class="pic">
                             <div class="pure">Treat Videos Here.</div>
                             <div id="resultv4" class="pic2" ng-model="videos[4]">
-                                <video ng-repeat="v in unit_videos[4]" ng-src="{{v}}" class="show_pic" control="controls" />
+                                <video controls="controls" ng-repeat="v in unit_videos[4]" ng-src="{{v}}" class="show_pic" control="controls" />
                             </div>
                         </div>
 
